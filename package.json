@@ -6,6 +6,7 @@
     "type": "git",
     "url": "git+https://github.com/Sagittal/sagittal-scripts-popularity-metric-lfc.git"
   },
+  "license": "MIT",
   "scripts": {
     "profile": "node --prof -r ts-node/register/transpile-only --max-old-space-size=131072 [[script.ts]] && node --prof-process isolate-*.log > processed.txt && rm isolate-*.log",
     "lint": "tslint \"src/**/*.ts\" --fix && tslint \"spec/**/*.ts\" --fix",
@@ -23,8 +24,8 @@
     "guess-backfill-spread-dynamic-parameters": "node -r ts-node/register/transpile-only --max-old-space-size=131072 src//scripts/correctGoofs/guessBackfillSpreadDynamicParameters.ts"
   },
   "devDependencies": {
-    "@sagittal/general": "^1.0.6",
-    "@sagittal/system": "^1.0.5",
+    "@sagittal/general": "^1.0.7",
+    "@sagittal/system": "^1.0.6",
     "@types/jasmine": "^3.6.2",
     "@types/node": "^14.14.10",
     "jasmine": "^3.6.3",
