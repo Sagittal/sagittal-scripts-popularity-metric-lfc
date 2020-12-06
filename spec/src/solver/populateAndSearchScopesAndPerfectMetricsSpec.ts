@@ -4,7 +4,7 @@ import {bestMetrics, solverStatus} from "../../../src/globals"
 import {Chunk, populateAndSearchScopesAndPerfectMetrics} from "../../../src/solver"
 import * as populate from "../../../src/solver/populate/scopes"
 import * as search from "../../../src/solver/search/scopes"
-import {adjustAsyncTimeoutForSpec} from "../../helpers/adjustAsyncTimeoutForSpec"
+import {adjustAsyncTimeoutForSpec} from "../../helpers/shared/adjustAsyncTimeoutForSpec"
 import {onlyRunInCi} from "../../helpers/shared/onlyRunInCi"
 
 describe("populateAndSearchScopesAndPerfectMetrics", (): void => {
