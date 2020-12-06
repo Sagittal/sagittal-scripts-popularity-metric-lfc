@@ -11,10 +11,10 @@ import {
     Monzo,
     Parameter,
     Prime,
-    PRIMES,
     QuotientPartType,
     stringify,
 } from "@sagittal/general"
+import {popularityMetricLfcScriptGroupSettings} from "../../globals"
 import {LfcUnpopularityEstimate, Submetric} from "../types"
 import {secondaryParameterOverride} from "./secondaryParameter"
 
@@ -61,7 +61,7 @@ const computeSubmetricAntivotes = (
                 return 0 as Grade<LfcUnpopularityEstimate>
             }
 
-            const prime = PRIMES[index]
+            const prime = popularityMetricLfcScriptGroupSettings.primes[index]
 
             let adjustedPrime
             let adjustedPrimeExponent

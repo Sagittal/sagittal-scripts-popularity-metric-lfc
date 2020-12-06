@@ -1,4 +1,4 @@
-import {Count, Exponent, Max, Parameter, Rank, ScalaPopularityStat, Step} from "@sagittal/general"
+import {computePrimes, Count, Exponent, Max, Parameter, Rank, ScalaPopularityStat, Step} from "@sagittal/general"
 import {Sample, Scope} from "./bestMetric"
 import {Chunk} from "./solver"
 import {LfcUnpopularityEstimate} from "./sumOfSquares"
@@ -29,6 +29,7 @@ const DEFAULT_POPULARITY_METRIC_LFC_SCRIPTS_SETTINGS: PopularityMetricLfcScriptG
     maxUnit: DEFAULT_MAX_UNIT,
     noMoot: false,
     sync: false,
+    primes: computePrimes(),
 }
 
 // An order of magnitude higher precision when perfecting

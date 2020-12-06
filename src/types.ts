@@ -1,4 +1,4 @@
-import {Count, Exponent, Max, Parameter, Rank, ScalaPopularityStat, Step} from "@sagittal/general"
+import {Count, Exponent, Max, Parameter, Prime, Rank, ScalaPopularityStat, Step} from "@sagittal/general"
 import {LfcUnpopularityEstimate} from "./sumOfSquares"
 
 interface PopularityMetricLfcScriptGroupSettings {
@@ -7,6 +7,7 @@ interface PopularityMetricLfcScriptGroupSettings {
     maxUnit: Max<Step<{of: Parameter}>>,
     noMoot: boolean,
     sync: boolean,
+    primes: Prime[],
 }
 
 export {
