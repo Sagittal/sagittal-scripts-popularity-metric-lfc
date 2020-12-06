@@ -1,8 +1,9 @@
-import {Combination, Filename, LogTarget, saveLog, stringify} from "@sagittal/general"
+import {Combination, Filename, LogTarget, saveLog, setupScriptAndIo, stringify} from "@sagittal/general"
 import {computeSumOfSquaresForSubmetrics, Submetric} from "../sumOfSquares"
 import {applySharedPopularityMetricLfcScriptSetup, load} from "./shared"
 
-applySharedPopularityMetricLfcScriptSetup({defaultLogTargets: [LogTarget.DETAILS]})
+setupScriptAndIo("sumOfSquares" as Filename, [LogTarget.DETAILS])
+applySharedPopularityMetricLfcScriptSetup()
 
 const submetrics = load("submetrics" as Filename) as Combination<Submetric>
 

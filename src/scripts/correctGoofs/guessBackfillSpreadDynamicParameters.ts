@@ -1,9 +1,10 @@
-import {Filename, LogTarget, Maybe, Name, Parameter, saveLog, stringify} from "@sagittal/general"
+import {Filename, LogTarget, Maybe, Name, Parameter, saveLog, setupScriptAndIo, stringify} from "@sagittal/general"
 import {Metric} from "../../bestMetric"
 import {PARAMETER_DYNAMISMS} from "../../perfecter"
 import {PopularityParameterId, Submetric} from "../../sumOfSquares"
 import {applySharedPopularityMetricLfcScriptSetup, load} from "../shared"
 
+setupScriptAndIo("guessBackfillSpreadDynamicParameters" as Filename)
 applySharedPopularityMetricLfcScriptSetup()
 
 const metricsMissingSpreadDynamicParameters = load("metrics" as Filename) as Record<Name<Metric>, Metric>

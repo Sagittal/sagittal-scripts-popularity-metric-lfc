@@ -1,4 +1,4 @@
-import {Filename, ioSettings, LogTarget, Name, saveLog, time} from "@sagittal/general"
+import {Filename, ioSettings, LogTarget, Name, saveLog, setupScriptAndIo, time} from "@sagittal/general"
 import {Metric} from "../bestMetric"
 import {DEFAULT_MAX_UNIT_WHEN_PERFECTING} from "../constants"
 import {popularityMetricLfcScriptGroupSettings} from "../globals"
@@ -12,7 +12,8 @@ const defaultLogTargets = [
     LogTarget.RESULT,
     LogTarget.FINAL,
 ]
-applySharedPopularityMetricLfcScriptSetup({defaultLogTargets})
+setupScriptAndIo("perfectMetrics" as Filename, defaultLogTargets)
+applySharedPopularityMetricLfcScriptSetup()
 
 popularityMetricLfcScriptGroupSettings.maxUnit = DEFAULT_MAX_UNIT_WHEN_PERFECTING
 

@@ -7,6 +7,7 @@ import {
     Ranked,
     saveLog,
     ScalaPopularityStat,
+    setupScriptAndIo,
     stringify,
 } from "@sagittal/general"
 import {Metric} from "../../bestMetric"
@@ -14,6 +15,7 @@ import {popularityMetricLfcScriptGroupSettings} from "../../globals"
 import {computeUnpopularities, LfcUnpopularityEstimate} from "../../sumOfSquares"
 import {applySharedPopularityMetricLfcScriptSetup, load} from "../shared"
 
+setupScriptAndIo("filterRottens" as Filename)
 applySharedPopularityMetricLfcScriptSetup()
 
 const potentiallyRottens = load("metrics" as Filename) as Record<Name<Metric>, Metric>

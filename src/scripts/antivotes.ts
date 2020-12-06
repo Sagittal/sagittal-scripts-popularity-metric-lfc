@@ -5,13 +5,15 @@ import {
     Io,
     LogTarget,
     saveLog,
+    setupScriptAndIo,
     stringify,
     Two3FreeClass,
 } from "@sagittal/general"
 import {computeAntivotes, Submetric} from "../sumOfSquares"
 import {applySharedPopularityMetricLfcScriptSetup, load} from "./shared"
 
-applySharedPopularityMetricLfcScriptSetup({defaultLogTargets: [LogTarget.DETAILS]})
+setupScriptAndIo("antivotes" as Filename, [LogTarget.DETAILS])
+applySharedPopularityMetricLfcScriptSetup()
 
 const submetrics = load("submetrics" as Filename) as Combination<Submetric>
 
