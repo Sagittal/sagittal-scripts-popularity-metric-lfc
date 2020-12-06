@@ -8,7 +8,7 @@ import {populateScopes} from "../../../../src/solver/populate"
 import {INITIAL_PARAMETER_SCOPES, SUBMETRIC_CHUNKS} from "../../../../src/solver/populate/constants"
 import {PopularityParameterId, Submetric} from "../../../../src/sumOfSquares"
 import {adjustAsyncTimeoutForSpec} from "../../../helpers/adjustAsyncTimeoutForSpec"
-import {onlyRunInCi} from "../../../helpers/onlyRunInCi"
+import {onlyRunInCi} from "../../../helpers/shared/onlyRunInCi"
 
 describe("populateScopes", (): void => {
     adjustAsyncTimeoutForSpec(1000000 as Ms)

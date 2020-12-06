@@ -5,7 +5,7 @@ import {Chunk, populateAndSearchScopesAndPerfectMetrics} from "../../../src/solv
 import * as populate from "../../../src/solver/populate/scopes"
 import * as search from "../../../src/solver/search/scopes"
 import {adjustAsyncTimeoutForSpec} from "../../helpers/adjustAsyncTimeoutForSpec"
-import {onlyRunInCi} from "../../helpers/onlyRunInCi"
+import {onlyRunInCi} from "../../helpers/shared/onlyRunInCi"
 
 describe("populateAndSearchScopesAndPerfectMetrics", (): void => {
     adjustAsyncTimeoutForSpec(10000 as Ms)

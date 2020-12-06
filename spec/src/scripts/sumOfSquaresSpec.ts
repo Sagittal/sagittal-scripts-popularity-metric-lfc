@@ -1,6 +1,6 @@
 import {Io} from "@sagittal/general"
-import {onlyRunInCi} from "../../helpers/onlyRunInCi"
-import {runScriptAndGetConsoleOutput} from "../../helpers/scripts/runScriptAndGetConsoleOutput"
+import {onlyRunInCi} from "../../helpers/shared/onlyRunInCi"
+import {runScriptAndGetConsoleOutput} from "../../helpers/shared/scripts/runScriptAndGetConsoleOutput"
 
 describe("sos (sum of squares)", (): void => {
     it("gives you the sum-of-squares given the submetric combination in the file, and also logs the full list of unpopularities", (): void => {
