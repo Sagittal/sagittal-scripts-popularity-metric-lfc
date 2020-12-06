@@ -1,4 +1,4 @@
-import {Filename, LogTarget, Parameter, saveLog, setupScriptAndIo, stringify, Window} from "@sagittal/general"
+import {Filename, LogTarget, Parameter, saveLog, stringify, Window} from "@sagittal/general"
 import {computeDynamicParameterScope, Scope} from "../bestMetric"
 import {bestMetrics, popularityMetricLfcScriptGroupSettings} from "../globals"
 import {
@@ -8,8 +8,7 @@ import {
 import {PopularityParameterId} from "../sumOfSquares"
 import {applySharedPopularityMetricLfcScriptSetup} from "./shared"
 
-setupScriptAndIo("perfectMetricFromScope" as Filename)
-applySharedPopularityMetricLfcScriptSetup()
+applySharedPopularityMetricLfcScriptSetup({logDir: "perfectMetricFromScope" as Filename})
 
 const scope = [
     {},

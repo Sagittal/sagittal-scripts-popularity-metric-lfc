@@ -1,15 +1,4 @@
-import {
-    Count,
-    Filename,
-    Io,
-    ioSettings,
-    LogTarget,
-    parseInteger,
-    program,
-    saveLog,
-    setupScriptAndIo,
-    time,
-} from "@sagittal/general"
+import {Count, Filename, Io, ioSettings, LogTarget, parseInteger, program, saveLog, time} from "@sagittal/general"
 import {popularityMetricLfcScriptGroupSettings, solverStatus} from "../globals"
 import {
     Chunk,
@@ -24,8 +13,7 @@ const defaultLogTargets = [
     LogTarget.PROGRESS,
     LogTarget.FINAL,
 ]
-setupScriptAndIo("solveBestMetricsForChunkCount" as Filename, defaultLogTargets)
-applySharedPopularityMetricLfcScriptSetup()
+applySharedPopularityMetricLfcScriptSetup({logDir: "solveBestMetricsForChunkCount" as Filename, defaultLogTargets})
 
 solverStatus.chunkCount = parseInteger(program.args[0] as Io) as Count<Chunk>
 

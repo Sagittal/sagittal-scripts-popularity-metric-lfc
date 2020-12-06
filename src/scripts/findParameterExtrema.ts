@@ -10,15 +10,13 @@ import {
     Name,
     Parameter,
     saveLog,
-    setupScriptAndIo,
     stringify,
 } from "@sagittal/general"
 import {Metric} from "../bestMetric"
 import {PopularityParameterId, Submetric} from "../sumOfSquares"
 import {applySharedPopularityMetricLfcScriptSetup, load} from "./shared"
 
-setupScriptAndIo("findParameterExtrema" as Filename)
-applySharedPopularityMetricLfcScriptSetup()
+applySharedPopularityMetricLfcScriptSetup({logDir: "findParameterExtrema" as Filename})
 
 const chunkCountResults = load("metrics" as Filename) as Record<Name<Metric>, Metric>
 
