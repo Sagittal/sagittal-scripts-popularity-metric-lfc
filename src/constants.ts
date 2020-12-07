@@ -2,7 +2,7 @@ import {computePrimes, Count, Exponent, Max, Parameter, Rank, ScalaPopularitySta
 import {Sample, Scope} from "./bestMetric"
 import {Chunk} from "./solver"
 import {LfcUnpopularityEstimate} from "./sumOfSquares"
-import {PopularityMetricLfcScriptGroupSettings} from "./types"
+import {UnpopularityMetricLfcScriptGroupSettings} from "./types"
 
 // "Zipf exponent"; Applied to the ranks before calculating sum-of-squares, in accordance with the data,
 // To capture how the ranks toward the top of the list are much more important to match
@@ -23,7 +23,7 @@ const INITIAL_SOLVER_STATUS = {
     sampleCount: 0 as Count<Sample>,
 }
 
-const DEFAULT_POPULARITY_METRIC_LFC_SCRIPTS_SETTINGS: PopularityMetricLfcScriptGroupSettings = {
+const DEFAULT_UNPOPULARITY_METRIC_LFC_SCRIPTS_SETTINGS: UnpopularityMetricLfcScriptGroupSettings = {
     z: DEFAULT_Z,
     onlyTop: DEFAULT_ONLY_TOP,
     maxUnit: DEFAULT_MAX_UNIT,
@@ -37,6 +37,6 @@ const DEFAULT_MAX_UNIT_WHEN_PERFECTING = DEFAULT_MAX_UNIT / 10 as Max<Step<{of: 
 
 export {
     INITIAL_SOLVER_STATUS,
-    DEFAULT_POPULARITY_METRIC_LFC_SCRIPTS_SETTINGS,
+    DEFAULT_UNPOPULARITY_METRIC_LFC_SCRIPTS_SETTINGS,
     DEFAULT_MAX_UNIT_WHEN_PERFECTING,
 }

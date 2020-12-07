@@ -1,10 +1,10 @@
 {
-  "name": "sagittal-scripts-popularity-metric-lfc",
+  "name": "sagittal-scripts-unpopularity-metric-lfc",
   "version": "1.0.0",
-  "description": "a collection of scripts to help find the best popularity metric for Sagittal",
+  "description": "a collection of scripts to help find the best unpopularity metric for Sagittal",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Sagittal/sagittal-scripts-popularity-metric-lfc.git"
+    "url": "git+https://github.com/Sagittal/sagittal-scripts-unpopularity-metric-lfc.git"
   },
   "license": "MIT",
   "scripts": {

@@ -1,5 +1,5 @@
 import {cleanArray, setAllPropertiesOfObjectOnAnother} from "@sagittal/general"
-import {DEFAULT_POPULARITY_METRIC_LFC_SCRIPTS_SETTINGS, INITIAL_SOLVER_STATUS} from "../../../src/constants"
+import {DEFAULT_UNPOPULARITY_METRIC_LFC_SCRIPTS_SETTINGS, INITIAL_SOLVER_STATUS} from "../../../src/constants"
 import {
     bestMetrics,
     memoizedParameterChunkCombinations,
@@ -20,6 +20,6 @@ afterEach((): void => {
     setAllPropertiesOfObjectOnAnother({objectToChange: solverStatus, objectWithProperties: INITIAL_SOLVER_STATUS})
     setAllPropertiesOfObjectOnAnother({
         objectToChange: popularityMetricLfcScriptGroupSettings,
-        objectWithProperties: DEFAULT_POPULARITY_METRIC_LFC_SCRIPTS_SETTINGS,
+        objectWithProperties: DEFAULT_UNPOPULARITY_METRIC_LFC_SCRIPTS_SETTINGS,
     })
 })

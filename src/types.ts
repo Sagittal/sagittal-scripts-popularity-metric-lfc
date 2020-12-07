@@ -1,7 +1,7 @@
 import {Count, Exponent, Max, Parameter, Prime, Rank, ScalaPopularityStat, Step} from "@sagittal/general"
 import {LfcUnpopularityEstimate} from "./sumOfSquares"
 
-interface PopularityMetricLfcScriptGroupSettings {
+interface UnpopularityMetricLfcScriptGroupSettings {
     z: Exponent<Rank<ScalaPopularityStat | LfcUnpopularityEstimate>>,
     onlyTop: Count<ScalaPopularityStat>,
     maxUnit: Max<Step<{of: Parameter}>>,
@@ -11,7 +11,5 @@ interface PopularityMetricLfcScriptGroupSettings {
 }
 
 export {
-    PopularityMetricLfcScriptGroupSettings,
+    UnpopularityMetricLfcScriptGroupSettings,
 }
-
-// TODO: Wait a tic, shouldn't this whole thing be the UnpopularityMetricLfc, not the Popularity...?!
