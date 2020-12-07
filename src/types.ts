@@ -13,3 +13,5 @@ interface PopularityMetricLfcScriptGroupSettings {
 export {
     PopularityMetricLfcScriptGroupSettings,
 }
+
+// TODO: Wait a tic, shouldn't this whole thing be the UnpopularityMetricLfc, not the Popularity...?!
