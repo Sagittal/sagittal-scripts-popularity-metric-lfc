@@ -1,6 +1,4 @@
-import {Io} from "@sagittal/general"
-import {onlyRunInCi} from "../../helpers/shared/onlyRunInCi"
-import {runScriptAndGetConsoleOutput} from "../../helpers/shared/scripts/runScriptAndGetConsoleOutput"
+import {Io, onlyRunInCi, runScriptAndGetConsoleOutput} from "@sagittal/general"
 
 describe("antivotes", (): void => {
     it("gives you the antivotes of a specific 2,3-free class for the submetric combination set in the file              ", (): void => {

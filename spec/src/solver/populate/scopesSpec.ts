@@ -1,14 +1,13 @@
 // tslint:disable max-line-length
 
-import {Count, Ms} from "@sagittal/general"
+import {Count, Ms, onlyRunInCi} from "@sagittal/general"
+import {adjustAsyncTimeoutForSpec} from "@sagittal/general/dist/spec/adjustAsyncTimeoutForSpec"
 import {Scope} from "../../../../src/bestMetric"
 import {scopesToSearch, solverStatus} from "../../../../src/globals"
 import {Chunk} from "../../../../src/solver"
 import {populateScopes} from "../../../../src/solver/populate"
 import {INITIAL_PARAMETER_SCOPES, SUBMETRIC_CHUNKS} from "../../../../src/solver/populate/constants"
 import {PopularityParameterId, Submetric} from "../../../../src/sumOfSquares"
-import {adjustAsyncTimeoutForSpec} from "../../../helpers/shared/adjustAsyncTimeoutForSpec"
-import {onlyRunInCi} from "../../../helpers/shared/onlyRunInCi"
 
 describe("populateScopes", (): void => {
     adjustAsyncTimeoutForSpec(1000000 as Ms)

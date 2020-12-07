@@ -1,11 +1,10 @@
-import {Count, Ms, Name} from "@sagittal/general"
+import {Count, Ms, Name, onlyRunInCi} from "@sagittal/general"
+import {adjustAsyncTimeoutForSpec} from "@sagittal/general/dist/spec/adjustAsyncTimeoutForSpec"
 import {Metric} from "../../../src/bestMetric"
 import {bestMetrics, solverStatus} from "../../../src/globals"
 import {Chunk, populateAndSearchScopesAndPerfectMetrics} from "../../../src/solver"
 import * as populate from "../../../src/solver/populate/scopes"
 import * as search from "../../../src/solver/search/scopes"
-import {adjustAsyncTimeoutForSpec} from "../../helpers/shared/adjustAsyncTimeoutForSpec"
-import {onlyRunInCi} from "../../helpers/shared/onlyRunInCi"
 
 describe("populateAndSearchScopesAndPerfectMetrics", (): void => {
     adjustAsyncTimeoutForSpec(10000 as Ms)
