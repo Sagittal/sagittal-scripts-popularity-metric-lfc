@@ -1,5 +1,4 @@
-import {Count, Ms, Name, onlyRunInCi} from "@sagittal/general"
-import {adjustAsyncTimeoutForSpec} from "@sagittal/general/dist/spec/adjustAsyncTimeoutForSpec"
+import {adjustAsyncTimeoutForSpec, Count, Ms, Name, onlyRunInCi} from "@sagittal/general"
 import {Metric} from "../../../src/bestMetric"
 import {bestMetrics, solverStatus} from "../../../src/globals"
 import {Chunk, populateAndSearchScopesAndPerfectMetrics} from "../../../src/solver"

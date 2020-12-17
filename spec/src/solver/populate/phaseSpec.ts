@@ -1,5 +1,5 @@
 import {Combination, Combinations, Count, Index} from "@sagittal/general"
-import * as combinations from "@sagittal/general/dist/math/combinations"
+import * as combinations from "@sagittal/general/dist/cjs/math/combinations"
 import {memoizedParameterChunkCombinations, memoizedSubmetricChunkCombinations} from "../../../../src/globals"
 import {Chunk} from "../../../../src/solver"
 import {INITIAL_PARAMETER_SCOPES, PARAMETER_CHUNKS, SUBMETRIC_CHUNKS} from "../../../../src/solver/populate/constants"

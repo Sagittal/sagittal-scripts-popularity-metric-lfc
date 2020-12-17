@@ -1,5 +1,5 @@
 import {BLANK, Combination, Decimal, Index, Ms, Name, Parameter, Step} from "@sagittal/general"
-import * as doOnNextEventLoop from "@sagittal/general/dist/code/doOnNextEventLoop"
+import * as doOnNextEventLoop from "@sagittal/general/dist/cjs/code/doOnNextEventLoop"
 import {DynamicParameter, Metric, SamplePoint, Scope, SumOfSquares} from "../../../src/bestMetric"
 import {metricNames} from "../../../src/globals"
 import {searchNextLocalMin} from "../../../src/perfecter/nextLocalMin"

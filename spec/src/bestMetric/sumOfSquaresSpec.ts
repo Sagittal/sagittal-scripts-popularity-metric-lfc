@@ -13,7 +13,7 @@ import {
     Obj,
     Two3FreeClass,
 } from "@sagittal/general"
-import * as doOnNextEventLoop from "@sagittal/general/dist/code/doOnNextEventLoop"
+import * as doOnNextEventLoop from "@sagittal/general/dist/cjs/code/doOnNextEventLoop"
 import {Metric, Sample, SamplePoint, SumsOfSquares} from "../../../src/bestMetric"
 import {computeSumOfSquaresAndMaybeUpdateBestMetric} from "../../../src/bestMetric/sumOfSquares"
 import {bestMetrics} from "../../../src/globals"
