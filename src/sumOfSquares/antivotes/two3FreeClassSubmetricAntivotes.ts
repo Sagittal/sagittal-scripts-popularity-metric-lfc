@@ -4,6 +4,7 @@ import {
     Grade,
     isUndefined,
     Parameter,
+    Quotient,
     QuotientPartType,
     stringify,
     Two3FreeClass,
@@ -41,7 +42,7 @@ const compute23FreeClassSubmetricAntivotes = (
         return computeSubmetricAntivotes(two3FreeClass.monzo, submetric)
     }
 
-    const [numerator, denominator] = computeQuotientFromMonzo(two3FreeClass.monzo)
+    const [numerator, denominator]: Quotient<{rational: true}> = computeQuotientFromMonzo(two3FreeClass.monzo)
     let {numeratorAntivotes, denominatorAntivotes} = maybeNuminatorSwap({
         useNuminator,
         numeratorAntivotes: computeSubmetricAntivotes(
