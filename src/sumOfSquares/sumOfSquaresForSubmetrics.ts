@@ -1,12 +1,12 @@
 import {
     Combination,
     COMMA_POPULARITIES,
-    scriptSettings,
     isNumber,
     LogTarget,
     Ranked,
     saveLog,
     ScalaPopularityStat,
+    scriptSettings,
     stringify,
 } from "@sagittal/general"
 import {SumOfSquares} from "../bestMetric"
