@@ -1,6 +1,6 @@
 import {
-    computeQuotientFromMonzo,
-    computeRationalMonzoFromRationalDecimal,
+    computeQuotientFromPev,
+    computeRationalPevFromRationalDecimal,
     Grade,
     isUndefined,
     Parameter,
@@ -39,17 +39,17 @@ const compute23FreeClassSubmetricAntivotes = (
         isUndefined(kAsPowerExponent) &&
         isUndefined(kAsPowerBase)
     ) {
-        return computeSubmetricAntivotes(two3FreeClass.monzo, submetric)
+        return computeSubmetricAntivotes(two3FreeClass.pev, submetric)
     }
 
-    const [numerator, denominator]: Quotient<{rational: true}> = computeQuotientFromMonzo(two3FreeClass.monzo)
+    const [numerator, denominator]: Quotient<{rational: true}> = computeQuotientFromPev(two3FreeClass.pev)
     let {numeratorAntivotes, denominatorAntivotes} = maybeNuminatorSwap({
         useNuminator,
         numeratorAntivotes: computeSubmetricAntivotes(
-            computeRationalMonzoFromRationalDecimal(numerator), submetric, QuotientPartType.NUMERATOR,
+            computeRationalPevFromRationalDecimal(numerator), submetric, QuotientPartType.NUMERATOR,
         ),
         denominatorAntivotes: computeSubmetricAntivotes(
-            computeRationalMonzoFromRationalDecimal(denominator), submetric, QuotientPartType.DENOMINATOR,
+            computeRationalPevFromRationalDecimal(denominator), submetric, QuotientPartType.DENOMINATOR,
         ),
     })
 

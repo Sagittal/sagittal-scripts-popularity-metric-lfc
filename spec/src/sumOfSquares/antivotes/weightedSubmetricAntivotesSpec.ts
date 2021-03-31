@@ -5,7 +5,7 @@ import * as two3FreeClassSubmetricAntivotes
 import {computeWeightedSubmetricAntivotes} from "../../../../src/sumOfSquares/antivotes/weightedSubmetricAntivotes"
 
 describe("computeWeightedSubmetricAntivotes", (): void => {
-    const two3FreeClass = {monzo: [-1, 1, 1, -1]} as Two3FreeClass
+    const two3FreeClass = {pev: [-1, 1, 1, -1]} as Two3FreeClass
 
     it("returns 0 when the weight is 0", (): void => {
         const submetric = {

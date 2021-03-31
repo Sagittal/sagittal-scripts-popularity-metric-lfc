@@ -4,10 +4,10 @@ import {
     computeKeyPath,
     dig,
     Direction,
-    EMPTY_MONZO,
+    EMPTY_PEV,
     Grade,
     Index,
-    Monzo,
+    Pev,
     Ms,
     Name,
     Obj,
@@ -102,21 +102,21 @@ describe("computeSumOfSquaresAndMaybeUpdateBestMetric", (): void => {
             {
                 antivotes: 0 as Grade<LfcUnpopularityEstimate>,
                 two3FreeClass: {
-                    monzo: EMPTY_MONZO as Monzo<{rational: true, rough: 5, direction: Direction.SUPER}>,
+                    pev: EMPTY_PEV as Pev<{rational: true, rough: 5, direction: Direction.SUPER}>,
                 } as Two3FreeClass,
                 index: 0 as Index<LfcUnpopularityEstimate>,
             },
             {
                 antivotes: NaN as Grade<LfcUnpopularityEstimate>,
                 two3FreeClass: {
-                    monzo: [0, 0, 1] as Monzo<{rational: true, rough: 5, direction: Direction.SUPER}>,
+                    pev: [0, 0, 1] as Pev<{rational: true, rough: 5, direction: Direction.SUPER}>,
                 } as Two3FreeClass,
                 index: 0 as Index<LfcUnpopularityEstimate>,
             },
             {
                 antivotes: 8 as Grade<LfcUnpopularityEstimate>,
                 two3FreeClass: {
-                    monzo: [0, 0, 0, 1] as Monzo<{rational: true, rough: 5, direction: Direction.SUPER}>,
+                    pev: [0, 0, 0, 1] as Pev<{rational: true, rough: 5, direction: Direction.SUPER}>,
                 } as Two3FreeClass,
                 index: 0 as Index<LfcUnpopularityEstimate>,
             },

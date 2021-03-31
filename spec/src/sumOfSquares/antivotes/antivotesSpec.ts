@@ -1,4 +1,4 @@
-import {Combination, Grade, Monzo, Parameter, Two3FreeClass} from "@sagittal/general"
+import {Combination, Grade, Pev, Parameter, Two3FreeClass} from "@sagittal/general"
 import {
     computeAntivotes,
     LfcUnpopularityEstimate,
@@ -10,8 +10,8 @@ import {computeSubmetricAntivotes} from "../../../../src/sumOfSquares/antivotes/
 
 describe("computeAntivotes", (): void => {
     it("when k = 1 (default), and two 2,3-free classes have the same SoPFR, but one has its primes all lopsided on one side, they still get ranked the same", (): void => {
-        const balanced23FreeClass = {monzo: [0, 0, 0, -1, 1]} as Two3FreeClass
-        const lopsided23FreeClass = {monzo: [0, 0, 0, 1, 1]} as Two3FreeClass
+        const balanced23FreeClass = {pev: [0, 0, 0, -1, 1]} as Two3FreeClass
+        const lopsided23FreeClass = {pev: [0, 0, 0, 1, 1]} as Two3FreeClass
         const submetrics: Combination<Submetric> = [
             {
                 [PopularityParameterId.SUM]: true,
@@ -26,8 +26,8 @@ describe("computeAntivotes", (): void => {
     })
 
     it("when k < 1, two 2,3-free classes have the same SoPFR, but one has its primes all lopsided on one side, it gets ranked worse", (): void => {
-        const balanced23FreeClass = {monzo: [0, 0, 0, -1, 1]} as Two3FreeClass
-        const lopsided23FreeClass = {monzo: [0, 0, 0, 1, 1]} as Two3FreeClass
+        const balanced23FreeClass = {pev: [0, 0, 0, -1, 1]} as Two3FreeClass
+        const lopsided23FreeClass = {pev: [0, 0, 0, 1, 1]} as Two3FreeClass
         const submetrics: Combination<Submetric> = [
             {
                 [PopularityParameterId.SUM]: true,
@@ -42,7 +42,7 @@ describe("computeAntivotes", (): void => {
     })
 
     it("applies weights to each submetric", (): void => {
-        const two3FreeClass = {monzo: [0, 0, 0, 1, 1]} as Two3FreeClass
+        const two3FreeClass = {pev: [0, 0, 0, 1, 1]} as Two3FreeClass
         const submetrics = [
             {
                 [PopularityParameterId.SUM]: true,
@@ -58,11 +58,11 @@ describe("computeAntivotes", (): void => {
 
         const expected =
             0.5 * computeSubmetricAntivotes(
-                [0, 0, 0, 1, 1] as Monzo<{rational: true}>,
+                [0, 0, 0, 1, 1] as Pev<{rational: true}>,
                 {[PopularityParameterId.SUM]: true},
             ) as Grade<LfcUnpopularityEstimate> +
             0.3 * computeSubmetricAntivotes(
-                [0, 0, 0, 1, 1] as Monzo<{rational: true}>,
+                [0, 0, 0, 1, 1] as Pev<{rational: true}>,
                 {[PopularityParameterId.SUM]: true},
             ) as Grade<LfcUnpopularityEstimate>
         expect(actual).toBeCloseToTyped(expected, ANTIVOTES_PRECISION)
@@ -80,7 +80,7 @@ describe("computeAntivotes", (): void => {
                 [PopularityParameterId.Y]: 0.142857 as Parameter,
             },
         ] as Combination<Submetric>
-        const two3FreeClass = {monzo: [0, 0, 1]} as Two3FreeClass
+        const two3FreeClass = {pev: [0, 0, 1]} as Two3FreeClass
 
         const actual = computeAntivotes(two3FreeClass, submetrics)
 
@@ -95,7 +95,7 @@ describe("computeAntivotes", (): void => {
                 [PopularityParameterId.W]: -2 as Parameter,
             },
         ] as Combination<Submetric>
-        const two3FreeClass = {monzo: [0, 0, 1]} as Two3FreeClass
+        const two3FreeClass = {pev: [0, 0, 1]} as Two3FreeClass
 
         const actual = computeAntivotes(two3FreeClass, submetrics)
 

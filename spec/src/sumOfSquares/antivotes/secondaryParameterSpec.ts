@@ -33,7 +33,7 @@ describe("secondaryParameterOverride", (): void => {
         expect(actual).toBe(parameter)
     })
 
-    it("returns the denominator-specific parameter when the fractional part is stated to be the denominator, even if the prime exponent is positive (which could happen, when a separate monzo for the denominator is calculated from an integer which was in a denominator)", (): void => {
+    it("returns the denominator-specific parameter when the fractional part is stated to be the denominator, even if the prime exponent is positive (which could happen, when a separate pev for the denominator is calculated from an integer which was in a denominator)", (): void => {
         const primeExponent = 2 as Exponent<Prime>
         const quotientPart = QuotientPartType.DENOMINATOR
 

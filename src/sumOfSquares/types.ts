@@ -60,11 +60,11 @@ enum PopularityParameterId {
     USE_PRIME_INDEX = "usePrimeIndex",
     // Send the prime exponent to 1 if abs is >0 and 0 if 0
     WITHOUT_REPETITION = "withoutRepetition",
-    // Operation to do on the monzo - sum (one of sum, count, or max must be provided)
+    // Operation to do on the pev - sum (one of sum, count, or max must be provided)
     SUM = "sum",
-    // Operation to do on the monzo - count (one of sum, count, or max must be provided)
+    // Operation to do on the pev - count (one of sum, count, or max must be provided)
     COUNT = "count",
-    // Operation to do on the monzo - max (one of sum, count, or max must be provided)
+    // Operation to do on the pev - max (one of sum, count, or max must be provided)
     MAX = "max",
 }
 

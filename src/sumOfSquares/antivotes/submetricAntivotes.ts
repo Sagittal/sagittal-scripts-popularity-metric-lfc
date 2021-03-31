@@ -8,7 +8,7 @@ import {
     indexOfFinalElement,
     isUndefined,
     log,
-    Monzo,
+    Pev,
     Parameter,
     Prime,
     QuotientPartType,
@@ -24,7 +24,7 @@ import {secondaryParameterOverride} from "./secondaryParameter"
 // (maybe with (maybe adjusted) repetition)
 
 const computeSubmetricAntivotes = (
-    two3FreeRationalMonzo: Monzo<{rational: true}>,
+    two3FreeRationalPev: Pev<{rational: true}>,
     submetric: Submetric = {},
     quotientPartType?: QuotientPartType,
 ): Grade<LfcUnpopularityEstimate> => {
@@ -51,13 +51,13 @@ const computeSubmetricAntivotes = (
         throw new Error("Attempted to compute antivotes without an operation (sum, count, or max).")
     }
 
-    return two3FreeRationalMonzo.reduce(
+    return two3FreeRationalPev.reduce(
         (
-            monzoAntivotes: Grade<LfcUnpopularityEstimate>,
+            pevAntivotes: Grade<LfcUnpopularityEstimate>,
             primeExponent: Decimal<{integer: true}> & Exponent<Prime>,
             index: number,
         ): Grade<LfcUnpopularityEstimate> => {
-            if (max && index < indexOfFinalElement(two3FreeRationalMonzo)) {
+            if (max && index < indexOfFinalElement(two3FreeRationalPev)) {
                 return 0 as Grade<LfcUnpopularityEstimate>
             }
 
@@ -103,10 +103,10 @@ const computeSubmetricAntivotes = (
             }
 
             if (isNaN(primeExponentAntivotes)) {
-                throw new Error(`You got NaN! in submetricAntivotes ${two3FreeRationalMonzo} ${stringify(submetric, {multiline: true})}`)
+                throw new Error(`You got NaN! in submetricAntivotes ${two3FreeRationalPev} ${stringify(submetric, {multiline: true})}`)
             }
 
-            return monzoAntivotes + primeExponentAntivotes as Grade<LfcUnpopularityEstimate>
+            return pevAntivotes + primeExponentAntivotes as Grade<LfcUnpopularityEstimate>
         },
         0 as Grade<LfcUnpopularityEstimate>,
     )
