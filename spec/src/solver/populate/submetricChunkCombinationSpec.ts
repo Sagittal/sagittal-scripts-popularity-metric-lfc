@@ -1,5 +1,3 @@
-// tslint:disable max-line-length
-
 import {Combination, Combinations, Count, Index} from "@sagittal/general"
 import {scopesToSearch} from "../../../../src/globals"
 import {Chunk} from "../../../../src/solver"

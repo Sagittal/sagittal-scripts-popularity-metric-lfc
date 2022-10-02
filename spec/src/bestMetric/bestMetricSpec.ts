@@ -64,7 +64,7 @@ describe("nonRecursiveSearchScopeAndMaybeUpdateBestMetric", (): void => {
             new Promise(async (resolve: (value?: unknown) => void, reject: (e: Error) => void): Promise<void> => {
                 try {
                     await nonRecursiveSearchScopeAndMaybeUpdateBestMetric(scope)
-                } catch (e) {
+                } catch (e: any) {
                     reject(e)
                 }
                 resolve()

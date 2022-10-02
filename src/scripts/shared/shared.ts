@@ -13,11 +13,13 @@ const applySharedPopularityMetricLfcScriptSetup = (
 
     setupScriptAndIo(logDir, defaultLogTargets)
 
-    if (program.z) popularityMetricLfcScriptGroupSettings.z = program.z
-    if (program.onlyTop) popularityMetricLfcScriptGroupSettings.onlyTop = program.onlyTop
-    if (program.maxUnit) popularityMetricLfcScriptGroupSettings.maxUnit = program.maxUnit
-    if (!program.moot) popularityMetricLfcScriptGroupSettings.noMoot = true
-    if (program.sync) popularityMetricLfcScriptGroupSettings.sync = true
+    const {z, onlyTop, maxUnit, moot, sync} = program.opts()
+    
+    if (z) popularityMetricLfcScriptGroupSettings.z = z
+    if (onlyTop) popularityMetricLfcScriptGroupSettings.onlyTop = onlyTop
+    if (maxUnit) popularityMetricLfcScriptGroupSettings.maxUnit = maxUnit
+    if (!moot) popularityMetricLfcScriptGroupSettings.noMoot = true
+    if (sync) popularityMetricLfcScriptGroupSettings.sync = true
 }
 
 export {

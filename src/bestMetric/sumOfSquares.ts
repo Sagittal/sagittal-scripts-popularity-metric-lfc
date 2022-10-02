@@ -16,7 +16,7 @@ const computeSumOfSquaresAndMaybeUpdateBestMetricSync = (
     let sumOfSquares
     try {
         sumOfSquares = computeSumOfSquaresForSubmetrics(submetrics)
-    } catch (e) {
+    } catch (e: any) {
         saveLog(`error when computing sum of squares: ${e.message}`, LogTarget.ERROR)
     }
     setSumOfSquaresAtSamplePoint(sumOfSquares, sumsOfSquares, samplePoint)

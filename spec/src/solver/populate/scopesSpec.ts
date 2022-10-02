@@ -1,5 +1,3 @@
-// tslint:disable max-line-length
-
 import {adjustAsyncTimeoutForSpec, Count, Ms, onlyRunInCi} from "@sagittal/general"
 import {Scope} from "../../../../src/bestMetric"
 import {scopesToSearch, solverStatus} from "../../../../src/globals"

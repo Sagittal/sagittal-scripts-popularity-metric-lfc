@@ -15,7 +15,7 @@ const searchPopulatedScopes = async (): Promise<void> => {
 
     try {
         await nonRecursiveSearchScopeAndMaybeUpdateBestMetric(scope)
-    } catch (e) {
+    } catch (e: any) {
         saveLog(`error when searching scope: ${e.message}`, LogTarget.ERROR)
     }
 
@@ -32,7 +32,7 @@ const searchPopulatedScopesSync = (): void => {
 
     try {
         nonRecursiveSearchScopeAndMaybeUpdateBestMetricSync(scope)
-    } catch (e) {
+    } catch (e: any) {
         saveLog(`error when searching scope: ${e.message}`, LogTarget.ERROR)
     }
 

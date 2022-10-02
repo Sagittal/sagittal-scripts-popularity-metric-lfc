@@ -49,7 +49,7 @@ const searchNextLocalMin = async (nextLocalMin: LocalMin, options: SearchLocalMi
                 nextScope,
                 recursiveSearchScopeAndMaybeUpdateBestMetricOptions,
             )
-        } catch (e) {
+        } catch (e: any) {
             saveLog(`error when searching: ${e.message}`, LogTarget.ERROR)
         }
     }, options.index as Ms)
@@ -64,7 +64,7 @@ const searchNextLocalMinSync = (nextLocalMin: LocalMin, options: SearchLocalMinO
             nextScope,
             recursiveSearchScopeAndMaybeUpdateBestMetricOptions,
         )
-    } catch (e) {
+    } catch (e: any) {
         saveLog(`error when searching: ${e.message}`, LogTarget.ERROR)
     }
 }
