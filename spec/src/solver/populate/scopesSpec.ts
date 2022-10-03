@@ -1,4 +1,4 @@
-import {adjustAsyncTimeoutForSpec, Count, Ms, onlyRunInCi} from "@sagittal/general"
+import {adjustAsyncTimeoutForSpec, Count, Ms, slowTestOnlyRunInFullSuite} from "@sagittal/general"
 import {Scope} from "../../../../src/bestMetric"
 import {scopesToSearch, solverStatus} from "../../../../src/globals"
 import {Chunk} from "../../../../src/solver"
@@ -24,7 +24,7 @@ describe("populateScopes", (): void => {
 
     // Need to add the extra 7 bits (18 to 25) to each section below
     it("given a chunk count, populates all possible combinations of those parameters - works for 2", async (): Promise<void> => {
-        onlyRunInCi()
+        slowTestOnlyRunInFullSuite()
 
         solverStatus.chunkCount = 2 as Count<Chunk>
 
@@ -2760,7 +2760,7 @@ describe("populateScopes", (): void => {
     })
 
     it("given a chunk count, populates all possible combinations of those parameters - works for 3", async (): Promise<void> => {
-        onlyRunInCi()
+        slowTestOnlyRunInFullSuite()
 
         solverStatus.chunkCount = 3 as Count<Chunk>
 

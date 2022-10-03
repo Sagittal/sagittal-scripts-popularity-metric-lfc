@@ -1,4 +1,4 @@
-import {Io, onlyRunInCi, runScriptAndGetConsoleOutput} from "@sagittal/general"
+import {Io, slowTestOnlyRunInFullSuite, runScriptAndGetConsoleOutput} from "@sagittal/general"
 
 describe("solve-best-metrics-for-chunk-count", (): void => {
     const expected = [
@@ -58,7 +58,7 @@ describe("solve-best-metrics-for-chunk-count", (): void => {
     ] as Io[]
 
     it("finds the best metric for the given chunk count", (): void => {
-        onlyRunInCi()
+        slowTestOnlyRunInFullSuite()
         const script = "npm run solve-best-metrics-for-chunk-count 1" as Io
 
         const actual = runScriptAndGetConsoleOutput(script)
@@ -67,7 +67,7 @@ describe("solve-best-metrics-for-chunk-count", (): void => {
     })
 
     it("works in sync mode too", (): void => {
-        onlyRunInCi()
+        slowTestOnlyRunInFullSuite()
         const script = "npm run solve-best-metrics-for-chunk-count 1 -- --sync" as Io
 
         const actual = runScriptAndGetConsoleOutput(script)

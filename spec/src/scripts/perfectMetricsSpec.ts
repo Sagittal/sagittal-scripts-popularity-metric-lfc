@@ -1,4 +1,4 @@
-import {Io, onlyRunInCi, runScriptAndGetConsoleOutput} from "@sagittal/general"
+import {Io, slowTestOnlyRunInFullSuite, runScriptAndGetConsoleOutput} from "@sagittal/general"
 
 describe("perfect-metrics", (): void => {
     const expected = [
@@ -124,7 +124,7 @@ describe("perfect-metrics", (): void => {
     ] as Io[]
 
     it("takes the best metrics that were found per metric name, relatively roughly best, and then recursively searches local minima with an initial search space subdividing resolution an order of magnitude smaller than the best metrics search, until it finds the perfect metric for each best metric", (): void => {
-        onlyRunInCi()
+        slowTestOnlyRunInFullSuite()
         const script = "npm run perfect-metrics -- --log-targets final" as Io
 
         const actual = runScriptAndGetConsoleOutput(script)
@@ -133,7 +133,7 @@ describe("perfect-metrics", (): void => {
     })
 
     it("works in sync mode too", (): void => {
-        onlyRunInCi()
+        slowTestOnlyRunInFullSuite()
         const script = "npm run perfect-metrics -- --log-targets final --sync" as Io
 
         const actual = runScriptAndGetConsoleOutput(script)

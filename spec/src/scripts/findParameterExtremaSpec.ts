@@ -1,8 +1,8 @@
-import {Io, onlyRunInCi, runScriptAndGetConsoleOutput} from "@sagittal/general"
+import {Io, slowTestOnlyRunInFullSuite, runScriptAndGetConsoleOutput} from "@sagittal/general"
 
 describe("find-parameter-extrema", (): void => {
     it("returns the min and max values for each parameter that showed up among the best metrics of each name              ", (): void => {
-        onlyRunInCi()
+        slowTestOnlyRunInFullSuite()
         const script = "npm run find-parameter-extrema" as Io
 
         const actual = runScriptAndGetConsoleOutput(script)

@@ -1,4 +1,4 @@
-import {adjustAsyncTimeoutForSpec, Count, Ms, Name, onlyRunInCi} from "@sagittal/general"
+import {adjustAsyncTimeoutForSpec, Count, Ms, Name, slowTestOnlyRunInFullSuite} from "@sagittal/general"
 import {Metric} from "../../../src/bestMetric"
 import {bestMetrics, solverStatus} from "../../../src/globals"
 import {Chunk, populateAndSearchScopesAndPerfectMetrics} from "../../../src/solver"
@@ -31,7 +31,7 @@ describe("populateAndSearchScopesAndPerfectMetrics", (): void => {
     })
 
     it("completes searching scopes before resolving", async (): Promise<void> => {
-        onlyRunInCi()
+        slowTestOnlyRunInFullSuite()
 
         solverStatus.chunkCount = 1 as Count<Chunk>
         await populateAndSearchScopesAndPerfectMetrics()

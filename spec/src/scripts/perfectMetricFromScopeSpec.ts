@@ -1,4 +1,4 @@
-import {Io, onlyRunInCi, runScriptAndGetConsoleOutput} from "@sagittal/general"
+import {Io, slowTestOnlyRunInFullSuite, runScriptAndGetConsoleOutput} from "@sagittal/general"
 
 describe("perfect-metric-from-scope", (): void => {
     const expected = [
@@ -7,7 +7,7 @@ describe("perfect-metric-from-scope", (): void => {
     ] as Io[]
 
     it("recursively finds the abs perfect metric within the given scope", (): void => {
-        onlyRunInCi()
+        slowTestOnlyRunInFullSuite()
 
         const script = "npm run perfect-metric-from-scope" as Io
 
@@ -17,7 +17,7 @@ describe("perfect-metric-from-scope", (): void => {
     })
 
     it("works in sync mode", (): void => {
-        onlyRunInCi()
+        slowTestOnlyRunInFullSuite()
 
         const script = "npm run perfect-metric-from-scope -- --sync" as Io
 
