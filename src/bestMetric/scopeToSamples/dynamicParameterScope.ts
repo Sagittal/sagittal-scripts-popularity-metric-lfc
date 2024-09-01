@@ -1,4 +1,4 @@
-import {DynamicParameterScope, isUndefined, Parameter, Window} from "@sagittal/general"
+import {DynamicParameterScope, isUndefined, Parameter, stringify, Window} from "@sagittal/general"
 import {computeEqualDivision} from "./equalDivision"
 import {DynamicParameterScopeOptions} from "./types"
 
@@ -14,7 +14,7 @@ const computeDynamicParameterScope = (options: DynamicParameterScopeOptions): Dy
 
     if (definedOptionCount !== 2) {
         const providedOptions = Object.entries(options).map(([k, v]: [string, unknown]): string => `${k} ${v}`).join(", ")
-        throw new Error(`Exactly 2 options should be provided from min, max, center, and window in order to compute a dynamic parameter scope; ${definedOptionCount} provided (${providedOptions})`)
+        throw new Error(`Exactly 2 options should be provided from min, max, center, and window in order to compute a dynamic parameter scope; ${definedOptionCount} provided (${stringify(providedOptions)})`)
     }
 
     let center
