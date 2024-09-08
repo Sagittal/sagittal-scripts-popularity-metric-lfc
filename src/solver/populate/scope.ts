@@ -1,4 +1,4 @@
-import {increment, LogTarget, mod, saveLog} from "@sagittal/general"
+import {dividesEvenly, increment, LogTarget, saveLog} from "@sagittal/general"
 import {Scope} from "../../bestMetric"
 import {scopesToSearch, solverStatus} from "../../globals"
 
@@ -7,7 +7,7 @@ const populateScope = (scope: Scope): void => {
 
     solverStatus.populatedScopeCount = increment(solverStatus.populatedScopeCount)
 
-    if (mod(solverStatus.populatedScopeCount, 1000) === 0) {
+    if (dividesEvenly(solverStatus.populatedScopeCount, 1000)) {
         saveLog(`${solverStatus.populatedScopeCount} scopes have been populated so far`, LogTarget.SETUP)
     }
 }
