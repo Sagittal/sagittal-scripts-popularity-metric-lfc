@@ -1,11 +1,10 @@
-import {BASE_2, Grade, log, Parameter, Power, Two3FreeClass} from "@sagittal/general"
-import {LfcUnpopularityEstimate, PopularityParameterId} from "../../../../src/sumOfSquares"
-import * as two3FreeClassSubmetricAntivotes
-    from "../../../../src/sumOfSquares/antivotes/two3FreeClassSubmetricAntivotes"
-import {computeWeightedSubmetricAntivotes} from "../../../../src/sumOfSquares/antivotes/weightedSubmetricAntivotes"
+import { BASE_2, Grade, log, Parameter, Power, Two3FreeClass } from "@sagittal/general"
+import { LfcUnpopularityEstimate, PopularityParameterId } from "../../../../src/sumOfSquares"
+import * as two3FreeClassSubmetricAntivotes from "../../../../src/sumOfSquares/antivotes/two3FreeClassSubmetricAntivotes"
+import { computeWeightedSubmetricAntivotes } from "../../../../src/sumOfSquares/antivotes/weightedSubmetricAntivotes"
 
 describe("computeWeightedSubmetricAntivotes", (): void => {
-    const two3FreeClass = {pev: [-1, 1, 1, -1]} as Two3FreeClass
+    const two3FreeClass = { vector: [-1, 1, 1, -1] } as Two3FreeClass
 
     it("returns 0 when the weight is 0", (): void => {
         const submetric = {
@@ -29,7 +28,9 @@ describe("computeWeightedSubmetricAntivotes", (): void => {
 
         computeWeightedSubmetricAntivotes(two3FreeClass, submetric)
 
-        expect(two3FreeClassSubmetricAntivotes.compute23FreeClassSubmetricAntivotes).not.toHaveBeenCalled()
+        expect(
+            two3FreeClassSubmetricAntivotes.compute23FreeClassSubmetricAntivotes,
+        ).not.toHaveBeenCalled()
     })
 
     it("returns the full submetric antivotes when the weight is 1", (): void => {
@@ -42,7 +43,7 @@ describe("computeWeightedSubmetricAntivotes", (): void => {
 
         const expected = two3FreeClassSubmetricAntivotes.compute23FreeClassSubmetricAntivotes(
             two3FreeClass,
-            {[PopularityParameterId.SUM]: true},
+            { [PopularityParameterId.SUM]: true },
         )
         expect(actual).toBe(expected)
     })
@@ -55,18 +56,17 @@ describe("computeWeightedSubmetricAntivotes", (): void => {
 
         const actual = computeWeightedSubmetricAntivotes(two3FreeClass, submetric)
 
-        const expected =
-            0.5 *
-            two3FreeClassSubmetricAntivotes.compute23FreeClassSubmetricAntivotes(
-                two3FreeClass,
-                {[PopularityParameterId.SUM]: true},
-            ) as Grade<LfcUnpopularityEstimate>
+        const expected = (0.5 *
+            two3FreeClassSubmetricAntivotes.compute23FreeClassSubmetricAntivotes(two3FreeClass, {
+                [PopularityParameterId.SUM]: true,
+            })) as Grade<LfcUnpopularityEstimate>
         expect(actual).toBe(expected)
     })
 
     it("defaults the weight to 1", (): void => {
-
-        const actual = computeWeightedSubmetricAntivotes(two3FreeClass, {[PopularityParameterId.SUM]: true})
+        const actual = computeWeightedSubmetricAntivotes(two3FreeClass, {
+            [PopularityParameterId.SUM]: true,
+        })
 
         const expected = 17 as Grade<LfcUnpopularityEstimate>
         expect(actual).toBe(expected)
@@ -81,10 +81,9 @@ describe("computeWeightedSubmetricAntivotes", (): void => {
         const actual = computeWeightedSubmetricAntivotes(two3FreeClass, submetric)
 
         const expected = log(
-            two3FreeClassSubmetricAntivotes.compute23FreeClassSubmetricAntivotes(
-                two3FreeClass,
-                {[PopularityParameterId.SUM]: true},
-            ) as number as Power,
+            two3FreeClassSubmetricAntivotes.compute23FreeClassSubmetricAntivotes(two3FreeClass, {
+                [PopularityParameterId.SUM]: true,
+            }) as number as Power,
             BASE_2,
         ) as number as Grade<LfcUnpopularityEstimate>
         expect(actual).toBe(expected)
@@ -98,10 +97,10 @@ describe("computeWeightedSubmetricAntivotes", (): void => {
 
         const actual = computeWeightedSubmetricAntivotes(two3FreeClass, submetric)
 
-        const expected = two3FreeClassSubmetricAntivotes.compute23FreeClassSubmetricAntivotes(
+        const expected = (two3FreeClassSubmetricAntivotes.compute23FreeClassSubmetricAntivotes(
             two3FreeClass,
-            {[PopularityParameterId.SUM]: true},
-        ) ** 2 as Grade<LfcUnpopularityEstimate>
+            { [PopularityParameterId.SUM]: true },
+        ) ** 2) as Grade<LfcUnpopularityEstimate>
         expect(actual).toBe(expected)
     })
 
@@ -113,10 +112,10 @@ describe("computeWeightedSubmetricAntivotes", (): void => {
 
         const actual = computeWeightedSubmetricAntivotes(two3FreeClass, submetric)
 
-        const expected = 2 ** two3FreeClassSubmetricAntivotes.compute23FreeClassSubmetricAntivotes(
-            two3FreeClass,
-            {[PopularityParameterId.SUM]: true},
-        ) as Grade<LfcUnpopularityEstimate>
+        const expected = (2 **
+            two3FreeClassSubmetricAntivotes.compute23FreeClassSubmetricAntivotes(two3FreeClass, {
+                [PopularityParameterId.SUM]: true,
+            })) as Grade<LfcUnpopularityEstimate>
         expect(actual).toBe(expected)
     })
 })

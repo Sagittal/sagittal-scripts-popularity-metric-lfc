@@ -1,5 +1,5 @@
-import {Exponent, Parameter, Prime, QuotientPartType} from "@sagittal/general"
-import {secondaryParameterOverride} from "../../../../src/sumOfSquares/antivotes/secondaryParameter"
+import { Exponent, Parameter, Prime, QuotientPartType } from "@sagittal/general"
+import { secondaryParameterOverride } from "../../../../src/sumOfSquares/antivotes/secondaryParameter"
 
 describe("secondaryParameterOverride", (): void => {
     const denominatorSpecificParameter = 5 as Parameter
@@ -8,8 +8,11 @@ describe("secondaryParameterOverride", (): void => {
     it("returns the parameter when the prime exponent is positive (it is in the numerator)", (): void => {
         const primeExponent = 2 as Exponent<Prime>
 
-        const actual =
-            secondaryParameterOverride(parameter, denominatorSpecificParameter, primeExponent)
+        const actual = secondaryParameterOverride(
+            parameter,
+            denominatorSpecificParameter,
+            primeExponent,
+        )
 
         expect(actual).toBe(parameter)
     })
@@ -17,8 +20,11 @@ describe("secondaryParameterOverride", (): void => {
     it("returns the denominator-specific parameter when the prime exponent is negative (it is in the denominator)          ", (): void => {
         const primeExponent = -2 as Exponent<Prime>
 
-        const actual =
-            secondaryParameterOverride(parameter, denominatorSpecificParameter, primeExponent)
+        const actual = secondaryParameterOverride(
+            parameter,
+            denominatorSpecificParameter,
+            primeExponent,
+        )
 
         expect(actual).toBe(denominatorSpecificParameter)
     })
@@ -27,18 +33,26 @@ describe("secondaryParameterOverride", (): void => {
         const primeExponent = -2 as Exponent<Prime>
         const quotientPart = QuotientPartType.NUMERATOR
 
-        const actual =
-            secondaryParameterOverride(parameter, denominatorSpecificParameter, primeExponent, quotientPart)
+        const actual = secondaryParameterOverride(
+            parameter,
+            denominatorSpecificParameter,
+            primeExponent,
+            quotientPart,
+        )
 
         expect(actual).toBe(parameter)
     })
 
-    it("returns the denominator-specific parameter when the fractional part is stated to be the denominator, even if the prime exponent is positive (which could happen, when a separate pev for the denominator is calculated from an integer which was in a denominator)", (): void => {
+    it("returns the denominator-specific parameter when the fractional part is stated to be the denominator, even if the prime exponent is positive (which could happen, when a separate vector for the denominator is calculated from an integer which was in a denominator)", (): void => {
         const primeExponent = 2 as Exponent<Prime>
         const quotientPart = QuotientPartType.DENOMINATOR
 
-        const actual =
-            secondaryParameterOverride(parameter, denominatorSpecificParameter, primeExponent, quotientPart)
+        const actual = secondaryParameterOverride(
+            parameter,
+            denominatorSpecificParameter,
+            primeExponent,
+            quotientPart,
+        )
 
         expect(actual).toBe(denominatorSpecificParameter)
     })
@@ -47,8 +61,7 @@ describe("secondaryParameterOverride", (): void => {
         const primeExponent = -2 as Exponent<Prime>
         const quotientPart = QuotientPartType.DENOMINATOR
 
-        const actual =
-            secondaryParameterOverride(parameter, undefined, primeExponent, quotientPart)
+        const actual = secondaryParameterOverride(parameter, undefined, primeExponent, quotientPart)
 
         expect(actual).toBe(parameter)
     })

@@ -1,19 +1,23 @@
-import {Base, EMPTY_PEV, Grade, log, Pev, Parameter} from "@sagittal/general"
-import {LfcUnpopularityEstimate, PopularityParameterId, Submetric} from "../../../../src/sumOfSquares"
-import {computeSubmetricAntivotes} from "../../../../src/sumOfSquares/antivotes/submetricAntivotes"
+import { Base, EMPTY_VECTOR, Grade, log, Vector, Parameter } from "@sagittal/general"
+import {
+    LfcUnpopularityEstimate,
+    PopularityParameterId,
+    Submetric,
+} from "../../../../src/sumOfSquares"
+import { computeSubmetricAntivotes } from "../../../../src/sumOfSquares/antivotes/submetricAntivotes"
 
 describe("computeSubmetricAntivotes", (): void => {
     let submetric: Submetric
 
-    const two3FreeNumberPev: Pev<{rational: true}> = [
-        0,                  // Prime 2,  prime index 1 (from the prime count function)
-        0,                  // Prime 3,  prime index 2 (from the prime count function)
-        0,                  // Prime 5,  prime index 3 (from the prime count function)
-        0,                  // Prime 7,  prime index 4 (from the prime count function)
-        1,                  // Prime 11, prime index 5 (from the prime count function)
-        -1,                 // Prime 13, prime index 6 (from the prime count function)
-        2,                  // Prime 17, prime index 7 (from the prime count function)
-    ] as Pev<{rational: true}>
+    const two3FreeNumberVector: Vector<{ rational: true }> = [
+        0, // Prime 2,  prime index 1 (from the prime count function)
+        0, // Prime 3,  prime index 2 (from the prime count function)
+        0, // Prime 5,  prime index 3 (from the prime count function)
+        0, // Prime 7,  prime index 4 (from the prime count function)
+        1, // Prime 11, prime index 5 (from the prime count function)
+        -1, // Prime 13, prime index 6 (from the prime count function)
+        2, // Prime 17, prime index 7 (from the prime count function)
+    ] as Vector<{ rational: true }>
 
     beforeEach((): void => {
         submetric = {}
@@ -24,13 +28,10 @@ describe("computeSubmetricAntivotes", (): void => {
             submetric[PopularityParameterId.SUM] = true
         })
 
-        it("sums the abs values of the prime factors in the 2,3-free pev", (): void => {
-            const actual = computeSubmetricAntivotes(two3FreeNumberPev, submetric)
+        it("sums the abs values of the prime factors in the 2,3-free vector", (): void => {
+            const actual = computeSubmetricAntivotes(two3FreeNumberVector, submetric)
 
-            const expected =
-                1 * 11 +
-                1 * 13 +
-                2 * 17 as Grade<LfcUnpopularityEstimate>
+            const expected = (1 * 11 + 1 * 13 + 2 * 17) as Grade<LfcUnpopularityEstimate>
             expect(actual).toBe(expected)
         })
 
@@ -38,12 +39,11 @@ describe("computeSubmetricAntivotes", (): void => {
             const aAsCoefficient = 0.56 as Parameter
             submetric[PopularityParameterId.A_AS_COEFFICIENT] = aAsCoefficient
 
-            const actual = computeSubmetricAntivotes(two3FreeNumberPev, submetric)
+            const actual = computeSubmetricAntivotes(two3FreeNumberVector, submetric)
 
-            const expected =
-                1 * 11 * aAsCoefficient +
+            const expected = (1 * 11 * aAsCoefficient +
                 1 * 13 * aAsCoefficient +
-                2 * 17 * aAsCoefficient as Grade<LfcUnpopularityEstimate>
+                2 * 17 * aAsCoefficient) as Grade<LfcUnpopularityEstimate>
             expect(actual).toBe(expected)
         })
 
@@ -51,12 +51,12 @@ describe("computeSubmetricAntivotes", (): void => {
             const aAsPowerExponent = 0.56 as Parameter
             submetric[PopularityParameterId.A_AS_POWER_EXPONENT] = aAsPowerExponent
 
-            const actual = computeSubmetricAntivotes(two3FreeNumberPev, submetric)
+            const actual = computeSubmetricAntivotes(two3FreeNumberVector, submetric)
 
             expect(actual).toBe(
-                1 * 11 ** aAsPowerExponent +
-                1 * 13 ** aAsPowerExponent +
-                2 * 17 ** aAsPowerExponent as Grade<LfcUnpopularityEstimate>,
+                (1 * 11 ** aAsPowerExponent +
+                    1 * 13 ** aAsPowerExponent +
+                    2 * 17 ** aAsPowerExponent) as Grade<LfcUnpopularityEstimate>,
             )
         })
 
@@ -64,12 +64,16 @@ describe("computeSubmetricAntivotes", (): void => {
             const aAsLogarithmBase = 0.56 as Parameter
             submetric[PopularityParameterId.A_AS_LOGARITHM_BASE] = aAsLogarithmBase
 
-            const actual = computeSubmetricAntivotes(two3FreeNumberPev, submetric)
+            const actual = computeSubmetricAntivotes(two3FreeNumberVector, submetric)
 
             expect(actual).toBe(
-                1 * log(11, aAsLogarithmBase as number as Base) +
-                1 * log(13, aAsLogarithmBase as number as Base) +
-                2 * log(17, aAsLogarithmBase as number as Base) as Grade<LfcUnpopularityEstimate>,
+                (1 * log(11, aAsLogarithmBase as number as Base) +
+                    1 * log(13, aAsLogarithmBase as number as Base) +
+                    2 *
+                        log(
+                            17,
+                            aAsLogarithmBase as number as Base,
+                        )) as Grade<LfcUnpopularityEstimate>,
             )
         })
 
@@ -77,12 +81,12 @@ describe("computeSubmetricAntivotes", (): void => {
             const aAsPowerBase = 0.56 as Parameter
             submetric[PopularityParameterId.A_AS_POWER_BASE] = aAsPowerBase
 
-            const actual = computeSubmetricAntivotes(two3FreeNumberPev, submetric)
+            const actual = computeSubmetricAntivotes(two3FreeNumberVector, submetric)
 
             expect(actual).toBe(
-                1 * aAsPowerBase ** 11 +
-                1 * aAsPowerBase ** 13 +
-                2 * aAsPowerBase ** 17 as Grade<LfcUnpopularityEstimate>,
+                (1 * aAsPowerBase ** 11 +
+                    1 * aAsPowerBase ** 13 +
+                    2 * aAsPowerBase ** 17) as Grade<LfcUnpopularityEstimate>,
             )
         })
 
@@ -92,12 +96,12 @@ describe("computeSubmetricAntivotes", (): void => {
             submetric[PopularityParameterId.A_AS_COEFFICIENT] = aAsCoefficient
             submetric[PopularityParameterId.W] = w
 
-            const actual = computeSubmetricAntivotes(two3FreeNumberPev, submetric)
+            const actual = computeSubmetricAntivotes(two3FreeNumberVector, submetric)
 
             expect(actual).toBe(
-                1 * (11 * aAsCoefficient + w) +
-                1 * (13 * aAsCoefficient + w) +
-                2 * (17 * aAsCoefficient + w) as Grade<LfcUnpopularityEstimate>,
+                (1 * (11 * aAsCoefficient + w) +
+                    1 * (13 * aAsCoefficient + w) +
+                    2 * (17 * aAsCoefficient + w)) as Grade<LfcUnpopularityEstimate>,
             )
         })
 
@@ -109,12 +113,12 @@ describe("computeSubmetricAntivotes", (): void => {
             submetric[PopularityParameterId.W] = w
             submetric[PopularityParameterId.B] = b
 
-            const actual = computeSubmetricAntivotes(two3FreeNumberPev, submetric)
+            const actual = computeSubmetricAntivotes(two3FreeNumberVector, submetric)
 
             expect(actual).toBe(
-                1 * (11 * aAsCoefficient + w) +
-                1 * (13 * aAsCoefficient + b) +
-                2 * (17 * aAsCoefficient + w) as Grade<LfcUnpopularityEstimate>,
+                (1 * (11 * aAsCoefficient + w) +
+                    1 * (13 * aAsCoefficient + b) +
+                    2 * (17 * aAsCoefficient + w)) as Grade<LfcUnpopularityEstimate>,
             )
         })
 
@@ -124,12 +128,12 @@ describe("computeSubmetricAntivotes", (): void => {
             submetric[PopularityParameterId.A_AS_COEFFICIENT] = aAsCoefficient
             submetric[PopularityParameterId.X] = x
 
-            const actual = computeSubmetricAntivotes(two3FreeNumberPev, submetric)
+            const actual = computeSubmetricAntivotes(two3FreeNumberVector, submetric)
 
             expect(actual).toBe(
-                1 * (11 + x) * aAsCoefficient +
-                1 * (13 + x) * aAsCoefficient +
-                2 * (17 + x) * aAsCoefficient as Grade<LfcUnpopularityEstimate>,
+                (1 * (11 + x) * aAsCoefficient +
+                    1 * (13 + x) * aAsCoefficient +
+                    2 * (17 + x) * aAsCoefficient) as Grade<LfcUnpopularityEstimate>,
             )
         })
 
@@ -141,12 +145,12 @@ describe("computeSubmetricAntivotes", (): void => {
             submetric[PopularityParameterId.X] = x
             submetric[PopularityParameterId.U] = u
 
-            const actual = computeSubmetricAntivotes(two3FreeNumberPev, submetric)
+            const actual = computeSubmetricAntivotes(two3FreeNumberVector, submetric)
 
             expect(actual).toBe(
-                1 * (11 + x) * aAsCoefficient +
-                1 * (13 + u) * aAsCoefficient +
-                2 * (17 + x) * aAsCoefficient as Grade<LfcUnpopularityEstimate>,
+                (1 * (11 + x) * aAsCoefficient +
+                    1 * (13 + u) * aAsCoefficient +
+                    2 * (17 + x) * aAsCoefficient) as Grade<LfcUnpopularityEstimate>,
             )
         })
 
@@ -154,12 +158,10 @@ describe("computeSubmetricAntivotes", (): void => {
             const y = 0.81 as Parameter
             submetric[PopularityParameterId.Y] = y
 
-            const actual = computeSubmetricAntivotes(two3FreeNumberPev, submetric)
+            const actual = computeSubmetricAntivotes(two3FreeNumberVector, submetric)
 
             expect(actual).toBe(
-                1 ** y * 11 +
-                1 ** y * 13 +
-                2 ** y * 17 as Grade<LfcUnpopularityEstimate>,
+                (1 ** y * 11 + 1 ** y * 13 + 2 ** y * 17) as Grade<LfcUnpopularityEstimate>,
             )
         })
 
@@ -169,124 +171,101 @@ describe("computeSubmetricAntivotes", (): void => {
             submetric[PopularityParameterId.Y] = y
             submetric[PopularityParameterId.V] = v
 
-            const actual = computeSubmetricAntivotes(two3FreeNumberPev, submetric)
+            const actual = computeSubmetricAntivotes(two3FreeNumberVector, submetric)
 
             expect(actual).toBe(
-                1 ** y * 11 +
-                1 ** v * 13 +
-                2 ** y * 17 as Grade<LfcUnpopularityEstimate>,
+                (1 ** y * 11 + 1 ** v * 13 + 2 ** y * 17) as Grade<LfcUnpopularityEstimate>,
             )
         })
 
         it("when Dave's modified count is provided, counts 5's half as much as normal", (): void => {
             submetric[PopularityParameterId.MODIFIED_COUNT] = true
-            const two3FreeNumberPev = [0, 0, 1, -1] as Pev<{rational: true}>
+            const two3FreeNumberVector = [0, 0, 1, -1] as Vector<{ rational: true }>
 
-            const actual = computeSubmetricAntivotes(two3FreeNumberPev, submetric)
+            const actual = computeSubmetricAntivotes(two3FreeNumberVector, submetric)
 
-            expect(actual).toBe(
-                0.5 * 5 +
-                1 * 7 as Grade<LfcUnpopularityEstimate>,
-            )
+            expect(actual).toBe((0.5 * 5 + 1 * 7) as Grade<LfcUnpopularityEstimate>)
         })
 
-        it("works for an empty pev", (): void => {
-            const actual = computeSubmetricAntivotes(EMPTY_PEV as Pev<{rational: true}>, submetric)
+        it("works for an empty vector", (): void => {
+            const actual = computeSubmetricAntivotes(
+                EMPTY_VECTOR as Vector<{ rational: true }>,
+                submetric,
+            )
 
             const expected = 0 as Grade<LfcUnpopularityEstimate>
             expect(actual).toBe(expected)
         })
     })
 
-    it("when the submetric type is soapf, sums the abs values of the unique prime factors in the 2,3-free pev          ", (): void => {
+    it("when the submetric type is soapf, sums the abs values of the unique prime factors in the 2,3-free vector          ", (): void => {
         submetric[PopularityParameterId.SUM] = true
         submetric[PopularityParameterId.WITHOUT_REPETITION] = true
 
-        const actual = computeSubmetricAntivotes(two3FreeNumberPev, submetric)
+        const actual = computeSubmetricAntivotes(two3FreeNumberVector, submetric)
 
-        const expected =
-            1 * 11 +
-            1 * 13 +
-            1 * 17 as Grade<LfcUnpopularityEstimate>
+        const expected = (1 * 11 + 1 * 13 + 1 * 17) as Grade<LfcUnpopularityEstimate>
         expect(actual).toBe(expected)
     })
 
-    it("when the submetric type is soapifar, sums the abs values of the prime factors in the 2,3-free pev, mapped to the prime count function", (): void => {
+    it("when the submetric type is soapifar, sums the abs values of the prime factors in the 2,3-free vector, mapped to the prime count function", (): void => {
         submetric[PopularityParameterId.SUM] = true
         submetric[PopularityParameterId.USE_PRIME_INDEX] = true
 
-        const actual = computeSubmetricAntivotes(two3FreeNumberPev, submetric)
+        const actual = computeSubmetricAntivotes(two3FreeNumberVector, submetric)
 
-        const expected =
-            1 * 5 +
-            1 * 6 +
-            2 * 7 as Grade<LfcUnpopularityEstimate>
+        const expected = (1 * 5 + 1 * 6 + 2 * 7) as Grade<LfcUnpopularityEstimate>
         expect(actual).toBe(expected)
     })
 
-    it("when the submetric type is soapif, sums the abs values of the unique prime factors in the 2,3-free pev, mapped to the prime count function", (): void => {
+    it("when the submetric type is soapif, sums the abs values of the unique prime factors in the 2,3-free vector, mapped to the prime count function", (): void => {
         submetric[PopularityParameterId.SUM] = true
         submetric[PopularityParameterId.USE_PRIME_INDEX] = true
         submetric[PopularityParameterId.WITHOUT_REPETITION] = true
 
-        const actual = computeSubmetricAntivotes(two3FreeNumberPev, submetric)
+        const actual = computeSubmetricAntivotes(two3FreeNumberVector, submetric)
 
-        const expected =
-            1 * 5 +
-            1 * 6 +
-            1 * 7 as Grade<LfcUnpopularityEstimate>
+        const expected = (1 * 5 + 1 * 6 + 1 * 7) as Grade<LfcUnpopularityEstimate>
         expect(actual).toBe(expected)
     })
 
-    it("when the submetric type is coapfar, counts the prime factors in the 2,3-free pev", (): void => {
+    it("when the submetric type is coapfar, counts the prime factors in the 2,3-free vector", (): void => {
         submetric[PopularityParameterId.COUNT] = true
 
-        const actual = computeSubmetricAntivotes(two3FreeNumberPev, submetric)
+        const actual = computeSubmetricAntivotes(two3FreeNumberVector, submetric)
 
-        const expected =
-            1 * 1 +
-            1 * 1 +
-            2 * 1 as Grade<LfcUnpopularityEstimate>
+        const expected = (1 * 1 + 1 * 1 + 2 * 1) as Grade<LfcUnpopularityEstimate>
         expect(actual).toBe(expected)
     })
 
-    it("when the submetric type is coapf, counts the unique prime factors in the 2,3-free pev", (): void => {
+    it("when the submetric type is coapf, counts the unique prime factors in the 2,3-free vector", (): void => {
         submetric[PopularityParameterId.COUNT] = true
         submetric[PopularityParameterId.WITHOUT_REPETITION] = true
 
-        const actual = computeSubmetricAntivotes(two3FreeNumberPev, submetric)
+        const actual = computeSubmetricAntivotes(two3FreeNumberVector, submetric)
 
-        const expected =
-            1 * 1 +
-            1 * 1 +
-            1 * 1 as Grade<LfcUnpopularityEstimate>
+        const expected = (1 * 1 + 1 * 1 + 1 * 1) as Grade<LfcUnpopularityEstimate>
         expect(actual).toBe(expected)
     })
 
-    it("when the submetric type is GPF, takes the max prime factor in the 2,3-free pev", (): void => {
+    it("when the submetric type is GPF, takes the max prime factor in the 2,3-free vector", (): void => {
         submetric[PopularityParameterId.MAX] = true
         submetric[PopularityParameterId.WITHOUT_REPETITION] = true
 
-        const actual = computeSubmetricAntivotes(two3FreeNumberPev, submetric)
+        const actual = computeSubmetricAntivotes(two3FreeNumberVector, submetric)
 
-        const expected =
-            0 * 11 +
-            0 * 13 +
-            1 * 17 as Grade<LfcUnpopularityEstimate>
+        const expected = (0 * 11 + 0 * 13 + 1 * 17) as Grade<LfcUnpopularityEstimate>
         expect(actual).toBe(expected)
     })
 
-    it("when the submetric type is GPIF, takes the max prime factor index in the 2,3-free pev", (): void => {
+    it("when the submetric type is GPIF, takes the max prime factor index in the 2,3-free vector", (): void => {
         submetric[PopularityParameterId.MAX] = true
         submetric[PopularityParameterId.WITHOUT_REPETITION] = true
         submetric[PopularityParameterId.USE_PRIME_INDEX] = true
 
-        const actual = computeSubmetricAntivotes(two3FreeNumberPev, submetric)
+        const actual = computeSubmetricAntivotes(two3FreeNumberVector, submetric)
 
-        const expected =
-            0 * 5 +
-            0 * 6 +
-            1 * 7 as Grade<LfcUnpopularityEstimate>
+        const expected = (0 * 5 + 0 * 6 + 1 * 7) as Grade<LfcUnpopularityEstimate>
         expect(actual).toBe(expected)
     })
 })

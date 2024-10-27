@@ -4,19 +4,19 @@ import {
     computeKeyPath,
     dig,
     Direction,
-    EMPTY_PEV,
+    EMPTY_VECTOR,
     Grade,
     Index,
-    Pev,
+    Vector,
     Ms,
     Name,
     Obj,
     Two3FreeClass,
 } from "@sagittal/general"
 import * as doOnNextEventLoop from "@sagittal/general/dist/cjs/code/doOnNextEventLoop"
-import {Metric, Sample, SamplePoint, SumsOfSquares} from "../../../src/bestMetric"
-import {computeSumOfSquaresAndMaybeUpdateBestMetric} from "../../../src/bestMetric/sumOfSquares"
-import {bestMetrics} from "../../../src/globals"
+import { Metric, Sample, SamplePoint, SumsOfSquares } from "../../../src/bestMetric"
+import { computeSumOfSquaresAndMaybeUpdateBestMetric } from "../../../src/bestMetric/sumOfSquares"
+import { bestMetrics } from "../../../src/globals"
 import {
     computeUnpopularities,
     LfcUnpopularityEstimate,
@@ -28,11 +28,13 @@ import * as unpopularities from "../../../src/sumOfSquares/unpopularities"
 describe("computeSumOfSquaresAndMaybeUpdateBestMetric", (): void => {
     const sample = {
         samplePoint: [1, 0] as SamplePoint,
-        submetrics: [{
-            [PopularityParameterId.SUM]: true,
-            [PopularityParameterId.K_AS_POWER_EXPONENT]: 1.469021,
-            [PopularityParameterId.J_AS_POWER_EXPONENT]: 1.367326,
-        }] as Combination<Submetric>,
+        submetrics: [
+            {
+                [PopularityParameterId.SUM]: true,
+                [PopularityParameterId.K_AS_POWER_EXPONENT]: 1.469021,
+                [PopularityParameterId.J_AS_POWER_EXPONENT]: 1.367326,
+            },
+        ] as Combination<Submetric>,
     }
     const metricName = "{jAsPowerExponent,kAsPowerExponent,sum}" as Name<Metric>
     const indentation = BLANK
@@ -54,26 +56,33 @@ describe("computeSumOfSquaresAndMaybeUpdateBestMetric", (): void => {
 
         const expected = {
             sumOfSquares: 0.007969,
-            submetrics: [{
-                [PopularityParameterId.SUM]: true,
-                [PopularityParameterId.K_AS_POWER_EXPONENT]: 1.469021,
-                [PopularityParameterId.J_AS_POWER_EXPONENT]: 1.367326,
-            }] as Combination<Submetric>,
+            submetrics: [
+                {
+                    [PopularityParameterId.SUM]: true,
+                    [PopularityParameterId.K_AS_POWER_EXPONENT]: 1.469021,
+                    [PopularityParameterId.J_AS_POWER_EXPONENT]: 1.367326,
+                },
+            ] as Combination<Submetric>,
             name: metricName,
         } as Metric
         expect(bestMetrics.get(metricName)).toBeCloseToObject(expected)
     })
 
     it("saves the spread dynamic parameters with the metric, if any", async (): Promise<void> => {
-        await computeSumOfSquaresAndMaybeUpdateBestMetric(sample, {...options, spreadDynamicParameters})
+        await computeSumOfSquaresAndMaybeUpdateBestMetric(sample, {
+            ...options,
+            spreadDynamicParameters,
+        })
 
         const expected = {
             sumOfSquares: 0.007969,
-            submetrics: [{
-                [PopularityParameterId.SUM]: true,
-                [PopularityParameterId.K_AS_POWER_EXPONENT]: 1.469021,
-                [PopularityParameterId.J_AS_POWER_EXPONENT]: 1.367326,
-            }] as Combination<Submetric>,
+            submetrics: [
+                {
+                    [PopularityParameterId.SUM]: true,
+                    [PopularityParameterId.K_AS_POWER_EXPONENT]: 1.469021,
+                    [PopularityParameterId.J_AS_POWER_EXPONENT]: 1.367326,
+                },
+            ] as Combination<Submetric>,
             name: metricName,
             spreadDynamicParameters,
         } as Metric
@@ -102,21 +111,33 @@ describe("computeSumOfSquaresAndMaybeUpdateBestMetric", (): void => {
             {
                 antivotes: 0 as Grade<LfcUnpopularityEstimate>,
                 two3FreeClass: {
-                    pev: EMPTY_PEV as Pev<{rational: true, rough: 5, direction: Direction.SUPER}>,
+                    vector: EMPTY_VECTOR as Vector<{
+                        rational: true
+                        rough: 5
+                        direction: Direction.SUPER
+                    }>,
                 } as Two3FreeClass,
                 index: 0 as Index<LfcUnpopularityEstimate>,
             },
             {
                 antivotes: NaN as Grade<LfcUnpopularityEstimate>,
                 two3FreeClass: {
-                    pev: [0, 0, 1] as Pev<{rational: true, rough: 5, direction: Direction.SUPER}>,
+                    vector: [0, 0, 1] as Vector<{
+                        rational: true
+                        rough: 5
+                        direction: Direction.SUPER
+                    }>,
                 } as Two3FreeClass,
                 index: 0 as Index<LfcUnpopularityEstimate>,
             },
             {
                 antivotes: 8 as Grade<LfcUnpopularityEstimate>,
                 two3FreeClass: {
-                    pev: [0, 0, 0, 1] as Pev<{rational: true, rough: 5, direction: Direction.SUPER}>,
+                    vector: [0, 0, 0, 1] as Vector<{
+                        rational: true
+                        rough: 5
+                        direction: Direction.SUPER
+                    }>,
                 } as Two3FreeClass,
                 index: 0 as Index<LfcUnpopularityEstimate>,
             },

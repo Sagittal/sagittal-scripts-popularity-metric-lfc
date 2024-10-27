@@ -8,15 +8,15 @@ import {
     indexOfFinalElement,
     isUndefined,
     log,
-    Pev,
+    Vector,
     Parameter,
     Prime,
     QuotientPartType,
     stringify,
 } from "@sagittal/general"
-import {popularityMetricLfcScriptGroupSettings} from "../../globals"
-import {LfcUnpopularityEstimate, Submetric} from "../types"
-import {secondaryParameterOverride} from "./secondaryParameter"
+import { popularityMetricLfcScriptGroupSettings } from "../../globals"
+import { LfcUnpopularityEstimate, Submetric } from "../types"
+import { secondaryParameterOverride } from "./secondaryParameter"
 
 // (sum or count)
 // Of (maybe adjusted) prime factors
@@ -24,7 +24,7 @@ import {secondaryParameterOverride} from "./secondaryParameter"
 // (maybe with (maybe adjusted) repetition)
 
 const computeSubmetricAntivotes = (
-    two3FreeRationalPev: Pev<{rational: true}>,
+    two3FreeRationalVector: Vector<{ rational: true }>,
     submetric: Submetric = {},
     quotientPartType?: QuotientPartType,
 ): Grade<LfcUnpopularityEstimate> => {
@@ -51,13 +51,13 @@ const computeSubmetricAntivotes = (
         throw new Error("Attempted to compute antivotes without an operation (sum, count, or max).")
     }
 
-    return two3FreeRationalPev.reduce(
+    return two3FreeRationalVector.reduce(
         (
-            pevAntivotes: Grade<LfcUnpopularityEstimate>,
-            primeExponent: Decimal<{integer: true}> & Exponent<Prime>,
+            vectorAntivotes: Grade<LfcUnpopularityEstimate>,
+            primeExponent: Decimal<{ integer: true }> & Exponent<Prime>,
             index: number,
         ): Grade<LfcUnpopularityEstimate> => {
-            if (max && index < indexOfFinalElement(two3FreeRationalPev)) {
+            if (max && index < indexOfFinalElement(two3FreeRationalVector)) {
                 return 0 as Grade<LfcUnpopularityEstimate>
             }
 
@@ -66,35 +66,32 @@ const computeSubmetricAntivotes = (
             let adjustedPrime
             let adjustedPrimeExponent
 
-            adjustedPrime = count ?
-                1 :
-                usePrimeIndex ?
-                    computePrimeCount(prime) :
-                    prime
-            adjustedPrime = adjustedPrime + secondaryParameterOverride(x, u, primeExponent, quotientPartType)
+            adjustedPrime = count ? 1 : usePrimeIndex ? computePrimeCount(prime) : prime
+            adjustedPrime =
+                adjustedPrime + secondaryParameterOverride(x, u, primeExponent, quotientPartType)
             if (!isUndefined(aAsLogarithmBase)) {
-                adjustedPrime = adjustedPrime >= 1 ?
-                    log(adjustedPrime, aAsLogarithmBase as number as Base) :
-                    1
+                adjustedPrime =
+                    adjustedPrime >= 1 ? log(adjustedPrime, aAsLogarithmBase as number as Base) : 1
             }
             if (!isUndefined(aAsPowerExponent)) {
-                adjustedPrime = adjustedPrime >= 0 ?
-                    adjustedPrime ** aAsPowerExponent :
-                    0
+                adjustedPrime = adjustedPrime >= 0 ? adjustedPrime ** aAsPowerExponent : 0
             }
             if (!isUndefined(aAsPowerBase)) {
                 adjustedPrime = aAsPowerBase ** adjustedPrime
             }
             adjustedPrime = adjustedPrime * aAsCoefficient
-            adjustedPrime = adjustedPrime + secondaryParameterOverride(w, b, primeExponent, quotientPartType)
+            adjustedPrime =
+                adjustedPrime + secondaryParameterOverride(w, b, primeExponent, quotientPartType)
 
             if (primeExponent === 0) {
                 adjustedPrimeExponent = 0
             } else {
                 adjustedPrimeExponent = withoutRepetition ? 1 : abs(primeExponent)
-                adjustedPrimeExponent = adjustedPrimeExponent >= 0 ?
-                    adjustedPrimeExponent ** secondaryParameterOverride(y, v, primeExponent, quotientPartType) :
-                    0
+                adjustedPrimeExponent =
+                    adjustedPrimeExponent >= 0
+                        ? adjustedPrimeExponent **
+                          secondaryParameterOverride(y, v, primeExponent, quotientPartType)
+                        : 0
             }
 
             let primeExponentAntivotes = adjustedPrime * adjustedPrimeExponent
@@ -103,15 +100,18 @@ const computeSubmetricAntivotes = (
             }
 
             if (isNaN(primeExponentAntivotes)) {
-                throw new Error(`You got NaN! in submetricAntivotes ${two3FreeRationalPev} ${stringify(submetric, {multiline: true})}`)
+                throw new Error(
+                    `You got NaN! in submetricAntivotes ${two3FreeRationalVector} ${stringify(
+                        submetric,
+                        { multiline: true },
+                    )}`,
+                )
             }
 
-            return pevAntivotes + primeExponentAntivotes as Grade<LfcUnpopularityEstimate>
+            return (vectorAntivotes + primeExponentAntivotes) as Grade<LfcUnpopularityEstimate>
         },
         0 as Grade<LfcUnpopularityEstimate>,
     )
 }
 
-export {
-    computeSubmetricAntivotes,
-}
+export { computeSubmetricAntivotes }

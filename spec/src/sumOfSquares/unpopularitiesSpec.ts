@@ -21,18 +21,18 @@ describe("computeUnpopularities", (): void => {
         const popularities: Array<Ranked<ScalaPopularityStat>> = [
             {
                 rank: 5 as Rank<ScalaPopularityStat>,
-                two3FreeClass: {pev: [0, 0, -1, 1]} as Two3FreeClass,
-                votes: 1318 as Decimal<{integer: true}> & Grade<ScalaPopularityStat>,
+                two3FreeClass: { vector: [0, 0, -1, 1] } as Two3FreeClass,
+                votes: 1318 as Decimal<{ integer: true }> & Grade<ScalaPopularityStat>,
             },
             {
                 rank: 8 as Rank<ScalaPopularityStat>,
-                two3FreeClass: {pev: [0, 0, 3]} as Two3FreeClass,
-                votes: 492 as Decimal<{integer: true}> & Grade<ScalaPopularityStat>,
+                two3FreeClass: { vector: [0, 0, 3] } as Two3FreeClass,
+                votes: 492 as Decimal<{ integer: true }> & Grade<ScalaPopularityStat>,
             },
             {
                 rank: 39 as Rank<ScalaPopularityStat>,
-                two3FreeClass: {pev: [0, 0, 1, -2, 1]} as Two3FreeClass,
-                votes: 51 as Decimal<{integer: true}> & Grade<ScalaPopularityStat>,
+                two3FreeClass: { vector: [0, 0, 1, -2, 1] } as Two3FreeClass,
+                votes: 51 as Decimal<{ integer: true }> & Grade<ScalaPopularityStat>,
             },
         ]
         const submetrics: Combination<Submetric> = [
@@ -52,17 +52,17 @@ describe("computeUnpopularities", (): void => {
         const expected: LfcUnpopularityEstimate[] = [
             {
                 antivotes: 2 as Grade<LfcUnpopularityEstimate>,
-                two3FreeClass: {pev: [0, 0, -1, 1]} as Two3FreeClass,
+                two3FreeClass: { vector: [0, 0, -1, 1] } as Two3FreeClass,
                 index: 0 as Index<LfcUnpopularityEstimate>,
             },
             {
                 antivotes: 1 as Grade<LfcUnpopularityEstimate>,
-                two3FreeClass: {pev: [0, 0, 3]} as Two3FreeClass,
+                two3FreeClass: { vector: [0, 0, 3] } as Two3FreeClass,
                 index: 1 as Index<LfcUnpopularityEstimate>,
             },
             {
                 antivotes: 3 as Grade<LfcUnpopularityEstimate>,
-                two3FreeClass: {pev: [0, 0, 1, -2, 1]} as Two3FreeClass,
+                two3FreeClass: { vector: [0, 0, 1, -2, 1] } as Two3FreeClass,
                 index: 2 as Index<LfcUnpopularityEstimate>,
             },
         ]

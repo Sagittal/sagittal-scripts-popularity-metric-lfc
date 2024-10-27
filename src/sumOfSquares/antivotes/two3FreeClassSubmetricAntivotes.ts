@@ -1,6 +1,6 @@
 import {
-    computeQuotientFromPev,
-    computeRationalPevFromRationalDecimal,
+    computeQuotientFromVector,
+    computeRationalVectorFromRationalDecimal,
     Grade,
     isUndefined,
     Parameter,
@@ -9,10 +9,10 @@ import {
     stringify,
     Two3FreeClass,
 } from "@sagittal/general"
-import {LfcUnpopularityEstimate, Submetric} from "../types"
-import {maybeNuminatorSwap} from "./numinator"
-import {computeSubmetricAntivotes} from "./submetricAntivotes"
-import {computeWeightedAntivotes} from "./weightedAntivotes"
+import { LfcUnpopularityEstimate, Submetric } from "../types"
+import { maybeNuminatorSwap } from "./numinator"
+import { computeSubmetricAntivotes } from "./submetricAntivotes"
+import { computeWeightedAntivotes } from "./weightedAntivotes"
 
 const compute23FreeClassSubmetricAntivotes = (
     two3FreeClass: Two3FreeClass,
@@ -39,17 +39,23 @@ const compute23FreeClassSubmetricAntivotes = (
         isUndefined(kAsPowerExponent) &&
         isUndefined(kAsPowerBase)
     ) {
-        return computeSubmetricAntivotes(two3FreeClass.pev, submetric)
+        return computeSubmetricAntivotes(two3FreeClass.vector, submetric)
     }
 
-    const [numerator, denominator]: Quotient<{rational: true}> = computeQuotientFromPev(two3FreeClass.pev)
-    let {numeratorAntivotes, denominatorAntivotes} = maybeNuminatorSwap({
+    const [numerator, denominator]: Quotient<{ rational: true }> = computeQuotientFromVector(
+        two3FreeClass.vector,
+    )
+    let { numeratorAntivotes, denominatorAntivotes } = maybeNuminatorSwap({
         useNuminator,
         numeratorAntivotes: computeSubmetricAntivotes(
-            computeRationalPevFromRationalDecimal(numerator), submetric, QuotientPartType.NUMERATOR,
+            computeRationalVectorFromRationalDecimal(numerator),
+            submetric,
+            QuotientPartType.NUMERATOR,
         ),
         denominatorAntivotes: computeSubmetricAntivotes(
-            computeRationalPevFromRationalDecimal(denominator), submetric, QuotientPartType.DENOMINATOR,
+            computeRationalVectorFromRationalDecimal(denominator),
+            submetric,
+            QuotientPartType.DENOMINATOR,
         ),
     })
 
@@ -68,12 +74,15 @@ const compute23FreeClassSubmetricAntivotes = (
     })
 
     if (isNaN(numeratorAntivotes) || isNaN(denominatorAntivotes)) {
-        throw new Error(`You got NaN! in two3FreeClassSubmetricAntivotes ${two3FreeClass} ${stringify(submetric, {multiline: true})} ${numeratorAntivotes} ${denominatorAntivotes}`)
+        throw new Error(
+            `You got NaN! in two3FreeClassSubmetricAntivotes ${two3FreeClass} ${stringify(
+                submetric,
+                { multiline: true },
+            )} ${numeratorAntivotes} ${denominatorAntivotes}`,
+        )
     }
 
-    return numeratorAntivotes + denominatorAntivotes as Grade<LfcUnpopularityEstimate>
+    return (numeratorAntivotes + denominatorAntivotes) as Grade<LfcUnpopularityEstimate>
 }
 
-export {
-    compute23FreeClassSubmetricAntivotes,
-}
+export { compute23FreeClassSubmetricAntivotes }

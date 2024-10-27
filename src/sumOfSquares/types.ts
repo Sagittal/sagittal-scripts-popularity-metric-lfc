@@ -1,9 +1,9 @@
-import {Grade, Index, Parameter, Two3FreeClass} from "@sagittal/general"
+import { Grade, Index, Parameter, Two3FreeClass } from "@sagittal/general"
 
 interface LfcUnpopularityEstimate {
-    antivotes: Grade<LfcUnpopularityEstimate>,
-    two3FreeClass: Two3FreeClass,
-    index: Index<LfcUnpopularityEstimate>,
+    antivotes: Grade<LfcUnpopularityEstimate>
+    two3FreeClass: Two3FreeClass
+    index: Index<LfcUnpopularityEstimate>
 }
 
 enum PopularityParameterId {
@@ -60,56 +60,51 @@ enum PopularityParameterId {
     USE_PRIME_INDEX = "usePrimeIndex",
     // Send the prime exponent to 1 if abs is >0 and 0 if 0
     WITHOUT_REPETITION = "withoutRepetition",
-    // Operation to do on the pev - sum (one of sum, count, or max must be provided)
+    // Operation to do on the vector - sum (one of sum, count, or max must be provided)
     SUM = "sum",
-    // Operation to do on the pev - count (one of sum, count, or max must be provided)
+    // Operation to do on the vector - count (one of sum, count, or max must be provided)
     COUNT = "count",
-    // Operation to do on the pev - max (one of sum, count, or max must be provided)
+    // Operation to do on the vector - max (one of sum, count, or max must be provided)
     MAX = "max",
 }
 
 type Submetric = Partial<{
-    [PopularityParameterId.WEIGHT_AS_COEFFICIENT]: Parameter,
-    [PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE]: Parameter,
-    [PopularityParameterId.WEIGHT_AS_POWER_EXPONENT]: Parameter,
-    [PopularityParameterId.WEIGHT_AS_POWER_BASE]: Parameter,
-    [PopularityParameterId.K_AS_COEFFICIENT]: Parameter,
-    [PopularityParameterId.K_AS_LOGARITHM_BASE]: Parameter,
-    [PopularityParameterId.K_AS_POWER_EXPONENT]: Parameter,
-    [PopularityParameterId.K_AS_POWER_BASE]: Parameter,
-    [PopularityParameterId.J_AS_COEFFICIENT]: Parameter,
-    [PopularityParameterId.J_AS_LOGARITHM_BASE]: Parameter,
-    [PopularityParameterId.J_AS_POWER_EXPONENT]: Parameter,
-    [PopularityParameterId.J_AS_POWER_BASE]: Parameter,
-    [PopularityParameterId.A_AS_COEFFICIENT]: Parameter,
-    [PopularityParameterId.A_AS_LOGARITHM_BASE]: Parameter,
-    [PopularityParameterId.A_AS_POWER_EXPONENT]: Parameter,
-    [PopularityParameterId.A_AS_POWER_BASE]: Parameter,
-    [PopularityParameterId.W]: Parameter,
-    [PopularityParameterId.B]: Parameter,
-    [PopularityParameterId.X]: Parameter,
-    [PopularityParameterId.U]: Parameter,
-    [PopularityParameterId.Y]: Parameter,
-    [PopularityParameterId.V]: Parameter,
-    [PopularityParameterId.USE_NUMINATOR]: boolean,
-    [PopularityParameterId.MODIFIED_COUNT]: boolean,
-    [PopularityParameterId.USE_PRIME_INDEX]: boolean,
-    [PopularityParameterId.WITHOUT_REPETITION]: boolean,
-    [PopularityParameterId.SUM]: boolean,
-    [PopularityParameterId.COUNT]: boolean,
-    [PopularityParameterId.MAX]: boolean,
+    [PopularityParameterId.WEIGHT_AS_COEFFICIENT]: Parameter
+    [PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE]: Parameter
+    [PopularityParameterId.WEIGHT_AS_POWER_EXPONENT]: Parameter
+    [PopularityParameterId.WEIGHT_AS_POWER_BASE]: Parameter
+    [PopularityParameterId.K_AS_COEFFICIENT]: Parameter
+    [PopularityParameterId.K_AS_LOGARITHM_BASE]: Parameter
+    [PopularityParameterId.K_AS_POWER_EXPONENT]: Parameter
+    [PopularityParameterId.K_AS_POWER_BASE]: Parameter
+    [PopularityParameterId.J_AS_COEFFICIENT]: Parameter
+    [PopularityParameterId.J_AS_LOGARITHM_BASE]: Parameter
+    [PopularityParameterId.J_AS_POWER_EXPONENT]: Parameter
+    [PopularityParameterId.J_AS_POWER_BASE]: Parameter
+    [PopularityParameterId.A_AS_COEFFICIENT]: Parameter
+    [PopularityParameterId.A_AS_LOGARITHM_BASE]: Parameter
+    [PopularityParameterId.A_AS_POWER_EXPONENT]: Parameter
+    [PopularityParameterId.A_AS_POWER_BASE]: Parameter
+    [PopularityParameterId.W]: Parameter
+    [PopularityParameterId.B]: Parameter
+    [PopularityParameterId.X]: Parameter
+    [PopularityParameterId.U]: Parameter
+    [PopularityParameterId.Y]: Parameter
+    [PopularityParameterId.V]: Parameter
+    [PopularityParameterId.USE_NUMINATOR]: boolean
+    [PopularityParameterId.MODIFIED_COUNT]: boolean
+    [PopularityParameterId.USE_PRIME_INDEX]: boolean
+    [PopularityParameterId.WITHOUT_REPETITION]: boolean
+    [PopularityParameterId.SUM]: boolean
+    [PopularityParameterId.COUNT]: boolean
+    [PopularityParameterId.MAX]: boolean
 }>
 
 type WeightedAntivotesOptions = Partial<{
-    logarithmBase: Parameter,
+    logarithmBase: Parameter
     powerExponent: Parameter
-    powerBase: Parameter,
-    coefficient: Parameter,
+    powerBase: Parameter
+    coefficient: Parameter
 }>
 
-export {
-    LfcUnpopularityEstimate,
-    PopularityParameterId,
-    Submetric,
-    WeightedAntivotesOptions,
-}
+export { LfcUnpopularityEstimate, PopularityParameterId, Submetric, WeightedAntivotesOptions }
