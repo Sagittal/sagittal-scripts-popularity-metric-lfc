@@ -154,7 +154,7 @@ describe("computeSubmetricAntivotes", (): void => {
             )
         })
 
-        it("when y is provided, raises the prime exponent to an exponent", (): void => {
+        it("when y is provided, raises the prime count to an exponent", (): void => {
             const y = 0.81 as Parameter
             submetric[PopularityParameterId.Y] = y
 
@@ -165,7 +165,7 @@ describe("computeSubmetricAntivotes", (): void => {
             )
         })
 
-        it("when v is provided, raises the prime exponent to an exponent, but using v for d and y for n", (): void => {
+        it("when v is provided, raises the prime count to an exponent, but using v for d and y for n", (): void => {
             const y = 0.81 as Parameter
             const v = 0.44 as Parameter
             submetric[PopularityParameterId.Y] = y

@@ -1,18 +1,16 @@
 import {
     abs,
     Base,
-    computePrimeCount,
-    Decimal,
-    Exponent,
     Grade,
     indexOfFinalElement,
     isUndefined,
     log,
     Vector,
     Parameter,
-    Prime,
     QuotientPartType,
     stringify,
+    PrimeCount,
+    computeLesserPrimeCount,
 } from "@sagittal/general"
 import { popularityMetricLfcScriptGroupSettings } from "../../globals"
 import { LfcUnpopularityEstimate, Submetric } from "../types"
@@ -54,7 +52,7 @@ const computeSubmetricAntivotes = (
     return two3FreeRationalVector.reduce(
         (
             vectorAntivotes: Grade<LfcUnpopularityEstimate>,
-            primeExponent: Decimal<{ integer: true }> & Exponent<Prime>,
+            primeCount: PrimeCount,
             index: number,
         ): Grade<LfcUnpopularityEstimate> => {
             if (max && index < indexOfFinalElement(two3FreeRationalVector)) {
@@ -64,11 +62,10 @@ const computeSubmetricAntivotes = (
             const prime = popularityMetricLfcScriptGroupSettings.primes[index]
 
             let adjustedPrime
-            let adjustedPrimeExponent
+            let adjustedPrimeCount
 
-            adjustedPrime = count ? 1 : usePrimeIndex ? computePrimeCount(prime) : prime
-            adjustedPrime =
-                adjustedPrime + secondaryParameterOverride(x, u, primeExponent, quotientPartType)
+            adjustedPrime = count ? 1 : usePrimeIndex ? computeLesserPrimeCount(prime) : prime
+            adjustedPrime = adjustedPrime + secondaryParameterOverride(x, u, primeCount, quotientPartType)
             if (!isUndefined(aAsLogarithmBase)) {
                 adjustedPrime =
                     adjustedPrime >= 1 ? log(adjustedPrime, aAsLogarithmBase as number as Base) : 1
@@ -80,35 +77,32 @@ const computeSubmetricAntivotes = (
                 adjustedPrime = aAsPowerBase ** adjustedPrime
             }
             adjustedPrime = adjustedPrime * aAsCoefficient
-            adjustedPrime =
-                adjustedPrime + secondaryParameterOverride(w, b, primeExponent, quotientPartType)
+            adjustedPrime = adjustedPrime + secondaryParameterOverride(w, b, primeCount, quotientPartType)
 
-            if (primeExponent === 0) {
-                adjustedPrimeExponent = 0
+            if (primeCount === 0) {
+                adjustedPrimeCount = 0
             } else {
-                adjustedPrimeExponent = withoutRepetition ? 1 : abs(primeExponent)
-                adjustedPrimeExponent =
-                    adjustedPrimeExponent >= 0
-                        ? adjustedPrimeExponent **
-                          secondaryParameterOverride(y, v, primeExponent, quotientPartType)
+                adjustedPrimeCount = withoutRepetition ? 1 : abs(primeCount)
+                adjustedPrimeCount =
+                    adjustedPrimeCount >= 0
+                        ? adjustedPrimeCount ** secondaryParameterOverride(y, v, primeCount, quotientPartType)
                         : 0
             }
 
-            let primeExponentAntivotes = adjustedPrime * adjustedPrimeExponent
+            let primeCountAntivotes = adjustedPrime * adjustedPrimeCount
             if (index === 2 && modifiedCount) {
-                primeExponentAntivotes = primeExponentAntivotes * 0.5
+                primeCountAntivotes = primeCountAntivotes * 0.5
             }
 
-            if (isNaN(primeExponentAntivotes)) {
+            if (isNaN(primeCountAntivotes)) {
                 throw new Error(
-                    `You got NaN! in submetricAntivotes ${two3FreeRationalVector} ${stringify(
-                        submetric,
-                        { multiline: true },
-                    )}`,
+                    `You got NaN! in submetricAntivotes ${two3FreeRationalVector} ${stringify(submetric, {
+                        multiline: true,
+                    })}`,
                 )
             }
 
-            return (vectorAntivotes + primeExponentAntivotes) as Grade<LfcUnpopularityEstimate>
+            return (vectorAntivotes + primeCountAntivotes) as Grade<LfcUnpopularityEstimate>
         },
         0 as Grade<LfcUnpopularityEstimate>,
     )

@@ -47,9 +47,9 @@ enum PopularityParameterId {
     X = "x",
     // Prime constant (applied before applying exponent or base), but only applied to d and overriding x if format
     U = "u",
-    // Prime exponent exponent
+    // Prime count exponent
     Y = "y",
-    // Prime exponent exponent, but only applied to d and overriding y if format
+    // Prime count exponent, but only applied to d and overriding y if format
     V = "v",
     // Reorient the 2,3-free class to use as its numerator the greater of the two results (the numinator)
     // Of calling the submetric on the original 2,3-free class's numerator and denominator
@@ -58,7 +58,7 @@ enum PopularityParameterId {
     MODIFIED_COUNT = "modifiedCount",
     // Use the prime index function instead of using the primes directly
     USE_PRIME_INDEX = "usePrimeIndex",
-    // Send the prime exponent to 1 if abs is >0 and 0 if 0
+    // Send the prime count to 1 if abs is >0 and 0 if 0
     WITHOUT_REPETITION = "withoutRepetition",
     // Operation to do on the vector - sum (one of sum, count, or max must be provided)
     SUM = "sum",

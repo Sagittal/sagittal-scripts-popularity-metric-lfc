@@ -1,17 +1,15 @@
-import {Exponent, isUndefined, Maybe, Parameter, Prime, QuotientPartType} from "@sagittal/general"
+import { Exponent, isUndefined, Maybe, Parameter, Prime, QuotientPartType } from "@sagittal/general"
 
 const secondaryParameterOverride = (
     parameter: Parameter,
     denominatorSpecificParameter: Maybe<Parameter>,
-    primeExponent: Exponent<Prime>,
+    primeCount: Exponent<Prime>,
     quotientPart?: QuotientPartType,
 ): Parameter =>
     !isUndefined(denominatorSpecificParameter) &&
     quotientPart !== QuotientPartType.NUMERATOR &&
-    (quotientPart === QuotientPartType.DENOMINATOR || primeExponent < 0) ?
-        denominatorSpecificParameter :
-        parameter
+    (quotientPart === QuotientPartType.DENOMINATOR || primeCount < 0)
+        ? denominatorSpecificParameter
+        : parameter
 
-export {
-    secondaryParameterOverride,
-}
+export { secondaryParameterOverride }
