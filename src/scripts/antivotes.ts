@@ -22,7 +22,4 @@ const two3FreeClass: Two3FreeClass = { vector: [0, 0, 0, -1, 1] } as Two3FreeCla
 
 const antivotes = computeAntivotes(two3FreeClass, submetrics)
 
-saveLog(
-    `${format23FreeClass(two3FreeClass)}\n${stringify(submetrics)}\n${antivotes}` as Io,
-    LogTarget.FINAL,
-)
+saveLog(`${format23FreeClass(two3FreeClass)}\n${stringify(submetrics)}\n${antivotes}` as Io, LogTarget.FINAL)

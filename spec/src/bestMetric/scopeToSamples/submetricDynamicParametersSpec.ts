@@ -1,7 +1,7 @@
-import {Ed, Index, Parameter, Window} from "@sagittal/general"
-import {DynamicParameter, SubmetricScope} from "../../../../src/bestMetric"
-import {computeSubmetricDynamicParameters} from "../../../../src/bestMetric/scopeToSamples/submetricDynamicParameters"
-import {PopularityParameterId, Submetric} from "../../../../src/sumOfSquares"
+import { Ed, Index, Parameter, Window } from "@sagittal/general"
+import { DynamicParameter, SubmetricScope } from "../../../../src/bestMetric"
+import { computeSubmetricDynamicParameters } from "../../../../src/bestMetric/scopeToSamples/submetricDynamicParameters"
+import { PopularityParameterId, Submetric } from "../../../../src/sumOfSquares"
 
 describe("computeSubmetricDynamicParameters", (): void => {
     const submetricIndex = 5 as Index<Submetric>
@@ -10,13 +10,13 @@ describe("computeSubmetricDynamicParameters", (): void => {
         const submetricScope: SubmetricScope = {
             [PopularityParameterId.A_AS_COEFFICIENT]: {
                 center: 1 as Parameter,
-                window: 0.5 as Window<{of: Parameter}>,
-                ed: 5 as Ed<{of: Parameter}>,
+                window: 0.5 as Window<{ of: Parameter }>,
+                ed: 5 as Ed<{ of: Parameter }>,
             },
             [PopularityParameterId.W]: {
                 center: 0.7 as Parameter,
-                window: 0.2 as Window<{of: Parameter}>,
-                ed: 3 as Ed<{of: Parameter}>,
+                window: 0.2 as Window<{ of: Parameter }>,
+                ed: 3 as Ed<{ of: Parameter }>,
             },
         } as SubmetricScope
 
@@ -29,7 +29,7 @@ describe("computeSubmetricDynamicParameters", (): void => {
                 values: [0.75, 0.875, 1.0, 1.125, 1.25],
                 unit: 0.125,
             },
-            {submetricIndex, parameter: PopularityParameterId.W, values: [0.6, 0.7, 0.8], unit: 0.1},
+            { submetricIndex, parameter: PopularityParameterId.W, values: [0.6, 0.7, 0.8], unit: 0.1 },
         ] as DynamicParameter[]
         expect(actual).toBeArrayWithDeepEqualContents(expected)
     })
@@ -38,13 +38,13 @@ describe("computeSubmetricDynamicParameters", (): void => {
         const submetricScope = {
             [PopularityParameterId.A_AS_COEFFICIENT]: {
                 center: 1 as Parameter,
-                window: 0.5 as Window<{of: Parameter}>,
-                ed: 5 as Ed<{of: Parameter}>,
+                window: 0.5 as Window<{ of: Parameter }>,
+                ed: 5 as Ed<{ of: Parameter }>,
             },
             [PopularityParameterId.W]: {
                 center: 0.7 as Parameter,
-                window: 0.2 as Window<{of: Parameter}>,
-                ed: 0 as Ed<{of: Parameter}>,
+                window: 0.2 as Window<{ of: Parameter }>,
+                ed: 0 as Ed<{ of: Parameter }>,
             },
         } as SubmetricScope
 
@@ -65,8 +65,8 @@ describe("computeSubmetricDynamicParameters", (): void => {
         const submetricScope: SubmetricScope = {
             [PopularityParameterId.A_AS_COEFFICIENT]: {
                 center: 1 as Parameter,
-                window: 0.5 as Window<{of: Parameter}>,
-                ed: 5 as Ed<{of: Parameter}>,
+                window: 0.5 as Window<{ of: Parameter }>,
+                ed: 5 as Ed<{ of: Parameter }>,
             },
             [PopularityParameterId.W]: 0.7 as Parameter,
         } as SubmetricScope

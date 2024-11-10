@@ -1,9 +1,9 @@
-import {Combination, Combinations, Count, Index} from "@sagittal/general"
-import {scopesToSearch} from "../../../../src/globals"
-import {Chunk} from "../../../../src/solver"
-import {INITIAL_PARAMETER_SCOPES} from "../../../../src/solver/populate/constants"
-import {populateScopesForSubmetricChunkCombination} from "../../../../src/solver/populate/submetricChunkCombination"
-import {PopularityParameterId, Submetric} from "../../../../src/sumOfSquares"
+import { Combination, Combinations, Count, Index } from "@sagittal/general"
+import { scopesToSearch } from "../../../../src/globals"
+import { Chunk } from "../../../../src/solver"
+import { INITIAL_PARAMETER_SCOPES } from "../../../../src/solver/populate/constants"
+import { populateScopesForSubmetricChunkCombination } from "../../../../src/solver/populate/submetricChunkCombination"
+import { PopularityParameterId, Submetric } from "../../../../src/sumOfSquares"
 
 describe("populateScopesForSubmetricChunkCombination", (): void => {
     it("for the given submetric chunk combination, proceeds through each of the parameter chunk combinations, for each one computing all possible distributions across the submetric bins of this submetric chunk combination, and for each distribution populating a scope which is the merger of it with the submetrics, also handling how the first submetric bin actually reformats the parameters which should be distributed to every submetric", async (): Promise<void> => {
@@ -13,7 +13,8 @@ describe("populateScopesForSubmetricChunkCombination", (): void => {
             // A
             {
                 [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                [PopularityParameterId.WITHOUT_REPETITION]:
+                    INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
             },
             // B
             {
@@ -25,32 +26,40 @@ describe("populateScopesForSubmetricChunkCombination", (): void => {
             [
                 // I
                 {
-                    [PopularityParameterId.A_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_COEFFICIENT],
+                    [PopularityParameterId.A_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_COEFFICIENT],
                 },
                 // II
                 {
-                    [PopularityParameterId.K_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_COEFFICIENT],
-                    [PopularityParameterId.K_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.K_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_COEFFICIENT],
+                    [PopularityParameterId.K_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_LOGARITHM_BASE],
                 },
             ],
             // 2
             [
                 // I
                 {
-                    [PopularityParameterId.MODIFIED_COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MODIFIED_COUNT],
+                    [PopularityParameterId.MODIFIED_COUNT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.MODIFIED_COUNT],
                 },
                 // II
                 {
-                    [PopularityParameterId.J_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_COEFFICIENT],
+                    [PopularityParameterId.J_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_COEFFICIENT],
                 },
             ],
         ] as Combinations<Chunk<PopularityParameterId>>
-        const parameterChunkCombinationIndex: Index<Combination<Chunk<PopularityParameterId>>> =
-            0 as Index<Combination<Chunk<PopularityParameterId>>>
-        const submetricChunkCombinationIndex: Index<Combination<Chunk<Submetric>>> =
-            0 as Index<Combination<Chunk<Submetric>>>
-        const submetricChunkCombinationCount: Count<Combination<Chunk<Submetric>>> =
-            2 as Count<Combination<Chunk<Submetric>>>
+        const parameterChunkCombinationIndex: Index<Combination<Chunk<PopularityParameterId>>> = 0 as Index<
+            Combination<Chunk<PopularityParameterId>>
+        >
+        const submetricChunkCombinationIndex: Index<Combination<Chunk<Submetric>>> = 0 as Index<
+            Combination<Chunk<Submetric>>
+        >
+        const submetricChunkCombinationCount: Count<Combination<Chunk<Submetric>>> = 2 as Count<
+            Combination<Chunk<Submetric>>
+        >
 
         await populateScopesForSubmetricChunkCombination(submetricChunkCombination, {
             parameterChunkCombinations,
@@ -65,13 +74,17 @@ describe("populateScopesForSubmetricChunkCombination", (): void => {
             // AB i ii A B
             [
                 {
-                    [PopularityParameterId.A_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_COEFFICIENT],
-                    [PopularityParameterId.K_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_COEFFICIENT],
-                    [PopularityParameterId.K_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_COEFFICIENT],
+                    [PopularityParameterId.K_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_COEFFICIENT],
+                    [PopularityParameterId.K_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_LOGARITHM_BASE],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                 },
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
@@ -80,13 +93,17 @@ describe("populateScopesForSubmetricChunkCombination", (): void => {
             // AB ii A i B
             [
                 {
-                    [PopularityParameterId.K_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_COEFFICIENT],
-                    [PopularityParameterId.K_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.K_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_COEFFICIENT],
+                    [PopularityParameterId.K_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_LOGARITHM_BASE],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
-                    [PopularityParameterId.A_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_COEFFICIENT],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.A_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_COEFFICIENT],
                 },
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
@@ -95,29 +112,37 @@ describe("populateScopesForSubmetricChunkCombination", (): void => {
             // AB ii A B i
             [
                 {
-                    [PopularityParameterId.K_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_COEFFICIENT],
-                    [PopularityParameterId.K_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.K_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_COEFFICIENT],
+                    [PopularityParameterId.K_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_LOGARITHM_BASE],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                 },
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.A_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_COEFFICIENT],
+                    [PopularityParameterId.A_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_COEFFICIENT],
                 },
             ],
 
             // AB i A ii B
             [
                 {
-                    [PopularityParameterId.A_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_COEFFICIENT],
+                    [PopularityParameterId.A_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_COEFFICIENT],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
-                    [PopularityParameterId.K_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_COEFFICIENT],
-                    [PopularityParameterId.K_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.K_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_COEFFICIENT],
+                    [PopularityParameterId.K_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_LOGARITHM_BASE],
                 },
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
@@ -128,10 +153,14 @@ describe("populateScopesForSubmetricChunkCombination", (): void => {
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
-                    [PopularityParameterId.A_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_COEFFICIENT],
-                    [PopularityParameterId.K_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_COEFFICIENT],
-                    [PopularityParameterId.K_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.A_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_COEFFICIENT],
+                    [PopularityParameterId.K_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_COEFFICIENT],
+                    [PopularityParameterId.K_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_LOGARITHM_BASE],
                 },
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
@@ -142,29 +171,37 @@ describe("populateScopesForSubmetricChunkCombination", (): void => {
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
-                    [PopularityParameterId.K_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_COEFFICIENT],
-                    [PopularityParameterId.K_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.K_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_COEFFICIENT],
+                    [PopularityParameterId.K_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_LOGARITHM_BASE],
                 },
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.A_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_COEFFICIENT],
+                    [PopularityParameterId.A_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_COEFFICIENT],
                 },
             ],
 
             // AB i A B ii
             [
                 {
-                    [PopularityParameterId.A_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_COEFFICIENT],
+                    [PopularityParameterId.A_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_COEFFICIENT],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                 },
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.K_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_COEFFICIENT],
-                    [PopularityParameterId.K_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.K_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_COEFFICIENT],
+                    [PopularityParameterId.K_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_LOGARITHM_BASE],
                 },
             ],
             // AB A i B ii
@@ -172,13 +209,17 @@ describe("populateScopesForSubmetricChunkCombination", (): void => {
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
-                    [PopularityParameterId.A_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_COEFFICIENT],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.A_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_COEFFICIENT],
                 },
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.K_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_COEFFICIENT],
-                    [PopularityParameterId.K_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.K_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_COEFFICIENT],
+                    [PopularityParameterId.K_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_LOGARITHM_BASE],
                 },
             ],
             // AB A B i ii
@@ -186,13 +227,17 @@ describe("populateScopesForSubmetricChunkCombination", (): void => {
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                 },
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.A_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_COEFFICIENT],
-                    [PopularityParameterId.K_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_COEFFICIENT],
-                    [PopularityParameterId.K_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_COEFFICIENT],
+                    [PopularityParameterId.K_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_COEFFICIENT],
+                    [PopularityParameterId.K_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_LOGARITHM_BASE],
                 },
             ],
 
@@ -201,12 +246,15 @@ describe("populateScopesForSubmetricChunkCombination", (): void => {
             // AB i ii A B
             [
                 {
-                    [PopularityParameterId.MODIFIED_COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MODIFIED_COUNT],
-                    [PopularityParameterId.J_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_COEFFICIENT],
+                    [PopularityParameterId.MODIFIED_COUNT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.MODIFIED_COUNT],
+                    [PopularityParameterId.J_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_COEFFICIENT],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                 },
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
@@ -215,12 +263,15 @@ describe("populateScopesForSubmetricChunkCombination", (): void => {
             // AB ii A i B
             [
                 {
-                    [PopularityParameterId.MODIFIED_COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MODIFIED_COUNT],
+                    [PopularityParameterId.MODIFIED_COUNT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.MODIFIED_COUNT],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
-                    [PopularityParameterId.J_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_COEFFICIENT],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.J_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_COEFFICIENT],
                 },
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
@@ -229,27 +280,33 @@ describe("populateScopesForSubmetricChunkCombination", (): void => {
             // AB ii A B i
             [
                 {
-                    [PopularityParameterId.MODIFIED_COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MODIFIED_COUNT],
+                    [PopularityParameterId.MODIFIED_COUNT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.MODIFIED_COUNT],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                 },
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.J_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_COEFFICIENT],
+                    [PopularityParameterId.J_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_COEFFICIENT],
                 },
             ],
 
             // AB i A ii B
             [
                 {
-                    [PopularityParameterId.MODIFIED_COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MODIFIED_COUNT],
+                    [PopularityParameterId.MODIFIED_COUNT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.MODIFIED_COUNT],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
-                    [PopularityParameterId.J_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_COEFFICIENT],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.J_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_COEFFICIENT],
                 },
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
@@ -260,9 +317,12 @@ describe("populateScopesForSubmetricChunkCombination", (): void => {
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
-                    [PopularityParameterId.MODIFIED_COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MODIFIED_COUNT],
-                    [PopularityParameterId.J_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_COEFFICIENT],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.MODIFIED_COUNT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.MODIFIED_COUNT],
+                    [PopularityParameterId.J_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_COEFFICIENT],
                 },
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
@@ -273,27 +333,33 @@ describe("populateScopesForSubmetricChunkCombination", (): void => {
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
-                    [PopularityParameterId.J_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_COEFFICIENT],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.J_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_COEFFICIENT],
                 },
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.MODIFIED_COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MODIFIED_COUNT],
+                    [PopularityParameterId.MODIFIED_COUNT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.MODIFIED_COUNT],
                 },
             ],
 
             // AB i A B ii
             [
                 {
-                    [PopularityParameterId.MODIFIED_COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MODIFIED_COUNT],
+                    [PopularityParameterId.MODIFIED_COUNT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.MODIFIED_COUNT],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                 },
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.J_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_COEFFICIENT],
+                    [PopularityParameterId.J_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_COEFFICIENT],
                 },
             ],
             // AB A i B ii
@@ -301,12 +367,15 @@ describe("populateScopesForSubmetricChunkCombination", (): void => {
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
-                    [PopularityParameterId.MODIFIED_COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MODIFIED_COUNT],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.MODIFIED_COUNT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.MODIFIED_COUNT],
                 },
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.J_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_COEFFICIENT],
+                    [PopularityParameterId.J_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_COEFFICIENT],
                 },
             ],
             // AB A B i ii
@@ -314,12 +383,15 @@ describe("populateScopesForSubmetricChunkCombination", (): void => {
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                 },
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.MODIFIED_COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MODIFIED_COUNT],
-                    [PopularityParameterId.J_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_COEFFICIENT],
+                    [PopularityParameterId.MODIFIED_COUNT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.MODIFIED_COUNT],
+                    [PopularityParameterId.J_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_COEFFICIENT],
                 },
             ],
         ] as Combinations<Chunk>

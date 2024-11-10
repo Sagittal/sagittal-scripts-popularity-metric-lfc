@@ -1,11 +1,11 @@
-import {increment, LogTarget, saveLog} from "@sagittal/general"
+import { increment, LogTarget, saveLog } from "@sagittal/general"
 import {
     nonRecursiveSearchScopeAndMaybeUpdateBestMetric,
     nonRecursiveSearchScopeAndMaybeUpdateBestMetricSync,
     Scope,
 } from "../../bestMetric"
-import {scopesToSearch, solverStatus} from "../../globals"
-import {formatPercentage, formatSearchedAndPopulated} from "../io"
+import { scopesToSearch, solverStatus } from "../../globals"
+import { formatPercentage, formatSearchedAndPopulated } from "../io"
 
 const searchPopulatedScopes = async (): Promise<void> => {
     const scope = scopesToSearch.pop() as Scope
@@ -15,13 +15,16 @@ const searchPopulatedScopes = async (): Promise<void> => {
 
     try {
         await nonRecursiveSearchScopeAndMaybeUpdateBestMetric(scope)
-    } catch (e: any) {
-        saveLog(`error when searching scope: ${e.message}`, LogTarget.ERROR)
+    } catch (e) {
+        if (e instanceof Error) saveLog(`error when searching scope: ${e.message}`, LogTarget.ERROR)
     }
 
     solverStatus.searchedScopeCount = increment(solverStatus.searchedScopeCount)
 
-    saveLog(`searched out of populated: ${formatPercentage(solverStatus.searchedScopeCount, solverStatus.populatedScopeCount)} ${formatSearchedAndPopulated()}`, LogTarget.PROGRESS)
+    saveLog(
+        `searched out of populated: ${formatPercentage(solverStatus.searchedScopeCount, solverStatus.populatedScopeCount)} ${formatSearchedAndPopulated()}`,
+        LogTarget.PROGRESS,
+    )
 }
 
 const searchPopulatedScopesSync = (): void => {
@@ -32,16 +35,16 @@ const searchPopulatedScopesSync = (): void => {
 
     try {
         nonRecursiveSearchScopeAndMaybeUpdateBestMetricSync(scope)
-    } catch (e: any) {
-        saveLog(`error when searching scope: ${e.message}`, LogTarget.ERROR)
+    } catch (e) {
+        if (e instanceof Error) saveLog(`error when searching scope: ${e.message}`, LogTarget.ERROR)
     }
 
     solverStatus.searchedScopeCount = increment(solverStatus.searchedScopeCount)
 
-    saveLog(`searched out of populated: ${formatPercentage(solverStatus.searchedScopeCount, solverStatus.populatedScopeCount)} ${formatSearchedAndPopulated()}`, LogTarget.PROGRESS)
+    saveLog(
+        `searched out of populated: ${formatPercentage(solverStatus.searchedScopeCount, solverStatus.populatedScopeCount)} ${formatSearchedAndPopulated()}`,
+        LogTarget.PROGRESS,
+    )
 }
 
-export {
-    searchPopulatedScopes,
-    searchPopulatedScopesSync,
-}
+export { searchPopulatedScopes, searchPopulatedScopesSync }

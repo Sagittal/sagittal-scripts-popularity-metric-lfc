@@ -12,15 +12,15 @@ import {
     saveLog,
     stringify,
 } from "@sagittal/general"
-import {Metric} from "../bestMetric"
-import {PopularityParameterId, Submetric} from "../sumOfSquares"
-import {applySharedPopularityMetricLfcScriptSetup, load} from "./shared"
+import { Metric } from "../bestMetric"
+import { PopularityParameterId, Submetric } from "../sumOfSquares"
+import { applySharedPopularityMetricLfcScriptSetup, load } from "./shared"
 
-applySharedPopularityMetricLfcScriptSetup({logDir: "findParameterExtrema" as Filename})
+applySharedPopularityMetricLfcScriptSetup({ logDir: "findParameterExtrema" as Filename })
 
 const chunkCountResults = load("metrics" as Filename) as Record<Name<Metric>, Metric>
 
-const parameterExtrema = {} as Record<string, Extrema<{of: Parameter}>>
+const parameterExtrema = {} as Record<string | number | symbol, Extrema<{ of: Parameter }>>
 
 Object.values(PopularityParameterId).forEach((parameter: PopularityParameterId): void => {
     if (parameter.includes("Base")) {
@@ -30,11 +30,11 @@ Object.values(PopularityParameterId).forEach((parameter: PopularityParameterId):
     let parameterMin: Maybe<Min<Parameter>> = undefined
     let parameterMax: Maybe<Max<Parameter>> = undefined
 
-    const chunkCountResultsValues = Object.values(chunkCountResults) as Metric[]
+    const chunkCountResultsValues = Object.values(chunkCountResults)
     chunkCountResultsValues.forEach((chunkCountResult: Metric): void => {
         chunkCountResult.submetrics.forEach((submetric: Submetric): void => {
             Object.entries(submetric).forEach(([parameterName, parameterValue]: [string, unknown]): void => {
-                if (parameterName === parameter && isNumber(parameterValue)) {
+                if (parameterName === (parameter as string) && isNumber(parameterValue)) {
                     if (isUndefined(parameterMin) || parameterValue < parameterMin) {
                         parameterMin = parameterValue as Min<Parameter>
                     }
@@ -51,4 +51,4 @@ Object.values(PopularityParameterId).forEach((parameter: PopularityParameterId):
     }
 })
 
-saveLog(stringify(parameterExtrema, {multiline: true}), LogTarget.FINAL)
+saveLog(stringify(parameterExtrema, { multiline: true }), LogTarget.FINAL)

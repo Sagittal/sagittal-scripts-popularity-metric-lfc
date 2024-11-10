@@ -1,15 +1,14 @@
-import {Combination, Ed, Name, Parameter, Window} from "@sagittal/general"
-import {Metric, Scope, SubmetricScope, SumOfSquares} from "../../../src/bestMetric"
-import {recursiveSearchScopeAndMaybeUpdateBestMetric} from "../../../src/perfecter"
-import {perfectMetric} from "../../../src/perfecter/metric"
+import { Combination, Ed, Name, Parameter, Window } from "@sagittal/general"
+import { Metric, Scope, SubmetricScope, SumOfSquares } from "../../../src/bestMetric"
+import { perfectMetric } from "../../../src/perfecter/metric"
 import * as recursiveBestMetric from "../../../src/perfecter/perfectMetric"
-import {MetricTag} from "../../../src/perfecter/types"
-import {PopularityParameterId, Submetric} from "../../../src/sumOfSquares"
+import { MetricTag } from "../../../src/perfecter/types"
+import { PopularityParameterId, Submetric } from "../../../src/sumOfSquares"
 
 describe("perfectMetric", (): void => {
-    const options = {metricTag: "1/16" as MetricTag}
+    const options = { metricTag: "1/16" as MetricTag }
 
-    it("takes a best metric and then converts it back into a scope in order to perfect it recursively                     ", async (): Promise<void> => {
+    it("takes a best metric and then converts it back into a scope in order to perfect it recursively", async (): Promise<void> => {
         const metric = {
             sumOfSquares: 0.009939 as SumOfSquares,
             name: "" as Name<Metric>,
@@ -31,8 +30,8 @@ describe("perfectMetric", (): void => {
                 [PopularityParameterId.SUM]: true,
                 [PopularityParameterId.K_AS_COEFFICIENT]: {
                     center: 0.8 as Parameter,
-                    window: 0.1 as Window<{of: Parameter}>,
-                    ed: 3 as Ed<{of: Parameter}>,
+                    window: 0.1 as Window<{ of: Parameter }>,
+                    ed: 3 as Ed<{ of: Parameter }>,
                 },
             },
         ] as Combination<SubmetricScope>
@@ -68,8 +67,8 @@ describe("perfectMetric", (): void => {
             {
                 [PopularityParameterId.K_AS_COEFFICIENT]: {
                     center: 0.8 as Parameter,
-                    window: 0.1 as Window<{of: Parameter}>,
-                    ed: 3 as Ed<{of: Parameter}>,
+                    window: 0.1 as Window<{ of: Parameter }>,
+                    ed: 3 as Ed<{ of: Parameter }>,
                 },
             },
             {

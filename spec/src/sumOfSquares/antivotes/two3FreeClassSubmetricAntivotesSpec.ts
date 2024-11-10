@@ -1,4 +1,4 @@
-import { BASE_2, Grade, log, Vector, Parameter, Power, Two3FreeClass } from "@sagittal/general"
+import { BASE_2, Grade, log, Vector, Parameter, Power, Two3FreeClass, Rational } from "@sagittal/general"
 import { LfcUnpopularityEstimate } from "../../../../src/sumOfSquares"
 import { computeSubmetricAntivotes } from "../../../../src/sumOfSquares/antivotes/submetricAntivotes"
 import { compute23FreeClassSubmetricAntivotes } from "../../../../src/sumOfSquares/antivotes/two3FreeClassSubmetricAntivotes"
@@ -12,13 +12,10 @@ describe("compute23FreeClassSubmetricAntivotes", (): void => {
         const actual = compute23FreeClassSubmetricAntivotes(two3FreeClass, submetric)
 
         expect(actual).toBe(
-            ((computeSubmetricAntivotes(
-                [0, 0, 0, 0, 1] as Vector<{ rational: true }>,
-                submetric,
-            ) as Grade<LfcUnpopularityEstimate>) +
+            (computeSubmetricAntivotes([0, 0, 0, 0, 1] as Vector<Rational>, submetric) +
                 kAsCoefficient *
                     computeSubmetricAntivotes(
-                        [0, 0, 0, 1] as Vector<{ rational: true }>,
+                        [0, 0, 0, 1] as Vector<Rational>,
                         submetric,
                     )) as Grade<LfcUnpopularityEstimate>,
         )
@@ -32,13 +29,10 @@ describe("compute23FreeClassSubmetricAntivotes", (): void => {
         const actual = compute23FreeClassSubmetricAntivotes(two3FreeClass, submetric)
 
         expect(actual).toBe(
-            ((computeSubmetricAntivotes(
-                [0, 0, 2] as Vector<{ rational: true }>,
-                submetric,
-            ) as Grade<LfcUnpopularityEstimate>) +
+            (computeSubmetricAntivotes([0, 0, 2] as Vector<Rational>, submetric) +
                 kAsCoefficient *
                     computeSubmetricAntivotes(
-                        [0, 0, 0, 0, 1] as Vector<{ rational: true }>,
+                        [0, 0, 0, 0, 1] as Vector<Rational>,
                         submetric,
                     )) as Grade<LfcUnpopularityEstimate>,
         )
@@ -50,9 +44,7 @@ describe("compute23FreeClassSubmetricAntivotes", (): void => {
 
         const actual = compute23FreeClassSubmetricAntivotes(two3FreeClass, submetric)
 
-        expect(actual).toBe(
-            computeSubmetricAntivotes([0, 0, 1, -1] as Vector<{ rational: true }>, submetric),
-        )
+        expect(actual).toBe(computeSubmetricAntivotes([0, 0, 1, -1] as Vector<Rational>, submetric))
     })
 
     it("supports deciding the numinator and diminuator by which is the greater of the two", (): void => {
@@ -64,13 +56,10 @@ describe("compute23FreeClassSubmetricAntivotes", (): void => {
         const actual = compute23FreeClassSubmetricAntivotes(two3FreeClass, submetric)
 
         expect(actual).toBe(
-            ((computeSubmetricAntivotes(
-                [0, 0, 0, 0, 1] as Vector<{ rational: true }>,
-                submetric,
-            ) as Grade<LfcUnpopularityEstimate>) +
+            (computeSubmetricAntivotes([0, 0, 0, 0, 1] as Vector<Rational>, submetric) +
                 kAsCoefficient *
                     computeSubmetricAntivotes(
-                        [0, 0, 2] as Vector<{ rational: true }>,
+                        [0, 0, 2] as Vector<Rational>,
                         submetric,
                     )) as Grade<LfcUnpopularityEstimate>,
         )
@@ -83,9 +72,7 @@ describe("compute23FreeClassSubmetricAntivotes", (): void => {
 
         const actual = compute23FreeClassSubmetricAntivotes(two3FreeClass, submetric)
 
-        expect(actual).toBe(
-            computeSubmetricAntivotes([0, 0, 1] as Vector<{ rational: true }>, submetric),
-        )
+        expect(actual).toBe(computeSubmetricAntivotes([0, 0, 1] as Vector<Rational>, submetric))
     })
 
     it("works when j = 0 (and k = 1) therefore it only looks at the denominator", (): void => {
@@ -95,9 +82,7 @@ describe("compute23FreeClassSubmetricAntivotes", (): void => {
 
         const actual = compute23FreeClassSubmetricAntivotes(two3FreeClass, submetric)
 
-        expect(actual).toBe(
-            computeSubmetricAntivotes([0, 0, 0, 1] as Vector<{ rational: true }>, submetric),
-        )
+        expect(actual).toBe(computeSubmetricAntivotes([0, 0, 0, 1] as Vector<Rational>, submetric))
     })
 
     it("works when k is a logarithm base", (): void => {
@@ -108,15 +93,9 @@ describe("compute23FreeClassSubmetricAntivotes", (): void => {
         const actual = compute23FreeClassSubmetricAntivotes(two3FreeClass, submetric)
 
         expect(actual).toBe(
-            ((computeSubmetricAntivotes(
-                [0, 0, 1] as Vector<{ rational: true }>,
-                submetric,
-            ) as Grade<LfcUnpopularityEstimate>) +
+            (computeSubmetricAntivotes([0, 0, 1] as Vector<Rational>, submetric) +
                 log(
-                    computeSubmetricAntivotes(
-                        [0, 0, 0, 1] as Vector<{ rational: true }>,
-                        submetric,
-                    ) as number as Power,
+                    computeSubmetricAntivotes([0, 0, 0, 1] as Vector<Rational>, submetric) as number as Power,
                     BASE_2,
                 )) as Grade<LfcUnpopularityEstimate>,
         )
@@ -130,11 +109,8 @@ describe("compute23FreeClassSubmetricAntivotes", (): void => {
         const actual = compute23FreeClassSubmetricAntivotes(two3FreeClass, submetric)
 
         expect(actual).toBe(
-            ((computeSubmetricAntivotes(
-                [0, 0, 1] as Vector<{ rational: true }>,
-                submetric,
-            ) as Grade<LfcUnpopularityEstimate>) +
-                computeSubmetricAntivotes([0, 0, 0, 1] as Vector<{ rational: true }>, submetric) **
+            (computeSubmetricAntivotes([0, 0, 1] as Vector<Rational>, submetric) +
+                computeSubmetricAntivotes([0, 0, 0, 1] as Vector<Rational>, submetric) **
                     2) as Grade<LfcUnpopularityEstimate>,
         )
     })
@@ -147,13 +123,10 @@ describe("compute23FreeClassSubmetricAntivotes", (): void => {
         const actual = compute23FreeClassSubmetricAntivotes(two3FreeClass, submetric)
 
         expect(actual).toBe(
-            ((computeSubmetricAntivotes(
-                [0, 0, 1] as Vector<{ rational: true }>,
-                submetric,
-            ) as Grade<LfcUnpopularityEstimate>) +
+            (computeSubmetricAntivotes([0, 0, 1] as Vector<Rational>, submetric) +
                 2 **
                     computeSubmetricAntivotes(
-                        [0, 0, 0, 1] as Vector<{ rational: true }>,
+                        [0, 0, 0, 1] as Vector<Rational>,
                         submetric,
                     )) as Grade<LfcUnpopularityEstimate>,
         )
@@ -168,14 +141,11 @@ describe("compute23FreeClassSubmetricAntivotes", (): void => {
 
         expect(actual).toBe(
             ((log(
-                computeSubmetricAntivotes(
-                    [0, 0, 1] as Vector<{ rational: true }>,
-                    submetric,
-                ) as number as Power,
+                computeSubmetricAntivotes([0, 0, 1] as Vector<Rational>, submetric) as number as Power,
                 BASE_2,
             ) as number) +
                 computeSubmetricAntivotes(
-                    [0, 0, 0, 1] as Vector<{ rational: true }>,
+                    [0, 0, 0, 1] as Vector<Rational>,
                     submetric,
                 )) as Grade<LfcUnpopularityEstimate>,
         )
@@ -189,10 +159,10 @@ describe("compute23FreeClassSubmetricAntivotes", (): void => {
         const actual = compute23FreeClassSubmetricAntivotes(two3FreeClass, submetric)
 
         expect(actual).toBe(
-            (((computeSubmetricAntivotes([0, 0, 1] as Vector<{ rational: true }>, submetric) **
+            (((computeSubmetricAntivotes([0, 0, 1] as Vector<Rational>, submetric) **
                 2) as Grade<LfcUnpopularityEstimate>) +
                 computeSubmetricAntivotes(
-                    [0, 0, 0, 1] as Vector<{ rational: true }>,
+                    [0, 0, 0, 1] as Vector<Rational>,
                     submetric,
                 )) as Grade<LfcUnpopularityEstimate>,
         )
@@ -208,11 +178,11 @@ describe("compute23FreeClassSubmetricAntivotes", (): void => {
         expect(actual).toBe(
             (((2 **
                 computeSubmetricAntivotes(
-                    [0, 0, 1] as Vector<{ rational: true }>,
+                    [0, 0, 1] as Vector<Rational>,
                     submetric,
                 )) as Grade<LfcUnpopularityEstimate>) +
                 computeSubmetricAntivotes(
-                    [0, 0, 0, 1] as Vector<{ rational: true }>,
+                    [0, 0, 0, 1] as Vector<Rational>,
                     submetric,
                 )) as Grade<LfcUnpopularityEstimate>,
         )

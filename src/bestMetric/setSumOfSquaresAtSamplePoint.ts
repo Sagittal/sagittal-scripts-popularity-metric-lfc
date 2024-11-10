@@ -1,6 +1,6 @@
-import {computeKeyPath, setAt} from "@sagittal/general"
-import {SamplePoint} from "./scopeToSamples"
-import {SumOfSquares, SumsOfSquares} from "./types"
+import { computeKeyPath, setAt } from "@sagittal/general"
+import { SamplePoint } from "./scopeToSamples"
+import { SumOfSquares, SumsOfSquares } from "./types"
 
 const setSumOfSquaresAtSamplePoint = (
     sumOfSquares: undefined | SumOfSquares,
@@ -11,10 +11,8 @@ const setSumOfSquaresAtSamplePoint = (
         sumsOfSquares as Record<number, SumsOfSquares | SumOfSquares>,
         computeKeyPath(...samplePoint),
         sumOfSquares,
-        {parents: []},
+        { parents: [] },
     )
 }
 
-export {
-    setSumOfSquaresAtSamplePoint,
-}
+export { setSumOfSquaresAtSamplePoint }

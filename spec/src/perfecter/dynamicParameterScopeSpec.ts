@@ -1,6 +1,6 @@
-import {Ed, Parameter, Window} from "@sagittal/general"
-import {popularityMetricLfcScriptGroupSettings} from "../../../src/globals"
-import {computeDynamicParameterScopeForPerfecting} from "../../../src/perfecter/dynamicParameterScope"
+import { Ed, Parameter, Window } from "@sagittal/general"
+import { popularityMetricLfcScriptGroupSettings } from "../../../src/globals"
+import { computeDynamicParameterScopeForPerfecting } from "../../../src/perfecter/dynamicParameterScope"
 
 describe("computeDynamicParameterScopeForPerfecting", (): void => {
     it("takes the given parameter value and makes a scope the size of the max unit for the best (not perfect) non-recursive run, and starts off doing a trinary (ED 3) subdivision of it so that it includes the middle point but then also some other points that might be better", (): void => {
@@ -10,8 +10,8 @@ describe("computeDynamicParameterScopeForPerfecting", (): void => {
 
         const expected = {
             center: 0.5 as Parameter,
-            window: popularityMetricLfcScriptGroupSettings.maxUnit as number as Window<{of: Parameter}>,
-            ed: 3 as Ed<{of: Parameter}>,
+            window: popularityMetricLfcScriptGroupSettings.maxUnit as number as Window<{ of: Parameter }>,
+            ed: 3 as Ed<{ of: Parameter }>,
         }
         expect(actual).toEqual(expected)
     })

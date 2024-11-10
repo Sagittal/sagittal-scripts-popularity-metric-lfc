@@ -1,4 +1,4 @@
-import {computeIndentation} from "../../../src/perfecter/indentation"
+import { computeIndentation } from "../../../src/perfecter/indentation"
 
 describe("computeIndentation", (): void => {
     it("returns the number of spaces equal to 2x the recursive depth", (): void => {

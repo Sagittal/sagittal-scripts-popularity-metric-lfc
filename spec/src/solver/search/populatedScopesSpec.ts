@@ -1,13 +1,13 @@
-import {Count} from "@sagittal/general"
-import {Scope} from "../../../../src/bestMetric"
+import { Count } from "@sagittal/general"
+import { Scope } from "../../../../src/bestMetric"
 import * as nonRecursiveBestMetric from "../../../../src/bestMetric/bestMetric"
-import {scopesToSearch, solverStatus} from "../../../../src/globals"
-import {searchPopulatedScopes} from "../../../../src/solver/search/populatedScopes"
-import {PopularityParameterId} from "../../../../src/sumOfSquares"
+import { scopesToSearch, solverStatus } from "../../../../src/globals"
+import { searchPopulatedScopes } from "../../../../src/solver/search/populatedScopes"
+import { PopularityParameterId } from "../../../../src/sumOfSquares"
 
 describe("searchPopulatedScopes", (): void => {
-    const scope = [{[PopularityParameterId.MAX]: true}] as Scope
-    const otherScope = [{[PopularityParameterId.A_AS_COEFFICIENT]: 2}] as Scope
+    const scope = [{ [PopularityParameterId.MAX]: true }] as Scope
+    const otherScope = [{ [PopularityParameterId.A_AS_COEFFICIENT]: 2 }] as Scope
 
     beforeEach((): void => {
         solverStatus.searchedScopeCount = 155 as Count<Scope>
@@ -28,7 +28,9 @@ describe("searchPopulatedScopes", (): void => {
     })
 
     it("does those things even if there is an error while searching the scope", async (): Promise<void> => {
-        spyOn(nonRecursiveBestMetric, "nonRecursiveSearchScopeAndMaybeUpdateBestMetric").and.throwError("something")
+        spyOn(nonRecursiveBestMetric, "nonRecursiveSearchScopeAndMaybeUpdateBestMetric").and.throwError(
+            "something",
+        )
 
         await searchPopulatedScopes()
 
@@ -41,6 +43,8 @@ describe("searchPopulatedScopes", (): void => {
 
         await searchPopulatedScopes()
 
-        expect(nonRecursiveBestMetric.nonRecursiveSearchScopeAndMaybeUpdateBestMetric).toHaveBeenCalledWith(scope)
+        expect(nonRecursiveBestMetric.nonRecursiveSearchScopeAndMaybeUpdateBestMetric).toHaveBeenCalledWith(
+            scope,
+        )
     })
 })

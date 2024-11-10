@@ -3,7 +3,6 @@ import {
     Combination,
     computeKeyPath,
     dig,
-    Direction,
     EMPTY_VECTOR,
     Grade,
     Index,
@@ -12,17 +11,15 @@ import {
     Name,
     Obj,
     Two3FreeClass,
+    Rational,
+    Super,
+    Rough,
 } from "@sagittal/general"
 import * as doOnNextEventLoop from "@sagittal/general/dist/cjs/code/doOnNextEventLoop"
 import { Metric, Sample, SamplePoint, SumsOfSquares } from "../../../src/bestMetric"
 import { computeSumOfSquaresAndMaybeUpdateBestMetric } from "../../../src/bestMetric/sumOfSquares"
 import { bestMetrics } from "../../../src/globals"
-import {
-    computeUnpopularities,
-    LfcUnpopularityEstimate,
-    PopularityParameterId,
-    Submetric,
-} from "../../../src/sumOfSquares"
+import { LfcUnpopularityEstimate, PopularityParameterId, Submetric } from "../../../src/sumOfSquares"
 import * as unpopularities from "../../../src/sumOfSquares/unpopularities"
 
 describe("computeSumOfSquaresAndMaybeUpdateBestMetric", (): void => {
@@ -111,33 +108,21 @@ describe("computeSumOfSquaresAndMaybeUpdateBestMetric", (): void => {
             {
                 antivotes: 0 as Grade<LfcUnpopularityEstimate>,
                 two3FreeClass: {
-                    vector: EMPTY_VECTOR as Vector<{
-                        rational: true
-                        rough: 5
-                        direction: Direction.SUPER
-                    }>,
+                    vector: EMPTY_VECTOR as Vector<Rational & Super & Rough<5>>,
                 } as Two3FreeClass,
                 index: 0 as Index<LfcUnpopularityEstimate>,
             },
             {
                 antivotes: NaN as Grade<LfcUnpopularityEstimate>,
                 two3FreeClass: {
-                    vector: [0, 0, 1] as Vector<{
-                        rational: true
-                        rough: 5
-                        direction: Direction.SUPER
-                    }>,
+                    vector: [0, 0, 1] as Vector<Rational & Super & Rough<5>>,
                 } as Two3FreeClass,
                 index: 0 as Index<LfcUnpopularityEstimate>,
             },
             {
                 antivotes: 8 as Grade<LfcUnpopularityEstimate>,
                 two3FreeClass: {
-                    vector: [0, 0, 0, 1] as Vector<{
-                        rational: true
-                        rough: 5
-                        direction: Direction.SUPER
-                    }>,
+                    vector: [0, 0, 0, 1] as Vector<Rational & Super & Rough<5>>,
                 } as Two3FreeClass,
                 index: 0 as Index<LfcUnpopularityEstimate>,
             },

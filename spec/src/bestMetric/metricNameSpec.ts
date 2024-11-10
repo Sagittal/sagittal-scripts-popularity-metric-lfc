@@ -1,13 +1,13 @@
-import {Combination} from "@sagittal/general"
-import {SubmetricScope} from "../../../src/bestMetric"
-import {computeMetricName} from "../../../src/bestMetric/metricName"
-import {PopularityParameterId} from "../../../src/sumOfSquares"
+import { Combination } from "@sagittal/general"
+import { SubmetricScope } from "../../../src/bestMetric"
+import { computeMetricName } from "../../../src/bestMetric/metricName"
+import { PopularityParameterId } from "../../../src/sumOfSquares"
 
 describe("computeMetricName", (): void => {
     it("makes a string out of the parameters (ignoring values) in each submetric", (): void => {
         const submetricScopes = [
             {
-                [PopularityParameterId.A_AS_LOGARITHM_BASE]: {center: 2.1, window: 3, ed: 30},
+                [PopularityParameterId.A_AS_LOGARITHM_BASE]: { center: 2.1, window: 3, ed: 30 },
                 [PopularityParameterId.SUM]: true,
             },
             {
@@ -25,7 +25,7 @@ describe("computeMetricName", (): void => {
         const submetricScopes = [
             {
                 [PopularityParameterId.SUM]: true,
-                [PopularityParameterId.A_AS_LOGARITHM_BASE]: {center: 2.1, window: 3, ed: 30},
+                [PopularityParameterId.A_AS_LOGARITHM_BASE]: { center: 2.1, window: 3, ed: 30 },
             },
             {
                 [PopularityParameterId.WITHOUT_REPETITION]: true,
@@ -48,7 +48,7 @@ describe("computeMetricName", (): void => {
             },
             {
                 [PopularityParameterId.SUM]: true,
-                [PopularityParameterId.A_AS_LOGARITHM_BASE]: {center: 2.1, window: 3, ed: 30},
+                [PopularityParameterId.A_AS_LOGARITHM_BASE]: { center: 2.1, window: 3, ed: 30 },
             },
         ] as Combination<SubmetricScope>
 

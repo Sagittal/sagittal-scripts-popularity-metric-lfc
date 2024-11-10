@@ -9,17 +9,19 @@ import {
     ScalaPopularityStat,
     stringify,
 } from "@sagittal/general"
-import {Metric} from "../../bestMetric"
-import {popularityMetricLfcScriptGroupSettings} from "../../globals"
-import {computeUnpopularities, LfcUnpopularityEstimate} from "../../sumOfSquares"
-import {applySharedPopularityMetricLfcScriptSetup, load} from "../shared"
+import { Metric } from "../../bestMetric"
+import { popularityMetricLfcScriptGroupSettings } from "../../globals"
+import { computeUnpopularities, LfcUnpopularityEstimate } from "../../sumOfSquares"
+import { applySharedPopularityMetricLfcScriptSetup, load } from "../shared"
 
-applySharedPopularityMetricLfcScriptSetup({logDir: "filterRottens" as Filename})
+applySharedPopularityMetricLfcScriptSetup({ logDir: "filterRottens" as Filename })
 
 const potentiallyRottens = load("metrics" as Filename) as Record<Name<Metric>, Metric>
 
-const popularities: Array<Ranked<ScalaPopularityStat>> = COMMA_POPULARITIES
-    .slice(0, popularityMetricLfcScriptGroupSettings.onlyTop)
+const popularities: Array<Ranked<ScalaPopularityStat>> = COMMA_POPULARITIES.slice(
+    0,
+    popularityMetricLfcScriptGroupSettings.onlyTop,
+)
 
 const potentiallyRottenEntries = Object.entries(potentiallyRottens) as Array<[Name<Metric>, Metric]>
 const noRottens = potentiallyRottenEntries.reduce(
@@ -28,8 +30,9 @@ const noRottens = potentiallyRottenEntries.reduce(
         [potentiallyRottenName, potentiallyRottenMetric]: [Name<Metric>, Metric],
     ): Record<Name<Metric>, Metric> => {
         const unpopularities = computeUnpopularities(popularities, potentiallyRottenMetric.submetrics)
-        const gotNaNs = unpopularities
-            .some((unpopularity: LfcUnpopularityEstimate): boolean => !isNumber(unpopularity.antivotes))
+        const gotNaNs = unpopularities.some(
+            (unpopularity: LfcUnpopularityEstimate): boolean => !isNumber(unpopularity.antivotes),
+        )
         if (gotNaNs) return noRottens
 
         return {
@@ -40,4 +43,4 @@ const noRottens = potentiallyRottenEntries.reduce(
     {} as Record<Name<Metric>, Metric>,
 )
 
-saveLog(stringify(noRottens, {multiline: true}), LogTarget.FINAL)
+saveLog(stringify(noRottens, { multiline: true }), LogTarget.FINAL)

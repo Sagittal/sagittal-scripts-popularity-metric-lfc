@@ -1,13 +1,13 @@
-import {Combination, LogTarget, Parameter, saveLog, stringify} from "@sagittal/general"
-import {Metric, Scope, SubmetricScope} from "../bestMetric"
-import {PopularityParameterId, Submetric} from "../sumOfSquares"
-import {PARAMETER_DYNAMISMS} from "./constants"
-import {computeDynamicParameterScopeForPerfecting} from "./dynamicParameterScope"
+import { Combination, LogTarget, Parameter, saveLog, stringify } from "@sagittal/general"
+import { Metric, Scope, SubmetricScope } from "../bestMetric"
+import { PopularityParameterId, Submetric } from "../sumOfSquares"
+import { PARAMETER_DYNAMISMS } from "./constants"
+import { computeDynamicParameterScopeForPerfecting } from "./dynamicParameterScope"
 import {
     recursiveSearchScopeAndMaybeUpdateBestMetric,
     recursiveSearchScopeAndMaybeUpdateBestMetricSync,
 } from "./perfectMetric"
-import {PerfectMetricOptions} from "./types"
+import { PerfectMetricOptions } from "./types"
 
 const computeScopeFromMetric = (metric: Metric): Scope => {
     const spreadDynamicParameters = metric.spreadDynamicParameters
@@ -25,18 +25,18 @@ const computeScopeFromMetric = (metric: Metric): Scope => {
 
                 return {
                     ...submetricScope,
-                    [parameter]: PARAMETER_DYNAMISMS[parameter] ?
-                        // Okay so it looks like we can either
-                        //  Make this parameter dynamism something we check for the spread parameters too
-                        //  Or we could just not identify them as spread parameters in the first place
-                        //  And leave it up to right here to handle it
-                        //  I mean they are literally spread, even if they can't change,
-                        //  Which might be good to acknowledge if we ever change the bases not to be locked down
-                        //  Although then there's the problem of my guess backfill script misidentifying them
-                        //  Maybe if you just change it to spreadDynamicParameters the problem is solved?
-                        //  And we've gone with the latter.
-                        computeDynamicParameterScopeForPerfecting(parameterValue) :
-                        parameterValue,
+                    [parameter]: PARAMETER_DYNAMISMS[parameter]
+                        ? // Okay so it looks like we can either
+                          //  Make this parameter dynamism something we check for the spread parameters too
+                          //  Or we could just not identify them as spread parameters in the first place
+                          //  And leave it up to right here to handle it
+                          //  I mean they are literally spread, even if they can't change,
+                          //  Which might be good to acknowledge if we ever change the bases not to be locked down
+                          //  Although then there's the problem of my guess backfill script misidentifying them
+                          //  Maybe if you just change it to spreadDynamicParameters the problem is solved?
+                          //  And we've gone with the latter.
+                          computeDynamicParameterScopeForPerfecting(parameterValue)
+                        : parameterValue,
                 }
             },
             {} as SubmetricScope,
@@ -46,7 +46,9 @@ const computeScopeFromMetric = (metric: Metric): Scope => {
     const allBinsSubmetricScope: SubmetricScope = {} as SubmetricScope
     if (spreadDynamicParameters) {
         spreadDynamicParameters.forEach((spreadDynamicParameter: PopularityParameterId): void => {
-            const spreadDynamicParameterValue = spreadDynamicParameterValues[spreadDynamicParameter] as Parameter
+            const spreadDynamicParameterValue = spreadDynamicParameterValues[
+                spreadDynamicParameter
+            ] as Parameter
             allBinsSubmetricScope[spreadDynamicParameter] =
                 computeDynamicParameterScopeForPerfecting(spreadDynamicParameterValue)
         })
@@ -61,8 +63,9 @@ const perfectMetric = async (metric: Metric, options: PerfectMetricOptions): Pro
 
     try {
         await recursiveSearchScopeAndMaybeUpdateBestMetric(scope, options)
-    } catch (error) {
-        saveLog(`error when perfecting scope ${stringify(scope)}: ${error}`, LogTarget.ERROR)
+    } catch (e) {
+        if (e instanceof Error)
+            saveLog(`error when perfecting scope ${stringify(scope)}: ${e.message}`, LogTarget.ERROR)
     }
 }
 
@@ -71,12 +74,10 @@ const perfectMetricSync = (metric: Metric, options: PerfectMetricOptions): void 
 
     try {
         recursiveSearchScopeAndMaybeUpdateBestMetricSync(scope, options)
-    } catch (error) {
-        saveLog(`error when perfecting scope ${stringify(scope)}: ${error}`, LogTarget.ERROR)
+    } catch (e) {
+        if (e instanceof Error)
+            saveLog(`error when perfecting scope ${stringify(scope)}: ${e.message}`, LogTarget.ERROR)
     }
 }
 
-export {
-    perfectMetric,
-    perfectMetricSync,
-}
+export { perfectMetric, perfectMetricSync }

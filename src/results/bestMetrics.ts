@@ -1,6 +1,6 @@
-import {Combination} from "@sagittal/general"
-import {SumOfSquares} from "../bestMetric"
-import {PopularityParameterId, Submetric} from "../sumOfSquares"
+import { Combination } from "@sagittal/general"
+import { SumOfSquares } from "../bestMetric"
+import { PopularityParameterId, Submetric } from "../sumOfSquares"
 
 // ALL VALUES Z -1, ONLY TOP 80
 
@@ -388,7 +388,7 @@ const bAndU = {
             [PopularityParameterId.W]: -2.656,
             [PopularityParameterId.B]: -2.829,
             [PopularityParameterId.X]: 4.471,
-            [PopularityParameterId.U]: 3.850,
+            [PopularityParameterId.U]: 3.85,
             [PopularityParameterId.SUM]: true,
         },
     ],
@@ -406,7 +406,7 @@ const improvedMaybeMin = {
             [PopularityParameterId.A_AS_LOGARITHM_BASE]: 2,
             [PopularityParameterId.Y]: 0.8568,
             [PopularityParameterId.W]: -1.4457,
-            [PopularityParameterId.B]: -1.8630,
+            [PopularityParameterId.B]: -1.863,
         },
     ],
 }
@@ -721,9 +721,7 @@ const lak = {
             [PopularityParameterId.A_AS_POWER_EXPONENT]: 0.6165725047080979,
         },
     ],
-    spreadDynamicParameters: [
-        PopularityParameterId.A_AS_POWER_EXPONENT,
-    ],
+    spreadDynamicParameters: [PopularityParameterId.A_AS_POWER_EXPONENT],
 }
 const wab = {
     sumOfSquares: 0.0068022046202959605,
@@ -856,7 +854,8 @@ const waybl = {
             [PopularityParameterId.WITHOUT_REPETITION]: true,
             [PopularityParameterId.MAX]: true,
             [PopularityParameterId.A_AS_LOGARITHM_BASE]: 2,
-        }, {
+        },
+        {
             [PopularityParameterId.SUM]: true,
             [PopularityParameterId.A_AS_LOGARITHM_BASE]: 2,
             [PopularityParameterId.W]: -0.9657624622268728,
@@ -1013,6 +1012,4 @@ const bestMetrics = {
     wBL1,
 }
 
-export {
-    bestMetrics,
-}
+export { bestMetrics }

@@ -1,17 +1,22 @@
-import {Decimal, doOnNextEventLoop, LogTarget, Ms, saveLog} from "@sagittal/general"
-import {Scope} from "../bestMetric"
-import {computeNextScope} from "./nextScope"
+import { Decimal, doOnNextEventLoop, Integer, LogTarget, Ms, saveLog } from "@sagittal/general"
+import { Scope } from "../bestMetric"
+import { computeNextScope } from "./nextScope"
 import {
     recursiveSearchScopeAndMaybeUpdateBestMetric,
     recursiveSearchScopeAndMaybeUpdateBestMetricSync,
 } from "./perfectMetric"
-import {LocalMin, MetricTag, RecursiveSearchScopeAndMaybeUpdateBestMetricOptions, SearchLocalMinOptions} from "./types"
+import {
+    LocalMin,
+    MetricTag,
+    RecursiveSearchScopeAndMaybeUpdateBestMetricOptions,
+    SearchLocalMinOptions,
+} from "./types"
 
 const computeRecursiveSearchScopeAndMaybeUpdateBestMetricArguments = (
     nextLocalMin: LocalMin,
     options: SearchLocalMinOptions,
 ): {
-    nextScope: Scope,
+    nextScope: Scope
     recursiveSearchScopeAndMaybeUpdateBestMetricOptions: RecursiveSearchScopeAndMaybeUpdateBestMetricOptions
 } => {
     const {
@@ -25,9 +30,9 @@ const computeRecursiveSearchScopeAndMaybeUpdateBestMetricArguments = (
         onlyBetterThanSopfgtt,
     } = options
 
-    const nextDepth = depth + 1 as Decimal<{integer: true}>
+    const nextDepth = (depth + 1) as Decimal<Integer>
     const nextScope: Scope = computeNextScope(nextLocalMin.samplePoint, dynamicParameters, scope)
-    const nextMetricTag = metricTag + `.${index + 1}/${(nextLocalMinima.length)}` as MetricTag
+    const nextMetricTag = (metricTag + `.${index + 1}/${nextLocalMinima.length}`) as MetricTag
     saveLog(`  ${indentation}${nextMetricTag} - depth ${nextDepth}`, LogTarget.PROGRESS)
     const recursiveSearchScopeAndMaybeUpdateBestMetricOptions = {
         depth: nextDepth,
@@ -36,11 +41,11 @@ const computeRecursiveSearchScopeAndMaybeUpdateBestMetricArguments = (
         onlyBetterThanSopfgtt,
     }
 
-    return {nextScope, recursiveSearchScopeAndMaybeUpdateBestMetricOptions}
+    return { nextScope, recursiveSearchScopeAndMaybeUpdateBestMetricOptions }
 }
 
 const searchNextLocalMin = async (nextLocalMin: LocalMin, options: SearchLocalMinOptions): Promise<void> => {
-    const {nextScope, recursiveSearchScopeAndMaybeUpdateBestMetricOptions} =
+    const { nextScope, recursiveSearchScopeAndMaybeUpdateBestMetricOptions } =
         computeRecursiveSearchScopeAndMaybeUpdateBestMetricArguments(nextLocalMin, options)
 
     return doOnNextEventLoop(async (): Promise<void> => {
@@ -49,14 +54,14 @@ const searchNextLocalMin = async (nextLocalMin: LocalMin, options: SearchLocalMi
                 nextScope,
                 recursiveSearchScopeAndMaybeUpdateBestMetricOptions,
             )
-        } catch (e: any) {
-            saveLog(`error when searching: ${e.message}`, LogTarget.ERROR)
+        } catch (e) {
+            if (e instanceof Error) saveLog(`error when searching: ${e.message}`, LogTarget.ERROR)
         }
     }, options.index as Ms)
 }
 
 const searchNextLocalMinSync = (nextLocalMin: LocalMin, options: SearchLocalMinOptions): void => {
-    const {nextScope, recursiveSearchScopeAndMaybeUpdateBestMetricOptions} =
+    const { nextScope, recursiveSearchScopeAndMaybeUpdateBestMetricOptions } =
         computeRecursiveSearchScopeAndMaybeUpdateBestMetricArguments(nextLocalMin, options)
 
     try {
@@ -64,12 +69,9 @@ const searchNextLocalMinSync = (nextLocalMin: LocalMin, options: SearchLocalMinO
             nextScope,
             recursiveSearchScopeAndMaybeUpdateBestMetricOptions,
         )
-    } catch (e: any) {
-        saveLog(`error when searching: ${e.message}`, LogTarget.ERROR)
+    } catch (e) {
+        if (e instanceof Error) saveLog(`error when searching: ${e.message}`, LogTarget.ERROR)
     }
 }
 
-export {
-    searchNextLocalMin,
-    searchNextLocalMinSync,
-}
+export { searchNextLocalMin, searchNextLocalMinSync }

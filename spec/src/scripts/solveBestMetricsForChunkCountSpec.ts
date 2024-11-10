@@ -1,4 +1,4 @@
-import {Io, slowTestOnlyRunInFullSuite, runScriptAndGetConsoleOutput} from "@sagittal/general"
+import { Io, slowTestOnlyRunInFullSuite, runScriptAndGetConsoleOutput } from "@sagittal/general"
 
 describe("solve-best-metrics-for-chunk-count", (): void => {
     const expected = [

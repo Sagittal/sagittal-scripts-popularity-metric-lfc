@@ -1,4 +1,4 @@
-import {Io, slowTestOnlyRunInFullSuite, runScriptAndGetConsoleOutput} from "@sagittal/general"
+import { Io, slowTestOnlyRunInFullSuite, runScriptAndGetConsoleOutput } from "@sagittal/general"
 
 describe("perfect-metric-from-scope", (): void => {
     const expected = [

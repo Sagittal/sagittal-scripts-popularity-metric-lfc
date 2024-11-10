@@ -1,7 +1,7 @@
-import {Index, Parameter, Step} from "@sagittal/general"
-import {DynamicParameter} from "../../../../src/bestMetric"
-import {computeDynamicParameterValueIndices} from "../../../../src/bestMetric/scopeToSamples/dynamicParameterValueIndices"
-import {PopularityParameterId, Submetric} from "../../../../src/sumOfSquares"
+import { Index, Parameter, Step } from "@sagittal/general"
+import { DynamicParameter } from "../../../../src/bestMetric"
+import { computeDynamicParameterValueIndices } from "../../../../src/bestMetric/scopeToSamples/dynamicParameterValueIndices"
+import { PopularityParameterId, Submetric } from "../../../../src/sumOfSquares"
 
 describe("computeDynamicParameterValueIndices", (): void => {
     it("given the dynamic parameters and a submetric, returns an array of, in order, for each of the dynamic parameters, its index in the parameter points", (): void => {
@@ -13,7 +13,7 @@ describe("computeDynamicParameterValueIndices", (): void => {
                 submetricIndex: 0 as Index<Submetric>,
                 parameter: PopularityParameterId.Y,
                 values: [1.5, 1.2, 0.9] as Parameter[],
-                unit: 0 as Step<{of: Parameter}>,
+                unit: 0 as Step<{ of: Parameter }>,
             },
 
             // Pick from me for the first index of the returned array
@@ -21,7 +21,7 @@ describe("computeDynamicParameterValueIndices", (): void => {
                 submetricIndex: 1 as Index<Submetric>,
                 parameter: PopularityParameterId.Y,
                 values: [0.9, 0.95, 1.0, 1.05, 1.1 /* pick my index as the value */] as Parameter[],
-                unit: 0 as Step<{of: Parameter}>,
+                unit: 0 as Step<{ of: Parameter }>,
             },
 
             // Pick from me for the second index of the returned array
@@ -29,7 +29,7 @@ describe("computeDynamicParameterValueIndices", (): void => {
                 submetricIndex: 1 as Index<Submetric>,
                 parameter: PopularityParameterId.A_AS_COEFFICIENT,
                 values: [0.6, 0.63, 0.66, 0.69 /*pick my index as the value*/, 0.72] as Parameter[],
-                unit: 0 as Step<{of: Parameter}>,
+                unit: 0 as Step<{ of: Parameter }>,
             },
         ]
         const submetric: Submetric = {

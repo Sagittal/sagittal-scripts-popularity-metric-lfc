@@ -1,7 +1,7 @@
-import {Ed, Parameter, Window} from "@sagittal/general"
-import {Sample, Scope} from "../../../../src/bestMetric"
-import {computeDynamicParameters, computeSamples} from "../../../../src/bestMetric/scopeToSamples"
-import {PopularityParameterId} from "../../../../src/sumOfSquares"
+import { Ed, Parameter, Window } from "@sagittal/general"
+import { Sample, Scope } from "../../../../src/bestMetric"
+import { computeDynamicParameters, computeSamples } from "../../../../src/bestMetric/scopeToSamples"
+import { PopularityParameterId } from "../../../../src/sumOfSquares"
 
 describe("computeSamples", (): void => {
     it("given some submetric scopes, will return all combinations of submetrics to check", (): void => {
@@ -10,28 +10,28 @@ describe("computeSamples", (): void => {
             {
                 [PopularityParameterId.A_AS_COEFFICIENT]: {
                     center: 2 as Parameter,
-                    window: 2 as Window<{of: Parameter}>,
-                    ed: 3 as Ed<{of: Parameter}>,
+                    window: 2 as Window<{ of: Parameter }>,
+                    ed: 3 as Ed<{ of: Parameter }>,
                 },
                 [PopularityParameterId.K_AS_COEFFICIENT]: {
                     center: 0 as Parameter,
-                    window: 4 as Window<{of: Parameter}>,
-                    ed: 2 as Ed<{of: Parameter}>,
+                    window: 4 as Window<{ of: Parameter }>,
+                    ed: 2 as Ed<{ of: Parameter }>,
                 },
             },
             {
                 [PopularityParameterId.COUNT]: true,
                 [PopularityParameterId.A_AS_COEFFICIENT]: {
                     center: 1.5 as Parameter,
-                    window: 2 as Window<{of: Parameter}>,
-                    ed: 2 as Ed<{of: Parameter}>,
+                    window: 2 as Window<{ of: Parameter }>,
+                    ed: 2 as Ed<{ of: Parameter }>,
                 },
                 [PopularityParameterId.W]: 3.3 as Parameter,
             },
         ] as Scope
         const dynamicParameters = computeDynamicParameters(scope)
 
-        const actual = computeSamples({scope, dynamicParameters})
+        const actual = computeSamples({ scope, dynamicParameters })
 
         const expected = [
             {
@@ -213,8 +213,8 @@ describe("computeSamples", (): void => {
                 [PopularityParameterId.COUNT]: true,
                 [PopularityParameterId.A_AS_COEFFICIENT]: {
                     center: 1.5 as Parameter,
-                    window: 2 as Window<{of: Parameter}>,
-                    ed: 2 as Ed<{of: Parameter}>,
+                    window: 2 as Window<{ of: Parameter }>,
+                    ed: 2 as Ed<{ of: Parameter }>,
                 },
                 [PopularityParameterId.K_AS_COEFFICIENT]: 0.5 as Parameter,
             },
@@ -222,15 +222,15 @@ describe("computeSamples", (): void => {
                 [PopularityParameterId.COUNT]: true,
                 [PopularityParameterId.A_AS_COEFFICIENT]: {
                     center: 1 as Parameter,
-                    window: 2 as Window<{of: Parameter}>,
-                    ed: 2 as Ed<{of: Parameter}>,
+                    window: 2 as Window<{ of: Parameter }>,
+                    ed: 2 as Ed<{ of: Parameter }>,
                 },
                 [PopularityParameterId.K_AS_COEFFICIENT]: 0 as Parameter,
             },
         ] as Scope
         const dynamicParameters = computeDynamicParameters(scope)
 
-        const actual = computeSamples({scope, dynamicParameters})
+        const actual = computeSamples({ scope, dynamicParameters })
 
         const expected = [
             {

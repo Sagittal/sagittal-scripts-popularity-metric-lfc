@@ -1,9 +1,23 @@
-import {Filename, LogTarget, program, setupScriptAndIo} from "@sagittal/general"
-import {popularityMetricLfcScriptGroupSettings} from "../../globals"
+import {
+    Count,
+    Exponent,
+    Filename,
+    LogTarget,
+    Max,
+    Parameter,
+    program,
+    Rank,
+    ScalaPopularityStat,
+    setupScriptAndIo,
+    Step,
+} from "@sagittal/general"
+import { popularityMetricLfcScriptGroupSettings } from "../../globals"
+import { LfcUnpopularityEstimate } from "../../sumOfSquares"
 
-const applySharedPopularityMetricLfcScriptSetup = (
-    {logDir, defaultLogTargets}: {logDir?: Filename, defaultLogTargets?: LogTarget[]} = {},
-): void => {
+const applySharedPopularityMetricLfcScriptSetup = ({
+    logDir,
+    defaultLogTargets,
+}: { logDir?: Filename; defaultLogTargets?: LogTarget[] } = {}): void => {
     program
         .option("--no-moot", "eliminate probably moot parameters or parameter value scopes")
         .option("--z <z>", "z", parseFloat)
@@ -13,8 +27,20 @@ const applySharedPopularityMetricLfcScriptSetup = (
 
     setupScriptAndIo(logDir, defaultLogTargets)
 
-    const {z, onlyTop, maxUnit, moot, sync} = program.opts()
-    
+    const {
+        z,
+        onlyTop,
+        maxUnit,
+        moot,
+        sync,
+    }: {
+        z: Exponent<Rank<ScalaPopularityStat | LfcUnpopularityEstimate>>
+        onlyTop: Count<ScalaPopularityStat>
+        maxUnit: Max<Step<{ of: Parameter }>>
+        moot: boolean
+        sync: boolean
+    } = program.opts()
+
     if (z) popularityMetricLfcScriptGroupSettings.z = z
     if (onlyTop) popularityMetricLfcScriptGroupSettings.onlyTop = onlyTop
     if (maxUnit) popularityMetricLfcScriptGroupSettings.maxUnit = maxUnit
@@ -22,6 +48,4 @@ const applySharedPopularityMetricLfcScriptSetup = (
     if (sync) popularityMetricLfcScriptGroupSettings.sync = true
 }
 
-export {
-    applySharedPopularityMetricLfcScriptSetup,
-}
+export { applySharedPopularityMetricLfcScriptSetup }

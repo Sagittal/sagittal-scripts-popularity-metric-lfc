@@ -1,6 +1,6 @@
-import {BLANK, Index, isUndefined, LogTarget, Maybe, Name, saveLog} from "@sagittal/general"
-import {checkSubmetricsForInvalidParameterCombinations} from "../sumOfSquares"
-import {Sample} from "./scopeToSamples"
+import { BLANK, Index, isUndefined, LogTarget, Maybe, Name, saveLog } from "@sagittal/general"
+import { checkSubmetricsForInvalidParameterCombinations } from "../sumOfSquares"
+import { Sample } from "./scopeToSamples"
 import {
     computeSumOfSquaresAndMaybeUpdateBestMetric,
     computeSumOfSquaresAndMaybeUpdateBestMetricSync,
@@ -26,8 +26,12 @@ const computeNextOptions = (
 
     try {
         checkSubmetricsForInvalidParameterCombinations(samples[0].submetrics)
-    } catch (e: any) {
-        saveLog(`Not searching scope due to invalid parameter combinations: ${e.message}`, LogTarget.ERROR)
+    } catch (e) {
+        if (e instanceof Error)
+            saveLog(
+                `Not searching scope due to invalid parameter combinations: ${e.message}`,
+                LogTarget.ERROR,
+            )
         return
     }
 
@@ -52,16 +56,17 @@ const computeSumsOfSquaresAndMaybeUpdateBestMetric = async (
         return sumsOfSquares
     }
 
-    return new Promise(async (resolve: (sumsOfSquares: SumsOfSquares) => void): Promise<void> => {
-        const samplePromises: Array<Promise<void>> = samples.map((sample: Sample, index: number): Promise<void> => {
-            return computeSumOfSquaresAndMaybeUpdateBestMetric(sample, {
-                ...nextOptions,
-                index: index as Index<Sample>,
-            })
-        })
+    return new Promise((resolve: (sumsOfSquares: SumsOfSquares) => void): void => {
+        const samplePromises: Array<Promise<void>> = samples.map(
+            (sample: Sample, index: number): Promise<void> => {
+                return computeSumOfSquaresAndMaybeUpdateBestMetric(sample, {
+                    ...nextOptions,
+                    index: index as Index<Sample>,
+                })
+            },
+        )
 
-        await Promise.all(samplePromises)
-        resolve(sumsOfSquares)
+        void Promise.all(samplePromises).then(() => resolve(sumsOfSquares))
     })
 }
 
@@ -86,7 +91,4 @@ const computeSumsOfSquaresAndMaybeUpdateBestMetricSync = (
     return sumsOfSquares
 }
 
-export {
-    computeSumsOfSquaresAndMaybeUpdateBestMetric,
-    computeSumsOfSquaresAndMaybeUpdateBestMetricSync,
-}
+export { computeSumsOfSquaresAndMaybeUpdateBestMetric, computeSumsOfSquaresAndMaybeUpdateBestMetricSync }

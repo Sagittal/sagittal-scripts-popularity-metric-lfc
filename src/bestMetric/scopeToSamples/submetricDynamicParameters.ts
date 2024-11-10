@@ -1,7 +1,14 @@
-import {computeParameterValues, DynamicParameterScope, Index, isObject, Parameter, Step} from "@sagittal/general"
-import {PopularityParameterId, Submetric} from "../../sumOfSquares"
-import {SubmetricScope} from "../types"
-import {DynamicParameter} from "./types"
+import {
+    computeParameterValues,
+    DynamicParameterScope,
+    Index,
+    isObject,
+    Parameter,
+    Step,
+} from "@sagittal/general"
+import { PopularityParameterId, Submetric } from "../../sumOfSquares"
+import { SubmetricScope } from "../types"
+import { DynamicParameter } from "./types"
 
 const computeSubmetricDynamicParameters = (
     submetricScope: SubmetricScope = {} as SubmetricScope,
@@ -9,15 +16,16 @@ const computeSubmetricDynamicParameters = (
 ): DynamicParameter[] => {
     const submetricDynamicParameters: DynamicParameter[] = [] as DynamicParameter[]
 
-    const submetricScopeEntries =
-        Object.entries(submetricScope) as Array<[PopularityParameterId, DynamicParameterScope]>
+    const submetricScopeEntries = Object.entries(submetricScope) as Array<
+        [PopularityParameterId, DynamicParameterScope]
+    >
     submetricScopeEntries.forEach(
         ([parameter, parameterScope]: [PopularityParameterId, DynamicParameterScope]): void => {
-            const {ed, window} = parameterScope
+            const { ed, window } = parameterScope
             if (isObject(parameterScope) && ed && window && ed > 1) {
                 const values = computeParameterValues(parameterScope)
-                const unit = window / (ed - 1) as Step<{of: Parameter}>
-                submetricDynamicParameters.push({submetricIndex, parameter, values, unit})
+                const unit = (window / (ed - 1)) as Step<{ of: Parameter }>
+                submetricDynamicParameters.push({ submetricIndex, parameter, values, unit })
             }
         },
     )
@@ -25,6 +33,4 @@ const computeSubmetricDynamicParameters = (
     return submetricDynamicParameters
 }
 
-export {
-    computeSubmetricDynamicParameters,
-}
+export { computeSubmetricDynamicParameters }

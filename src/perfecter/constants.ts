@@ -1,4 +1,4 @@
-import {PopularityParameterId} from "../sumOfSquares"
+import { PopularityParameterId } from "../sumOfSquares"
 
 const PARAMETER_DYNAMISMS: Record<PopularityParameterId, boolean> = {
     [PopularityParameterId.WEIGHT_AS_COEFFICIENT]: true,
@@ -32,6 +32,4 @@ const PARAMETER_DYNAMISMS: Record<PopularityParameterId, boolean> = {
     [PopularityParameterId.MAX]: false,
 }
 
-export {
-    PARAMETER_DYNAMISMS,
-}
+export { PARAMETER_DYNAMISMS }

@@ -1,13 +1,13 @@
-import {computeKeyPath, Name, sort} from "@sagittal/general"
-import {Metric} from "../../bestMetric"
-import {bestMetrics} from "../../globals"
+import { computeKeyPath, Name, sort } from "@sagittal/general"
+import { Metric } from "../../bestMetric"
+import { bestMetrics } from "../../globals"
 
 const computeSortedBestMetrics = (): Record<Name<Metric>, Metric> => {
     const bestMetricsEntries = Array.from(bestMetrics.entries())
-    const bestMetricsEntriesSortedBySumOfSquares = sort(
-        bestMetricsEntries,
-        {descending: true, by: computeKeyPath(1, "sumOfSquares")},
-    )
+    const bestMetricsEntriesSortedBySumOfSquares = sort(bestMetricsEntries, {
+        descending: true,
+        by: computeKeyPath(1, "sumOfSquares"),
+    })
 
     return bestMetricsEntriesSortedBySumOfSquares.reduce(
         (
@@ -23,6 +23,4 @@ const computeSortedBestMetrics = (): Record<Name<Metric>, Metric> => {
     )
 }
 
-export {
-    computeSortedBestMetrics,
-}
+export { computeSortedBestMetrics }

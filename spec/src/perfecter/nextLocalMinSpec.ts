@@ -1,47 +1,49 @@
-import {BLANK, Combination, Decimal, Index, Ms, Name, Parameter, Step} from "@sagittal/general"
+import { BLANK, Combination, Decimal, Index, Integer, Ms, Name, Parameter, Step } from "@sagittal/general"
 import * as doOnNextEventLoop from "@sagittal/general/dist/cjs/code/doOnNextEventLoop"
-import {DynamicParameter, Metric, SamplePoint, Scope, SumOfSquares} from "../../../src/bestMetric"
-import {metricNames} from "../../../src/globals"
-import {searchNextLocalMin} from "../../../src/perfecter/nextLocalMin"
+import { DynamicParameter, Metric, SamplePoint, Scope, SumOfSquares } from "../../../src/bestMetric"
+import { metricNames } from "../../../src/globals"
+import { searchNextLocalMin } from "../../../src/perfecter/nextLocalMin"
 import * as recursiveBestMetric from "../../../src/perfecter/perfectMetric"
-import {LocalMin, MetricTag} from "../../../src/perfecter/types"
-import {PopularityParameterId, Submetric} from "../../../src/sumOfSquares"
+import { LocalMin, MetricTag } from "../../../src/perfecter/types"
+import { PopularityParameterId, Submetric } from "../../../src/sumOfSquares"
 
 describe("searchNextLocalMin", (): void => {
     const nextLocalMin: LocalMin = {
         sumOfSquares: 0.006454 as SumOfSquares,
         samplePoint: [2, 0, 1] as unknown[] as SamplePoint,
-        submetrics: [{
-            [PopularityParameterId.K_AS_COEFFICIENT]: 0.4,
-            [PopularityParameterId.A_AS_COEFFICIENT]: 2.1,
-            [PopularityParameterId.W]: 1.3,
-        }] as unknown[] as Combination<Submetric>,
+        submetrics: [
+            {
+                [PopularityParameterId.K_AS_COEFFICIENT]: 0.4,
+                [PopularityParameterId.A_AS_COEFFICIENT]: 2.1,
+                [PopularityParameterId.W]: 1.3,
+            },
+        ] as unknown[] as Combination<Submetric>,
     }
     const dynamicParameters: DynamicParameter[] = [
         {
             submetricIndex: 0 as Index<Submetric>,
             parameter: PopularityParameterId.K_AS_COEFFICIENT,
             values: [0.3, 0.4, 0.5] as Parameter[],
-            unit: 0.1 as Step<{of: Parameter}>,
+            unit: 0.1 as Step<{ of: Parameter }>,
         },
         {
             submetricIndex: 0 as Index<Submetric>,
             parameter: PopularityParameterId.A_AS_COEFFICIENT,
             values: [1.1, 2.1, 3.1] as Parameter[],
-            unit: 1 as Step<{of: Parameter}>,
+            unit: 1 as Step<{ of: Parameter }>,
         },
         {
             submetricIndex: 0 as Index<Submetric>,
             parameter: PopularityParameterId.W,
             values: [1.3, 1.4, 1.5] as Parameter[],
-            unit: 0.1 as Step<{of: Parameter}>,
+            unit: 0.1 as Step<{ of: Parameter }>,
         },
     ]
     const scope: Scope = [{}] as unknown[] as Scope
     const index = 7
     const metricTag = "" as MetricTag
     const indentation = BLANK
-    const depth = 5 as Decimal<{integer: true}>
+    const depth = 5 as Decimal<Integer>
     const nextLocalMinima = [{}, {}, {}, {}, {}, {}, {}, {}, {}] as LocalMin[]
     const onlyBetterThanSopfgtt = true
     const metricName = "{aAsCoefficient,kAsCoefficient,w}" as Name<Metric>
@@ -61,19 +63,16 @@ describe("searchNextLocalMin", (): void => {
             metricName,
         })
 
-        expect(doOnNextEventLoop.doOnNextEventLoop).toHaveBeenCalledWith(
-            jasmine.anything(),
-            index as Ms,
-        )
+        expect(doOnNextEventLoop.doOnNextEventLoop).toHaveBeenCalledWith(jasmine.anything(), index as Ms)
     })
 
     it("does not crash if there are errors while searching", async (): Promise<void> => {
         // Setting up for an error because this metric name has already been searched
         metricNames.push(metricName)
 
-        await expectAsync(new Promise(async (resolve: (value?: unknown) => void, reject: () => void): Promise<void> => {
-            try {
-                await searchNextLocalMin(nextLocalMin, {
+        await expectAsync(
+            new Promise((resolve: (value?: unknown) => void, reject: (e: Error) => void): void => {
+                searchNextLocalMin(nextLocalMin, {
                     dynamicParameters,
                     scope,
                     metricTag,
@@ -84,11 +83,12 @@ describe("searchNextLocalMin", (): void => {
                     onlyBetterThanSopfgtt,
                     metricName,
                 })
-            } catch (e: any) {
-                reject()
-            }
-            resolve()
-        })).not.toBeRejected()
+                    .then(resolve)
+                    .catch((e) => {
+                        if (e instanceof Error) reject(e)
+                    })
+            }),
+        ).not.toBeRejected()
     })
 
     it("it searches the next local min recursively and maybe updates the best metric", async (): Promise<void> => {
@@ -109,13 +109,21 @@ describe("searchNextLocalMin", (): void => {
         expect(recursiveBestMetric.recursiveSearchScopeAndMaybeUpdateBestMetric).toHaveBeenCalledWith(
             [
                 {
-                    [PopularityParameterId.K_AS_COEFFICIENT]: {center: 0.5, window: 0.06666666666666667, ed: 2},
-                    [PopularityParameterId.A_AS_COEFFICIENT]: {center: 1.1, window: 0.6666666666666666, ed: 7},
-                    [PopularityParameterId.W]: {center: 1.4, window: 0.06666666666666667, ed: 2},
+                    [PopularityParameterId.K_AS_COEFFICIENT]: {
+                        center: 0.5,
+                        window: 0.06666666666666667,
+                        ed: 2,
+                    },
+                    [PopularityParameterId.A_AS_COEFFICIENT]: {
+                        center: 1.1,
+                        window: 0.6666666666666666,
+                        ed: 7,
+                    },
+                    [PopularityParameterId.W]: { center: 1.4, window: 0.06666666666666667, ed: 2 },
                 },
             ] as unknown[] as Scope,
             {
-                depth: 6 as Decimal<{integer: true}>,
+                depth: 6 as Decimal<Integer>,
                 metricTag: ".8/9" as MetricTag,
                 localMin: nextLocalMin,
                 onlyBetterThanSopfgtt,

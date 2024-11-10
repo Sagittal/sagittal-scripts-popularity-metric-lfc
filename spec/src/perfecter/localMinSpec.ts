@@ -1,6 +1,6 @@
-import {SamplePoint, SumOfSquares, SumsOfSquares} from "../../../src/bestMetric"
-import {setSumOfSquaresAtSamplePoint} from "../../../src/bestMetric/setSumOfSquaresAtSamplePoint"
-import {getSumOfSquaresAtSamplePointIfLocalMin} from "../../../src/perfecter/localMin"
+import { SamplePoint, SumOfSquares, SumsOfSquares } from "../../../src/bestMetric"
+import { setSumOfSquaresAtSamplePoint } from "../../../src/bestMetric/setSumOfSquaresAtSamplePoint"
+import { getSumOfSquaresAtSamplePointIfLocalMin } from "../../../src/perfecter/localMin"
 
 describe("getSumOfSquaresAtSamplePointIfLocalMin", (): void => {
     let sumsOfSquares: SumsOfSquares
@@ -11,11 +11,12 @@ describe("getSumOfSquaresAtSamplePointIfLocalMin", (): void => {
             for (let y = 0; y < 4; y++) {
                 for (let z = 0; z < 4; z++) {
                     for (let w = 0; w < 4; w++) {
-                        setSumOfSquaresAtSamplePoint(
-                            0.00454 as SumOfSquares,
-                            sumsOfSquares,
-                            [x, y, z, w] as SamplePoint,
-                        )
+                        setSumOfSquaresAtSamplePoint(0.00454 as SumOfSquares, sumsOfSquares, [
+                            x,
+                            y,
+                            z,
+                            w,
+                        ] as SamplePoint)
                     }
                 }
             }

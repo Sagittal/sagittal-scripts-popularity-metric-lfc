@@ -1,7 +1,8 @@
 export {
-    nonRecursiveSearchScopeAndMaybeUpdateBestMetric, nonRecursiveSearchScopeAndMaybeUpdateBestMetricSync,
+    nonRecursiveSearchScopeAndMaybeUpdateBestMetric,
+    nonRecursiveSearchScopeAndMaybeUpdateBestMetricSync,
 } from "./bestMetric"
-export {computeDynamicParameterScope, DynamicParameter, Sample, SamplePoint} from "./scopeToSamples"
+export { computeDynamicParameterScope, DynamicParameter, Sample, SamplePoint } from "./scopeToSamples"
 export {
     Metric,
     Scope,

@@ -1,7 +1,7 @@
-import {Combination, Grade, LogTarget, round, saveLog, stringify, Two3FreeClass} from "@sagittal/general"
-import {LfcUnpopularityEstimate, Submetric} from "../types"
-import {ANTIVOTES_PRECISION} from "./constants"
-import {computeWeightedSubmetricAntivotes} from "./weightedSubmetricAntivotes"
+import { Combination, Grade, LogTarget, round, saveLog, stringify, Two3FreeClass } from "@sagittal/general"
+import { LfcUnpopularityEstimate, Submetric } from "../types"
+import { ANTIVOTES_PRECISION } from "./constants"
+import { computeWeightedSubmetricAntivotes } from "./weightedSubmetricAntivotes"
 
 const computeAntivotes = (
     two3FreeClass: Two3FreeClass,
@@ -9,19 +9,20 @@ const computeAntivotes = (
 ): Grade<LfcUnpopularityEstimate> =>
     round(
         submetrics.reduce(
-            (totalAntivotes: Grade<LfcUnpopularityEstimate>, submetric: Submetric): Grade<LfcUnpopularityEstimate> => {
+            (
+                totalAntivotes: Grade<LfcUnpopularityEstimate>,
+                submetric: Submetric,
+            ): Grade<LfcUnpopularityEstimate> => {
                 const weightedSubmetricAntivotes: Grade<LfcUnpopularityEstimate> =
                     computeWeightedSubmetricAntivotes(two3FreeClass, submetric)
 
                 saveLog(`${stringify(submetric)}: ${weightedSubmetricAntivotes}`, LogTarget.DETAILS)
 
-                return totalAntivotes + weightedSubmetricAntivotes as Grade<LfcUnpopularityEstimate>
+                return (totalAntivotes + weightedSubmetricAntivotes) as Grade<LfcUnpopularityEstimate>
             },
             0 as Grade<LfcUnpopularityEstimate>,
         ),
         ANTIVOTES_PRECISION,
     )
 
-export {
-    computeAntivotes,
-}
+export { computeAntivotes }

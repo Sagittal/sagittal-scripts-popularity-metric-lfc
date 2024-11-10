@@ -28,9 +28,7 @@ describe("computeWeightedSubmetricAntivotes", (): void => {
 
         computeWeightedSubmetricAntivotes(two3FreeClass, submetric)
 
-        expect(
-            two3FreeClassSubmetricAntivotes.compute23FreeClassSubmetricAntivotes,
-        ).not.toHaveBeenCalled()
+        expect(two3FreeClassSubmetricAntivotes.compute23FreeClassSubmetricAntivotes).not.toHaveBeenCalled()
     })
 
     it("returns the full submetric antivotes when the weight is 1", (): void => {
@@ -41,10 +39,9 @@ describe("computeWeightedSubmetricAntivotes", (): void => {
 
         const actual = computeWeightedSubmetricAntivotes(two3FreeClass, submetric)
 
-        const expected = two3FreeClassSubmetricAntivotes.compute23FreeClassSubmetricAntivotes(
-            two3FreeClass,
-            { [PopularityParameterId.SUM]: true },
-        )
+        const expected = two3FreeClassSubmetricAntivotes.compute23FreeClassSubmetricAntivotes(two3FreeClass, {
+            [PopularityParameterId.SUM]: true,
+        })
         expect(actual).toBe(expected)
     })
 

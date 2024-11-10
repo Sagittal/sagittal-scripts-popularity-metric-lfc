@@ -1,6 +1,6 @@
-import {computeKeyPath, dig, isUndefined, Maybe, Obj} from "@sagittal/general"
-import {SamplePoint, SumOfSquares, SumsOfSquares} from "../bestMetric"
-import {computeAdjacentSamplePoints} from "./adjacentSamplePoints"
+import { computeKeyPath, dig, isUndefined, Maybe, Obj } from "@sagittal/general"
+import { SamplePoint, SumOfSquares, SumsOfSquares } from "../bestMetric"
+import { computeAdjacentSamplePoints } from "./adjacentSamplePoints"
 
 const getSumOfSquaresAtSamplePointIfLocalMin = (
     sumsOfSquares: SumsOfSquares,
@@ -10,15 +10,15 @@ const getSumOfSquaresAtSamplePointIfLocalMin = (
     const sumOfSquares = dig(sumsOfSquares as Obj, computeKeyPath(...samplePoint)) as Maybe<SumOfSquares>
 
     const isLocalMin = adjacentSamplePoints.every((adjacentSamplePoint: SamplePoint): boolean => {
-        const adjacentSumOfSquares =
-            dig(sumsOfSquares as Obj, computeKeyPath(...adjacentSamplePoint)) as Maybe<SumOfSquares>
+        const adjacentSumOfSquares = dig(
+            sumsOfSquares as Obj,
+            computeKeyPath(...adjacentSamplePoint),
+        ) as Maybe<SumOfSquares>
 
-        return isUndefined(adjacentSumOfSquares) ||
-            (
-                !isUndefined(sumOfSquares) ?
-                    adjacentSumOfSquares > sumOfSquares :
-                    false
-            )
+        return (
+            isUndefined(adjacentSumOfSquares) ||
+            (!isUndefined(sumOfSquares) ? adjacentSumOfSquares > sumOfSquares : false)
+        )
     })
 
     if (isLocalMin) {
@@ -28,6 +28,4 @@ const getSumOfSquaresAtSamplePointIfLocalMin = (
     return undefined
 }
 
-export {
-    getSumOfSquaresAtSamplePointIfLocalMin,
-}
+export { getSumOfSquaresAtSamplePointIfLocalMin }

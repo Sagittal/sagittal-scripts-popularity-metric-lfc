@@ -1,5 +1,5 @@
-import {SamplePoint, SumOfSquares, SumsOfSquares} from "../../../src/bestMetric"
-import {setSumOfSquaresAtSamplePoint} from "../../../src/bestMetric/setSumOfSquaresAtSamplePoint"
+import { SamplePoint, SumOfSquares, SumsOfSquares } from "../../../src/bestMetric"
+import { setSumOfSquaresAtSamplePoint } from "../../../src/bestMetric/setSumOfSquaresAtSamplePoint"
 
 describe("setSumOfSquaresAtPoint", (): void => {
     it("saves the sum of squares at the sample point", (): void => {
@@ -12,9 +12,7 @@ describe("setSumOfSquaresAtPoint", (): void => {
         const expectedSumsOfSquares = [
             undefined,
             undefined,
-            [
-                [undefined, undefined, undefined, sumOfSquares],
-            ],
+            [[undefined, undefined, undefined, sumOfSquares]],
         ]
         expect(sumsOfSquares).toEqual(expectedSumsOfSquares)
     })

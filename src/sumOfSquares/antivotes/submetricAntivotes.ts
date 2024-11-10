@@ -11,6 +11,7 @@ import {
     stringify,
     PrimeCount,
     computeLesserPrimeCount,
+    Rational,
 } from "@sagittal/general"
 import { popularityMetricLfcScriptGroupSettings } from "../../globals"
 import { LfcUnpopularityEstimate, Submetric } from "../types"
@@ -22,7 +23,7 @@ import { secondaryParameterOverride } from "./secondaryParameter"
 // (maybe with (maybe adjusted) repetition)
 
 const computeSubmetricAntivotes = (
-    two3FreeRationalVector: Vector<{ rational: true }>,
+    two3FreeRationalVector: Vector<Rational>,
     submetric: Submetric = {},
     quotientPartType?: QuotientPartType,
 ): Grade<LfcUnpopularityEstimate> => {
@@ -96,9 +97,12 @@ const computeSubmetricAntivotes = (
 
             if (isNaN(primeCountAntivotes)) {
                 throw new Error(
-                    `You got NaN! in submetricAntivotes ${two3FreeRationalVector} ${stringify(submetric, {
-                        multiline: true,
-                    })}`,
+                    `You got NaN! in submetricAntivotes ${stringify(two3FreeRationalVector)} ${stringify(
+                        submetric,
+                        {
+                            multiline: true,
+                        },
+                    )}`,
                 )
             }
 

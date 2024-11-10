@@ -1,10 +1,10 @@
-import {adjustAsyncTimeoutForSpec, Count, Ms, slowTestOnlyRunInFullSuite} from "@sagittal/general"
-import {Scope} from "../../../../src/bestMetric"
-import {scopesToSearch, solverStatus} from "../../../../src/globals"
-import {Chunk} from "../../../../src/solver"
-import {populateScopes} from "../../../../src/solver/populate"
-import {INITIAL_PARAMETER_SCOPES, SUBMETRIC_CHUNKS} from "../../../../src/solver/populate/constants"
-import {PopularityParameterId, Submetric} from "../../../../src/sumOfSquares"
+import { adjustAsyncTimeoutForSpec, Count, Ms, slowTestOnlyRunInFullSuite } from "@sagittal/general"
+import { Scope } from "../../../../src/bestMetric"
+import { scopesToSearch, solverStatus } from "../../../../src/globals"
+import { Chunk } from "../../../../src/solver"
+import { populateScopes } from "../../../../src/solver/populate"
+import { INITIAL_PARAMETER_SCOPES, SUBMETRIC_CHUNKS } from "../../../../src/solver/populate/constants"
+import { PopularityParameterId, Submetric } from "../../../../src/sumOfSquares"
 
 describe("populateScopes", (): void => {
     adjustAsyncTimeoutForSpec(1000000 as Ms)
@@ -44,229 +44,299 @@ describe("populateScopes", (): void => {
             // 6
             [
                 {},
-                { // SOAPFAR
+                {
+                    // SOAPFAR
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
                 },
-                { // SOAPFAR
+                {
+                    // SOAPFAR
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
                 },
             ],
             [
                 {},
-                { // SOAPFAR
+                {
+                    // SOAPFAR
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
                 },
-                { // SOAPF
+                {
+                    // SOAPF
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                 },
             ],
             [
                 {},
-                { // SOAPFAR
+                {
+                    // SOAPFAR
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
                 },
-                { // COAPFAR
+                {
+                    // COAPFAR
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
                 },
             ],
             [
                 {},
-                { // SOAPFAR
+                {
+                    // SOAPFAR
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
                 },
-                { // COAPF
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                {
+                    // COAPF
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
                 },
             ],
             [
                 {},
-                { // SOAPFAR
+                {
+                    // SOAPFAR
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
                 },
-                { // GPF
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                {
+                    // GPF
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
                 },
             ],
             [
                 {},
-                { // SOAPFAR
+                {
+                    // SOAPFAR
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
                 },
-                { // LOG BASE A OF N
+                {
+                    // LOG BASE A OF N
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                 },
             ],
 
             // 5
             [
                 {},
-                { // SOAPF
+                {
+                    // SOAPF
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                 },
-                { // SOAPF
+                {
+                    // SOAPF
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                 },
             ],
             [
                 {},
-                { // SOAPF
+                {
+                    // SOAPF
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                 },
-                { // COAPFAR
+                {
+                    // COAPFAR
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
                 },
             ],
             [
                 {},
-                { // SOAPF
+                {
+                    // SOAPF
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                 },
-                { // COAPF
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                {
+                    // COAPF
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
                 },
             ],
             [
                 {},
-                { // SOAPF
+                {
+                    // SOAPF
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                 },
-                { // GPF
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                {
+                    // GPF
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
                 },
             ],
             [
                 {},
-                { // SOAPF
+                {
+                    // SOAPF
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                 },
-                { // LOG BASE A OF N
+                {
+                    // LOG BASE A OF N
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                 },
             ],
 
             // 4
             [
                 {},
-                { // COAPFAR
+                {
+                    // COAPFAR
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
                 },
-                { // COAPFAR
-                    [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                },
-            ],
-            [
-                {},
-                { // COAPFAR
-                    [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                },
-                { // COAPF
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                {
+                    // COAPFAR
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
                 },
             ],
             [
                 {},
-                { // COAPFAR
+                {
+                    // COAPFAR
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
                 },
-                { // GPF
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                {
+                    // COAPF
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
+                },
+            ],
+            [
+                {},
+                {
+                    // COAPFAR
+                    [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
+                },
+                {
+                    // GPF
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
                 },
             ],
             [
                 {},
-                { // COAPFAR
+                {
+                    // COAPFAR
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
                 },
-                { // LOG BASE A OF N
+                {
+                    // LOG BASE A OF N
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                 },
             ],
 
             // 3
             [
                 {},
-                { // COAPF
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                {
+                    // COAPF
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
                 },
-                { // COAPF
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                {
+                    // COAPF
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
                 },
             ],
             [
                 {},
-                { // COAPF
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                {
+                    // COAPF
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
                 },
-                { // GPF
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                {
+                    // GPF
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
                 },
             ],
             [
                 {},
-                { // COAPF
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                {
+                    // COAPF
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
                 },
-                { // LOG BASE A OF N
+                {
+                    // LOG BASE A OF N
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                 },
             ],
 
             // 2
             [
                 {},
-                { // GPF
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                {
+                    // GPF
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
                 },
-                { // GPF
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                {
+                    // GPF
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
                 },
             ],
             [
                 {},
-                { // GPF
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                {
+                    // GPF
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
                 },
-                { // LOG BASE A OF N
+                {
+                    // LOG BASE A OF N
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                 },
             ],
 
             // 1
             [
                 {},
-                { // LOG BASE A OF N
+                {
+                    // LOG BASE A OF N
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                 },
-                { // LOG BASE A OF N
+                {
+                    // LOG BASE A OF N
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                 },
             ],
 
@@ -277,49 +347,56 @@ describe("populateScopes", (): void => {
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WEIGHT_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_COEFFICIENT],
+                    [PopularityParameterId.WEIGHT_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_COEFFICIENT],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WEIGHT_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_EXPONENT],
+                    [PopularityParameterId.WEIGHT_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_EXPONENT],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WEIGHT_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_BASE],
+                    [PopularityParameterId.WEIGHT_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_BASE],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.K_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_BASE],
+                    [PopularityParameterId.K_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_BASE],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.J_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_BASE],
+                    [PopularityParameterId.J_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_BASE],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_BASE],
+                    [PopularityParameterId.A_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_BASE],
                 },
             ],
             [
@@ -354,63 +431,72 @@ describe("populateScopes", (): void => {
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.K_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_COEFFICIENT],
+                    [PopularityParameterId.K_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_COEFFICIENT],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.K_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.K_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_LOGARITHM_BASE],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.K_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_EXPONENT],
+                    [PopularityParameterId.K_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_EXPONENT],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.J_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_COEFFICIENT],
+                    [PopularityParameterId.J_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_COEFFICIENT],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.J_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.J_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_LOGARITHM_BASE],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.J_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_EXPONENT],
+                    [PopularityParameterId.J_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_EXPONENT],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_COEFFICIENT],
+                    [PopularityParameterId.A_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_COEFFICIENT],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_EXPONENT],
+                    [PopularityParameterId.A_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_EXPONENT],
                 },
             ],
             [
@@ -431,21 +517,24 @@ describe("populateScopes", (): void => {
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.USE_NUMINATOR]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_NUMINATOR],
+                    [PopularityParameterId.USE_NUMINATOR]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_NUMINATOR],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.USE_PRIME_INDEX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_PRIME_INDEX],
+                    [PopularityParameterId.USE_PRIME_INDEX]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_PRIME_INDEX],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.MODIFIED_COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MODIFIED_COUNT],
+                    [PopularityParameterId.MODIFIED_COUNT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.MODIFIED_COUNT],
                 },
             ],
 
@@ -454,63 +543,78 @@ describe("populateScopes", (): void => {
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
-                    [PopularityParameterId.WEIGHT_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_COEFFICIENT],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WEIGHT_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_COEFFICIENT],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
-                    [PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
-                    [PopularityParameterId.WEIGHT_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_EXPONENT],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WEIGHT_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_EXPONENT],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
-                    [PopularityParameterId.WEIGHT_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_BASE],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WEIGHT_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_BASE],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
-                    [PopularityParameterId.K_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_BASE],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.K_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_BASE],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
-                    [PopularityParameterId.J_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_BASE],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.J_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_BASE],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
-                    [PopularityParameterId.A_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_BASE],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.A_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_BASE],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.B]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.B],
                 },
             ],
@@ -518,7 +622,8 @@ describe("populateScopes", (): void => {
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.U]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.U],
                 },
             ],
@@ -526,7 +631,8 @@ describe("populateScopes", (): void => {
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.V]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.V],
                 },
             ],
@@ -534,7 +640,8 @@ describe("populateScopes", (): void => {
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.X]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.X],
                 },
             ],
@@ -542,79 +649,98 @@ describe("populateScopes", (): void => {
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
-                    [PopularityParameterId.K_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_COEFFICIENT],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.K_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_COEFFICIENT],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
-                    [PopularityParameterId.K_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.K_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_LOGARITHM_BASE],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
-                    [PopularityParameterId.K_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_EXPONENT],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.K_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_EXPONENT],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
-                    [PopularityParameterId.J_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_COEFFICIENT],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.J_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_COEFFICIENT],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
-                    [PopularityParameterId.J_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.J_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_LOGARITHM_BASE],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
-                    [PopularityParameterId.J_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_EXPONENT],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.J_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_EXPONENT],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
-                    [PopularityParameterId.A_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_COEFFICIENT],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.A_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_COEFFICIENT],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
-                    [PopularityParameterId.A_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_EXPONENT],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.A_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_EXPONENT],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.W]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.W],
                 },
             ],
@@ -622,7 +748,8 @@ describe("populateScopes", (): void => {
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.Y]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.Y],
                 },
             ],
@@ -630,24 +757,30 @@ describe("populateScopes", (): void => {
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
-                    [PopularityParameterId.USE_NUMINATOR]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_NUMINATOR],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.USE_NUMINATOR]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_NUMINATOR],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
-                    [PopularityParameterId.USE_PRIME_INDEX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_PRIME_INDEX],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.USE_PRIME_INDEX]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_PRIME_INDEX],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
-                    [PopularityParameterId.MODIFIED_COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MODIFIED_COUNT],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.MODIFIED_COUNT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.MODIFIED_COUNT],
                 },
             ],
 
@@ -656,49 +789,56 @@ describe("populateScopes", (): void => {
                 {},
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.WEIGHT_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_COEFFICIENT],
+                    [PopularityParameterId.WEIGHT_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_COEFFICIENT],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.WEIGHT_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_EXPONENT],
+                    [PopularityParameterId.WEIGHT_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_EXPONENT],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.WEIGHT_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_BASE],
+                    [PopularityParameterId.WEIGHT_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_BASE],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.K_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_BASE],
+                    [PopularityParameterId.K_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_BASE],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.J_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_BASE],
+                    [PopularityParameterId.J_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_BASE],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.A_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_BASE],
+                    [PopularityParameterId.A_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_BASE],
                 },
             ],
             [
@@ -733,63 +873,72 @@ describe("populateScopes", (): void => {
                 {},
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.K_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_COEFFICIENT],
+                    [PopularityParameterId.K_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_COEFFICIENT],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.K_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.K_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_LOGARITHM_BASE],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.K_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_EXPONENT],
+                    [PopularityParameterId.K_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_EXPONENT],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.J_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_COEFFICIENT],
+                    [PopularityParameterId.J_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_COEFFICIENT],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.J_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.J_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_LOGARITHM_BASE],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.J_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_EXPONENT],
+                    [PopularityParameterId.J_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_EXPONENT],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.A_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_COEFFICIENT],
+                    [PopularityParameterId.A_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_COEFFICIENT],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.A_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_EXPONENT],
+                    [PopularityParameterId.A_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_EXPONENT],
                 },
             ],
             [
@@ -810,21 +959,24 @@ describe("populateScopes", (): void => {
                 {},
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.USE_NUMINATOR]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_NUMINATOR],
+                    [PopularityParameterId.USE_NUMINATOR]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_NUMINATOR],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.USE_PRIME_INDEX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_PRIME_INDEX],
+                    [PopularityParameterId.USE_PRIME_INDEX]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_PRIME_INDEX],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.MODIFIED_COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MODIFIED_COUNT],
+                    [PopularityParameterId.MODIFIED_COUNT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.MODIFIED_COUNT],
                 },
             ],
 
@@ -832,63 +984,78 @@ describe("populateScopes", (): void => {
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.WEIGHT_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_COEFFICIENT],
+                    [PopularityParameterId.WEIGHT_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_COEFFICIENT],
                 },
             ],
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE],
                 },
             ],
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.WEIGHT_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_EXPONENT],
+                    [PopularityParameterId.WEIGHT_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_EXPONENT],
                 },
             ],
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.WEIGHT_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_BASE],
+                    [PopularityParameterId.WEIGHT_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_BASE],
                 },
             ],
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.K_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_BASE],
+                    [PopularityParameterId.K_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_BASE],
                 },
             ],
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.J_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_BASE],
+                    [PopularityParameterId.J_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_BASE],
                 },
             ],
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.A_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_BASE],
+                    [PopularityParameterId.A_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_BASE],
                 },
             ],
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
                     [PopularityParameterId.B]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.B],
                 },
@@ -896,7 +1063,8 @@ describe("populateScopes", (): void => {
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
                     [PopularityParameterId.U]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.U],
                 },
@@ -904,7 +1072,8 @@ describe("populateScopes", (): void => {
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
                     [PopularityParameterId.V]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.V],
                 },
@@ -912,7 +1081,8 @@ describe("populateScopes", (): void => {
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
                     [PopularityParameterId.X]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.X],
                 },
@@ -920,79 +1090,98 @@ describe("populateScopes", (): void => {
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.K_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_COEFFICIENT],
+                    [PopularityParameterId.K_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_COEFFICIENT],
                 },
             ],
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.K_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.K_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_LOGARITHM_BASE],
                 },
             ],
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.K_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_EXPONENT],
+                    [PopularityParameterId.K_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_EXPONENT],
                 },
             ],
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.J_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_COEFFICIENT],
+                    [PopularityParameterId.J_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_COEFFICIENT],
                 },
             ],
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.J_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.J_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_LOGARITHM_BASE],
                 },
             ],
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.J_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_EXPONENT],
+                    [PopularityParameterId.J_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_EXPONENT],
                 },
             ],
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.A_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_COEFFICIENT],
+                    [PopularityParameterId.A_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_COEFFICIENT],
                 },
             ],
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                 },
             ],
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.A_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_EXPONENT],
+                    [PopularityParameterId.A_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_EXPONENT],
                 },
             ],
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
                     [PopularityParameterId.W]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.W],
                 },
@@ -1000,7 +1189,8 @@ describe("populateScopes", (): void => {
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
                     [PopularityParameterId.Y]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.Y],
                 },
@@ -1008,25 +1198,31 @@ describe("populateScopes", (): void => {
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.USE_NUMINATOR]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_NUMINATOR],
+                    [PopularityParameterId.USE_NUMINATOR]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_NUMINATOR],
                 },
             ],
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.USE_PRIME_INDEX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_PRIME_INDEX],
+                    [PopularityParameterId.USE_PRIME_INDEX]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_PRIME_INDEX],
                 },
             ],
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.MODIFIED_COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MODIFIED_COUNT],
+                    [PopularityParameterId.MODIFIED_COUNT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.MODIFIED_COUNT],
                 },
             ],
 
@@ -1034,63 +1230,78 @@ describe("populateScopes", (): void => {
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
-                    [PopularityParameterId.WEIGHT_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_COEFFICIENT],
+                    [PopularityParameterId.WEIGHT_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_COEFFICIENT],
                 },
             ],
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
-                    [PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE],
                 },
             ],
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
-                    [PopularityParameterId.WEIGHT_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_EXPONENT],
+                    [PopularityParameterId.WEIGHT_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_EXPONENT],
                 },
             ],
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
-                    [PopularityParameterId.WEIGHT_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_BASE],
+                    [PopularityParameterId.WEIGHT_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_BASE],
                 },
             ],
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
-                    [PopularityParameterId.K_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_BASE],
+                    [PopularityParameterId.K_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_BASE],
                 },
             ],
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
-                    [PopularityParameterId.J_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_BASE],
+                    [PopularityParameterId.J_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_BASE],
                 },
             ],
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
-                    [PopularityParameterId.A_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_BASE],
+                    [PopularityParameterId.A_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_BASE],
                 },
             ],
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
                     [PopularityParameterId.B]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.B],
                 },
@@ -1098,7 +1309,8 @@ describe("populateScopes", (): void => {
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
                     [PopularityParameterId.U]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.U],
                 },
@@ -1106,7 +1318,8 @@ describe("populateScopes", (): void => {
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
                     [PopularityParameterId.V]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.V],
                 },
@@ -1114,7 +1327,8 @@ describe("populateScopes", (): void => {
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
                     [PopularityParameterId.X]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.X],
                 },
@@ -1122,79 +1336,98 @@ describe("populateScopes", (): void => {
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
-                    [PopularityParameterId.K_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_COEFFICIENT],
+                    [PopularityParameterId.K_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_COEFFICIENT],
                 },
             ],
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
-                    [PopularityParameterId.K_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.K_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_LOGARITHM_BASE],
                 },
             ],
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
-                    [PopularityParameterId.K_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_EXPONENT],
+                    [PopularityParameterId.K_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_EXPONENT],
                 },
             ],
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
-                    [PopularityParameterId.J_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_COEFFICIENT],
+                    [PopularityParameterId.J_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_COEFFICIENT],
                 },
             ],
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
-                    [PopularityParameterId.J_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.J_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_LOGARITHM_BASE],
                 },
             ],
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
-                    [PopularityParameterId.J_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_EXPONENT],
+                    [PopularityParameterId.J_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_EXPONENT],
                 },
             ],
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
-                    [PopularityParameterId.A_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_COEFFICIENT],
+                    [PopularityParameterId.A_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_COEFFICIENT],
                 },
             ],
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                 },
             ],
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
-                    [PopularityParameterId.A_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_EXPONENT],
+                    [PopularityParameterId.A_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_EXPONENT],
                 },
             ],
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
                     [PopularityParameterId.W]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.W],
                 },
@@ -1202,7 +1435,8 @@ describe("populateScopes", (): void => {
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
                     [PopularityParameterId.Y]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.Y],
                 },
@@ -1210,25 +1444,31 @@ describe("populateScopes", (): void => {
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
-                    [PopularityParameterId.USE_NUMINATOR]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_NUMINATOR],
+                    [PopularityParameterId.USE_NUMINATOR]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_NUMINATOR],
                 },
             ],
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
-                    [PopularityParameterId.USE_PRIME_INDEX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_PRIME_INDEX],
+                    [PopularityParameterId.USE_PRIME_INDEX]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_PRIME_INDEX],
                 },
             ],
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
-                    [PopularityParameterId.MODIFIED_COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MODIFIED_COUNT],
+                    [PopularityParameterId.MODIFIED_COUNT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.MODIFIED_COUNT],
                 },
             ],
 
@@ -1237,63 +1477,78 @@ describe("populateScopes", (): void => {
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
-                    [PopularityParameterId.WEIGHT_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_COEFFICIENT],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.WEIGHT_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_COEFFICIENT],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
-                    [PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
-                    [PopularityParameterId.WEIGHT_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_EXPONENT],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.WEIGHT_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_EXPONENT],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
-                    [PopularityParameterId.WEIGHT_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.WEIGHT_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_BASE],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
-                    [PopularityParameterId.K_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.K_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_BASE],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
-                    [PopularityParameterId.J_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.J_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_BASE],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
-                    [PopularityParameterId.A_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_BASE],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                     [PopularityParameterId.B]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.B],
                 },
             ],
@@ -1301,7 +1556,8 @@ describe("populateScopes", (): void => {
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                     [PopularityParameterId.U]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.U],
                 },
             ],
@@ -1309,7 +1565,8 @@ describe("populateScopes", (): void => {
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                     [PopularityParameterId.V]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.V],
                 },
             ],
@@ -1317,7 +1574,8 @@ describe("populateScopes", (): void => {
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                     [PopularityParameterId.X]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.X],
                 },
             ],
@@ -1325,79 +1583,98 @@ describe("populateScopes", (): void => {
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
-                    [PopularityParameterId.K_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_COEFFICIENT],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.K_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_COEFFICIENT],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
-                    [PopularityParameterId.K_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.K_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_LOGARITHM_BASE],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
-                    [PopularityParameterId.K_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_EXPONENT],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.K_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_EXPONENT],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
-                    [PopularityParameterId.J_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_COEFFICIENT],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.J_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_COEFFICIENT],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
-                    [PopularityParameterId.J_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.J_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_LOGARITHM_BASE],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
-                    [PopularityParameterId.J_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_EXPONENT],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.J_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_EXPONENT],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
-                    [PopularityParameterId.A_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_COEFFICIENT],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_COEFFICIENT],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
-                    [PopularityParameterId.A_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_EXPONENT],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_EXPONENT],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                     [PopularityParameterId.W]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.W],
                 },
             ],
@@ -1405,7 +1682,8 @@ describe("populateScopes", (): void => {
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                     [PopularityParameterId.Y]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.Y],
                 },
             ],
@@ -1413,24 +1691,30 @@ describe("populateScopes", (): void => {
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
-                    [PopularityParameterId.USE_NUMINATOR]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_NUMINATOR],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.USE_NUMINATOR]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_NUMINATOR],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
-                    [PopularityParameterId.USE_PRIME_INDEX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_PRIME_INDEX],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.USE_PRIME_INDEX]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_PRIME_INDEX],
                 },
             ],
             [
                 {},
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
-                    [PopularityParameterId.MODIFIED_COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MODIFIED_COUNT],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.MODIFIED_COUNT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.MODIFIED_COUNT],
                 },
             ],
 
@@ -1439,7 +1723,8 @@ describe("populateScopes", (): void => {
             // SOAPFAR (25)
             [
                 {
-                    [PopularityParameterId.WEIGHT_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_COEFFICIENT],
+                    [PopularityParameterId.WEIGHT_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_COEFFICIENT],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
@@ -1447,7 +1732,8 @@ describe("populateScopes", (): void => {
             ],
             [
                 {
-                    [PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
@@ -1455,7 +1741,8 @@ describe("populateScopes", (): void => {
             ],
             [
                 {
-                    [PopularityParameterId.WEIGHT_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_EXPONENT],
+                    [PopularityParameterId.WEIGHT_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_EXPONENT],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
@@ -1463,7 +1750,8 @@ describe("populateScopes", (): void => {
             ],
             [
                 {
-                    [PopularityParameterId.WEIGHT_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_BASE],
+                    [PopularityParameterId.WEIGHT_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_BASE],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
@@ -1471,7 +1759,8 @@ describe("populateScopes", (): void => {
             ],
             [
                 {
-                    [PopularityParameterId.K_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_BASE],
+                    [PopularityParameterId.K_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_BASE],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
@@ -1479,7 +1768,8 @@ describe("populateScopes", (): void => {
             ],
             [
                 {
-                    [PopularityParameterId.J_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_BASE],
+                    [PopularityParameterId.J_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_BASE],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
@@ -1487,7 +1777,8 @@ describe("populateScopes", (): void => {
             ],
             [
                 {
-                    [PopularityParameterId.A_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_BASE],
+                    [PopularityParameterId.A_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_BASE],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
@@ -1527,7 +1818,8 @@ describe("populateScopes", (): void => {
             ],
             [
                 {
-                    [PopularityParameterId.K_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_COEFFICIENT],
+                    [PopularityParameterId.K_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_COEFFICIENT],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
@@ -1535,7 +1827,8 @@ describe("populateScopes", (): void => {
             ],
             [
                 {
-                    [PopularityParameterId.K_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.K_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_LOGARITHM_BASE],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
@@ -1543,7 +1836,8 @@ describe("populateScopes", (): void => {
             ],
             [
                 {
-                    [PopularityParameterId.K_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_EXPONENT],
+                    [PopularityParameterId.K_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_EXPONENT],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
@@ -1551,7 +1845,8 @@ describe("populateScopes", (): void => {
             ],
             [
                 {
-                    [PopularityParameterId.J_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_COEFFICIENT],
+                    [PopularityParameterId.J_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_COEFFICIENT],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
@@ -1559,7 +1854,8 @@ describe("populateScopes", (): void => {
             ],
             [
                 {
-                    [PopularityParameterId.J_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.J_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_LOGARITHM_BASE],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
@@ -1567,7 +1863,8 @@ describe("populateScopes", (): void => {
             ],
             [
                 {
-                    [PopularityParameterId.J_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_EXPONENT],
+                    [PopularityParameterId.J_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_EXPONENT],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
@@ -1575,7 +1872,8 @@ describe("populateScopes", (): void => {
             ],
             [
                 {
-                    [PopularityParameterId.A_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_COEFFICIENT],
+                    [PopularityParameterId.A_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_COEFFICIENT],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
@@ -1583,7 +1881,8 @@ describe("populateScopes", (): void => {
             ],
             [
                 {
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
@@ -1591,7 +1890,8 @@ describe("populateScopes", (): void => {
             ],
             [
                 {
-                    [PopularityParameterId.A_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_EXPONENT],
+                    [PopularityParameterId.A_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_EXPONENT],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
@@ -1615,7 +1915,8 @@ describe("populateScopes", (): void => {
             ],
             [
                 {
-                    [PopularityParameterId.USE_NUMINATOR]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_NUMINATOR],
+                    [PopularityParameterId.USE_NUMINATOR]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_NUMINATOR],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
@@ -1623,7 +1924,8 @@ describe("populateScopes", (): void => {
             ],
             [
                 {
-                    [PopularityParameterId.USE_PRIME_INDEX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_PRIME_INDEX],
+                    [PopularityParameterId.USE_PRIME_INDEX]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_PRIME_INDEX],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
@@ -1631,7 +1933,8 @@ describe("populateScopes", (): void => {
             ],
             [
                 {
-                    [PopularityParameterId.MODIFIED_COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MODIFIED_COUNT],
+                    [PopularityParameterId.MODIFIED_COUNT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.MODIFIED_COUNT],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
@@ -1641,65 +1944,79 @@ describe("populateScopes", (): void => {
             // SOAPF (25)
             [
                 {
-                    [PopularityParameterId.WEIGHT_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_COEFFICIENT],
+                    [PopularityParameterId.WEIGHT_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_COEFFICIENT],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.WEIGHT_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_EXPONENT],
+                    [PopularityParameterId.WEIGHT_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_EXPONENT],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.WEIGHT_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_BASE],
+                    [PopularityParameterId.WEIGHT_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_BASE],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.K_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_BASE],
+                    [PopularityParameterId.K_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_BASE],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.J_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_BASE],
+                    [PopularityParameterId.J_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_BASE],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.A_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_BASE],
+                    [PopularityParameterId.A_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_BASE],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                 },
             ],
             [
@@ -1708,7 +2025,8 @@ describe("populateScopes", (): void => {
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                 },
             ],
             [
@@ -1717,7 +2035,8 @@ describe("populateScopes", (): void => {
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                 },
             ],
             [
@@ -1726,7 +2045,8 @@ describe("populateScopes", (): void => {
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                 },
             ],
             [
@@ -1735,88 +2055,107 @@ describe("populateScopes", (): void => {
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.K_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_COEFFICIENT],
+                    [PopularityParameterId.K_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_COEFFICIENT],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.K_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.K_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_LOGARITHM_BASE],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.K_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_EXPONENT],
+                    [PopularityParameterId.K_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_EXPONENT],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.J_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_COEFFICIENT],
+                    [PopularityParameterId.J_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_COEFFICIENT],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.J_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.J_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_LOGARITHM_BASE],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.J_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_EXPONENT],
+                    [PopularityParameterId.J_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_EXPONENT],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.A_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_COEFFICIENT],
+                    [PopularityParameterId.A_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_COEFFICIENT],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.A_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_EXPONENT],
+                    [PopularityParameterId.A_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_EXPONENT],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                 },
             ],
             [
@@ -1825,7 +2164,8 @@ describe("populateScopes", (): void => {
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                 },
             ],
             [
@@ -1834,41 +2174,49 @@ describe("populateScopes", (): void => {
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.USE_NUMINATOR]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_NUMINATOR],
+                    [PopularityParameterId.USE_NUMINATOR]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_NUMINATOR],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.USE_PRIME_INDEX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_PRIME_INDEX],
+                    [PopularityParameterId.USE_PRIME_INDEX]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_PRIME_INDEX],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.MODIFIED_COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MODIFIED_COUNT],
+                    [PopularityParameterId.MODIFIED_COUNT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.MODIFIED_COUNT],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                 },
             ],
 
             // COAPFAR (25)
             [
                 {
-                    [PopularityParameterId.WEIGHT_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_COEFFICIENT],
+                    [PopularityParameterId.WEIGHT_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_COEFFICIENT],
                 },
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
@@ -1876,7 +2224,8 @@ describe("populateScopes", (): void => {
             ],
             [
                 {
-                    [PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE],
                 },
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
@@ -1884,7 +2233,8 @@ describe("populateScopes", (): void => {
             ],
             [
                 {
-                    [PopularityParameterId.WEIGHT_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_EXPONENT],
+                    [PopularityParameterId.WEIGHT_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_EXPONENT],
                 },
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
@@ -1892,7 +2242,8 @@ describe("populateScopes", (): void => {
             ],
             [
                 {
-                    [PopularityParameterId.WEIGHT_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_BASE],
+                    [PopularityParameterId.WEIGHT_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_BASE],
                 },
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
@@ -1900,7 +2251,8 @@ describe("populateScopes", (): void => {
             ],
             [
                 {
-                    [PopularityParameterId.K_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_BASE],
+                    [PopularityParameterId.K_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_BASE],
                 },
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
@@ -1908,7 +2260,8 @@ describe("populateScopes", (): void => {
             ],
             [
                 {
-                    [PopularityParameterId.J_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_BASE],
+                    [PopularityParameterId.J_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_BASE],
                 },
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
@@ -1916,7 +2269,8 @@ describe("populateScopes", (): void => {
             ],
             [
                 {
-                    [PopularityParameterId.A_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_BASE],
+                    [PopularityParameterId.A_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_BASE],
                 },
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
@@ -1956,7 +2310,8 @@ describe("populateScopes", (): void => {
             ],
             [
                 {
-                    [PopularityParameterId.K_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_COEFFICIENT],
+                    [PopularityParameterId.K_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_COEFFICIENT],
                 },
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
@@ -1964,7 +2319,8 @@ describe("populateScopes", (): void => {
             ],
             [
                 {
-                    [PopularityParameterId.K_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.K_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_LOGARITHM_BASE],
                 },
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
@@ -1972,7 +2328,8 @@ describe("populateScopes", (): void => {
             ],
             [
                 {
-                    [PopularityParameterId.K_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_EXPONENT],
+                    [PopularityParameterId.K_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_EXPONENT],
                 },
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
@@ -1980,7 +2337,8 @@ describe("populateScopes", (): void => {
             ],
             [
                 {
-                    [PopularityParameterId.J_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_COEFFICIENT],
+                    [PopularityParameterId.J_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_COEFFICIENT],
                 },
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
@@ -1988,7 +2346,8 @@ describe("populateScopes", (): void => {
             ],
             [
                 {
-                    [PopularityParameterId.J_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.J_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_LOGARITHM_BASE],
                 },
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
@@ -1996,7 +2355,8 @@ describe("populateScopes", (): void => {
             ],
             [
                 {
-                    [PopularityParameterId.J_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_EXPONENT],
+                    [PopularityParameterId.J_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_EXPONENT],
                 },
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
@@ -2004,7 +2364,8 @@ describe("populateScopes", (): void => {
             ],
             [
                 {
-                    [PopularityParameterId.A_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_COEFFICIENT],
+                    [PopularityParameterId.A_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_COEFFICIENT],
                 },
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
@@ -2012,7 +2373,8 @@ describe("populateScopes", (): void => {
             ],
             [
                 {
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                 },
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
@@ -2020,7 +2382,8 @@ describe("populateScopes", (): void => {
             ],
             [
                 {
-                    [PopularityParameterId.A_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_EXPONENT],
+                    [PopularityParameterId.A_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_EXPONENT],
                 },
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
@@ -2044,7 +2407,8 @@ describe("populateScopes", (): void => {
             ],
             [
                 {
-                    [PopularityParameterId.USE_NUMINATOR]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_NUMINATOR],
+                    [PopularityParameterId.USE_NUMINATOR]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_NUMINATOR],
                 },
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
@@ -2052,7 +2416,8 @@ describe("populateScopes", (): void => {
             ],
             [
                 {
-                    [PopularityParameterId.USE_PRIME_INDEX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_PRIME_INDEX],
+                    [PopularityParameterId.USE_PRIME_INDEX]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_PRIME_INDEX],
                 },
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
@@ -2060,7 +2425,8 @@ describe("populateScopes", (): void => {
             ],
             [
                 {
-                    [PopularityParameterId.MODIFIED_COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MODIFIED_COUNT],
+                    [PopularityParameterId.MODIFIED_COUNT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.MODIFIED_COUNT],
                 },
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
@@ -2070,64 +2436,78 @@ describe("populateScopes", (): void => {
             // COAPF (25)
             [
                 {
-                    [PopularityParameterId.WEIGHT_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_COEFFICIENT],
+                    [PopularityParameterId.WEIGHT_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_COEFFICIENT],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.WEIGHT_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_EXPONENT],
+                    [PopularityParameterId.WEIGHT_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_EXPONENT],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.WEIGHT_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_BASE],
+                    [PopularityParameterId.WEIGHT_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_BASE],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.K_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_BASE],
+                    [PopularityParameterId.K_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_BASE],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.J_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_BASE],
+                    [PopularityParameterId.J_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_BASE],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.A_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_BASE],
+                    [PopularityParameterId.A_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_BASE],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
                 },
             ],
@@ -2136,7 +2516,8 @@ describe("populateScopes", (): void => {
                     [PopularityParameterId.B]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.B],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
                 },
             ],
@@ -2145,7 +2526,8 @@ describe("populateScopes", (): void => {
                     [PopularityParameterId.U]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.U],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
                 },
             ],
@@ -2154,7 +2536,8 @@ describe("populateScopes", (): void => {
                     [PopularityParameterId.V]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.V],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
                 },
             ],
@@ -2163,88 +2546,107 @@ describe("populateScopes", (): void => {
                     [PopularityParameterId.X]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.X],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.K_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_COEFFICIENT],
+                    [PopularityParameterId.K_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_COEFFICIENT],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.K_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.K_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_LOGARITHM_BASE],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.K_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_EXPONENT],
+                    [PopularityParameterId.K_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_EXPONENT],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.J_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_COEFFICIENT],
+                    [PopularityParameterId.J_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_COEFFICIENT],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.J_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.J_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_LOGARITHM_BASE],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.J_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_EXPONENT],
+                    [PopularityParameterId.J_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_EXPONENT],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.A_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_COEFFICIENT],
+                    [PopularityParameterId.A_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_COEFFICIENT],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.A_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_EXPONENT],
+                    [PopularityParameterId.A_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_EXPONENT],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
                 },
             ],
@@ -2253,7 +2655,8 @@ describe("populateScopes", (): void => {
                     [PopularityParameterId.W]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.W],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
                 },
             ],
@@ -2262,34 +2665,41 @@ describe("populateScopes", (): void => {
                     [PopularityParameterId.Y]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.Y],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.USE_NUMINATOR]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_NUMINATOR],
+                    [PopularityParameterId.USE_NUMINATOR]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_NUMINATOR],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.USE_PRIME_INDEX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_PRIME_INDEX],
+                    [PopularityParameterId.USE_PRIME_INDEX]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_PRIME_INDEX],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.MODIFIED_COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MODIFIED_COUNT],
+                    [PopularityParameterId.MODIFIED_COUNT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.MODIFIED_COUNT],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
                 },
             ],
@@ -2297,64 +2707,78 @@ describe("populateScopes", (): void => {
             // GPF (25)
             [
                 {
-                    [PopularityParameterId.WEIGHT_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_COEFFICIENT],
+                    [PopularityParameterId.WEIGHT_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_COEFFICIENT],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.WEIGHT_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_EXPONENT],
+                    [PopularityParameterId.WEIGHT_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_EXPONENT],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.WEIGHT_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_BASE],
+                    [PopularityParameterId.WEIGHT_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_BASE],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.K_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_BASE],
+                    [PopularityParameterId.K_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_BASE],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.J_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_BASE],
+                    [PopularityParameterId.J_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_BASE],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.A_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_BASE],
+                    [PopularityParameterId.A_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_BASE],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
                 },
             ],
@@ -2363,7 +2787,8 @@ describe("populateScopes", (): void => {
                     [PopularityParameterId.B]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.B],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
                 },
             ],
@@ -2372,7 +2797,8 @@ describe("populateScopes", (): void => {
                     [PopularityParameterId.U]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.U],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
                 },
             ],
@@ -2381,7 +2807,8 @@ describe("populateScopes", (): void => {
                     [PopularityParameterId.V]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.V],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
                 },
             ],
@@ -2390,88 +2817,107 @@ describe("populateScopes", (): void => {
                     [PopularityParameterId.X]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.X],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.K_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_COEFFICIENT],
+                    [PopularityParameterId.K_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_COEFFICIENT],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.K_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.K_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_LOGARITHM_BASE],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.K_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_EXPONENT],
+                    [PopularityParameterId.K_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_EXPONENT],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.J_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_COEFFICIENT],
+                    [PopularityParameterId.J_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_COEFFICIENT],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.J_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.J_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_LOGARITHM_BASE],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.J_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_EXPONENT],
+                    [PopularityParameterId.J_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_EXPONENT],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.A_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_COEFFICIENT],
+                    [PopularityParameterId.A_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_COEFFICIENT],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.A_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_EXPONENT],
+                    [PopularityParameterId.A_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_EXPONENT],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
                 },
             ],
@@ -2480,7 +2926,8 @@ describe("populateScopes", (): void => {
                     [PopularityParameterId.W]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.W],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
                 },
             ],
@@ -2489,34 +2936,41 @@ describe("populateScopes", (): void => {
                     [PopularityParameterId.Y]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.Y],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.USE_NUMINATOR]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_NUMINATOR],
+                    [PopularityParameterId.USE_NUMINATOR]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_NUMINATOR],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.USE_PRIME_INDEX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_PRIME_INDEX],
+                    [PopularityParameterId.USE_PRIME_INDEX]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_PRIME_INDEX],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.MODIFIED_COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MODIFIED_COUNT],
+                    [PopularityParameterId.MODIFIED_COUNT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.MODIFIED_COUNT],
                 },
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
                 },
             ],
@@ -2524,65 +2978,79 @@ describe("populateScopes", (): void => {
             // LOG BASE A OF N (25)
             [
                 {
-                    [PopularityParameterId.WEIGHT_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_COEFFICIENT],
+                    [PopularityParameterId.WEIGHT_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_COEFFICIENT],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_LOGARITHM_BASE],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.WEIGHT_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_EXPONENT],
+                    [PopularityParameterId.WEIGHT_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_EXPONENT],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.WEIGHT_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_BASE],
+                    [PopularityParameterId.WEIGHT_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WEIGHT_AS_POWER_BASE],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.K_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_BASE],
+                    [PopularityParameterId.K_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_BASE],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.J_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_BASE],
+                    [PopularityParameterId.J_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_BASE],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.A_AS_POWER_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_BASE],
+                    [PopularityParameterId.A_AS_POWER_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_BASE],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                 },
             ],
             [
@@ -2591,7 +3059,8 @@ describe("populateScopes", (): void => {
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                 },
             ],
             [
@@ -2600,7 +3069,8 @@ describe("populateScopes", (): void => {
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                 },
             ],
             [
@@ -2609,7 +3079,8 @@ describe("populateScopes", (): void => {
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                 },
             ],
             [
@@ -2618,88 +3089,108 @@ describe("populateScopes", (): void => {
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.K_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_COEFFICIENT],
+                    [PopularityParameterId.K_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_COEFFICIENT],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.K_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.K_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_LOGARITHM_BASE],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.K_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_EXPONENT],
+                    [PopularityParameterId.K_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.K_AS_POWER_EXPONENT],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.J_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_COEFFICIENT],
+                    [PopularityParameterId.J_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_COEFFICIENT],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.J_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.J_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_LOGARITHM_BASE],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.J_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_EXPONENT],
+                    [PopularityParameterId.J_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.J_AS_POWER_EXPONENT],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.A_AS_COEFFICIENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_COEFFICIENT],
+                    [PopularityParameterId.A_AS_COEFFICIENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_COEFFICIENT],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                 },
             ],
             [
-                { // Yes I see that this one is a problem... it'll just throw an error and it gets caught by that spot that is designed to catch such errors and move on
-                    [PopularityParameterId.A_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_EXPONENT],
+                {
+                    // Yes I see that this one is a problem... it'll just throw an error and it gets caught by that spot that is designed to catch such errors and move on
+                    [PopularityParameterId.A_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_EXPONENT],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                 },
             ],
             [
@@ -2708,7 +3199,8 @@ describe("populateScopes", (): void => {
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                 },
             ],
             [
@@ -2717,34 +3209,41 @@ describe("populateScopes", (): void => {
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.USE_NUMINATOR]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_NUMINATOR],
+                    [PopularityParameterId.USE_NUMINATOR]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_NUMINATOR],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.USE_PRIME_INDEX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_PRIME_INDEX],
+                    [PopularityParameterId.USE_PRIME_INDEX]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.USE_PRIME_INDEX],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                 },
             ],
             [
                 {
-                    [PopularityParameterId.MODIFIED_COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MODIFIED_COUNT],
+                    [PopularityParameterId.MODIFIED_COUNT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.MODIFIED_COUNT],
                 },
                 {
                     [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
-                    [PopularityParameterId.A_AS_LOGARITHM_BASE]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
+                    [PopularityParameterId.A_AS_LOGARITHM_BASE]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
                 },
             ],
         ] as Scope[]
@@ -2768,18 +3267,21 @@ describe("populateScopes", (): void => {
 
         const actual: Scope[] = scopesToSearch
 
-        expect(actual.length).toEqual( // 56 + 1575 + 7800 = 9431
+        expect(actual.length).toEqual(
+            // 56 + 1575 + 7800 = 9431
             56 + // All combinations of 3 submetrics = 6 choose 3 w/re = ((3+6-1)!)/((3!)((6-1)!)) = 56, but that times all combinations of 0 parameters = 25 choose 0 w/re = ((0+25-1)!)/((0!)((25-1)!)) =   1, so 56 *  1 =   56, but then that times 1 bc for each one you can distribute the parameters across the submetrics 4^0 ways, so   56  * 1 =   56
-            1575 +         // All combinations of 2 submetrics = 6 choose 2 w/re = ((2+6-1)!)/((2!)((6-1)!)) = 21, but that times all combinations of 1 parameters = 25 choose 1 w/re = ((1+25-1)!)/((1!)((25-1)!)) =  25, so 21 * 25 =  525, but then that times 2 bc for each one you can distribute the parameters across the submetrics 3^1 ways, so  525 * 3 = 1575
-            7800,         // All combinations of 1 submetric  = 6 choose 1 w/re = ((1+6-1)!)/((1!)((6-1)!)) =  6, but that times all combinations of 2 parameters = 25 choose 2 w/re = ((2+25-1)!)/((2!)((25-1)!)) = 325, so 6 * 325 = 1950, but then that times 1 bc for each one you can distribute the parameters across the submetrics 2^2 ways, so 1950 * 4 = 7800
+                1575 + // All combinations of 2 submetrics = 6 choose 2 w/re = ((2+6-1)!)/((2!)((6-1)!)) = 21, but that times all combinations of 1 parameters = 25 choose 1 w/re = ((1+25-1)!)/((1!)((25-1)!)) =  25, so 21 * 25 =  525, but then that times 2 bc for each one you can distribute the parameters across the submetrics 3^1 ways, so  525 * 3 = 1575
+                7800, // All combinations of 1 submetric  = 6 choose 1 w/re = ((1+6-1)!)/((1!)((6-1)!)) =  6, but that times all combinations of 2 parameters = 25 choose 2 w/re = ((2+25-1)!)/((2!)((25-1)!)) = 325, so 6 * 325 = 1950, but then that times 1 bc for each one you can distribute the parameters across the submetrics 2^2 ways, so 1950 * 4 = 7800
         )
         const exampleExpectedElements: Scope[] = [
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
-                    [PopularityParameterId.A_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_EXPONENT],
+                    [PopularityParameterId.A_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_EXPONENT],
                 },
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
@@ -2788,12 +3290,14 @@ describe("populateScopes", (): void => {
             [
                 {},
                 {
-                    [PopularityParameterId.WITHOUT_REPETITION]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
+                    [PopularityParameterId.WITHOUT_REPETITION]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
                     [PopularityParameterId.MAX]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.MAX],
                 },
                 {
                     [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
-                    [PopularityParameterId.A_AS_POWER_EXPONENT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_EXPONENT],
+                    [PopularityParameterId.A_AS_POWER_EXPONENT]:
+                        INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_POWER_EXPONENT],
                 },
             ],
         ] as Scope[]

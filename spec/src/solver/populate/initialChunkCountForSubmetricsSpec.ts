@@ -1,8 +1,8 @@
-import {Count} from "@sagittal/general"
-import {popularityMetricLfcScriptGroupSettings} from "../../../../src/globals"
-import {Chunk} from "../../../../src/solver"
-import {computeInitialChunkCountForSubmetrics} from "../../../../src/solver/populate/initialChunkCountForSubmetrics"
-import {Submetric} from "../../../../src/sumOfSquares"
+import { Count } from "@sagittal/general"
+import { popularityMetricLfcScriptGroupSettings } from "../../../../src/globals"
+import { Chunk } from "../../../../src/solver"
+import { computeInitialChunkCountForSubmetrics } from "../../../../src/solver/populate/initialChunkCountForSubmetrics"
+import { Submetric } from "../../../../src/sumOfSquares"
 
 describe("computeInitialChunkCountForSubmetrics", (): void => {
     describe("when all chunks are being used, including probably moot ones", (): void => {
@@ -14,7 +14,7 @@ describe("computeInitialChunkCountForSubmetrics", (): void => {
             expect(actual).toBe(chunkCount as Count<Chunk<Submetric>>)
         })
 
-        it("when > the total count of possible submetric chunks (6), caps out at that total possible count               ", (): void => {
+        it("when > the total count of possible submetric chunks (6), caps out at that total possible count", (): void => {
             const chunkCount = 7 as Count<Chunk>
 
             const actual = computeInitialChunkCountForSubmetrics(chunkCount)
@@ -37,7 +37,7 @@ describe("computeInitialChunkCountForSubmetrics", (): void => {
             expect(actual).toBe(chunkCount as Count<Chunk<Submetric>>)
         })
 
-        it("when > the total count of possible submetric chunks (4), caps out at that total possible count              ", (): void => {
+        it("when > the total count of possible submetric chunks (4), caps out at that total possible count", (): void => {
             const chunkCount = 7 as Count<Chunk>
 
             const actual = computeInitialChunkCountForSubmetrics(chunkCount)

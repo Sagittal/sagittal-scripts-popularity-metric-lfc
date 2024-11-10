@@ -1,7 +1,7 @@
-import {adjustAsyncTimeoutForSpec, Count, Ms, Name, slowTestOnlyRunInFullSuite} from "@sagittal/general"
-import {Metric} from "../../../src/bestMetric"
-import {bestMetrics, solverStatus} from "../../../src/globals"
-import {Chunk, populateAndSearchScopesAndPerfectMetrics} from "../../../src/solver"
+import { adjustAsyncTimeoutForSpec, Count, Ms, Name, slowTestOnlyRunInFullSuite } from "@sagittal/general"
+import { Metric } from "../../../src/bestMetric"
+import { bestMetrics, solverStatus } from "../../../src/globals"
+import { Chunk, populateAndSearchScopesAndPerfectMetrics } from "../../../src/solver"
 import * as populate from "../../../src/solver/populate/scopes"
 import * as search from "../../../src/solver/search/scopes"
 
@@ -9,10 +9,8 @@ describe("populateAndSearchScopesAndPerfectMetrics", (): void => {
     adjustAsyncTimeoutForSpec(10000 as Ms)
 
     it("populates scopes", async (): Promise<void> => {
-        spyOn(populate, "populateScopes").and.callFake(async (): Promise<void> => {
-        })
-        spyOn(search, "searchScopes").and.callFake(async (): Promise<void> => {
-        })
+        spyOn(populate, "populateScopes").and.callFake(async (): Promise<void> => {})
+        spyOn(search, "searchScopes").and.callFake(async (): Promise<void> => {})
 
         await populateAndSearchScopesAndPerfectMetrics()
 
@@ -20,10 +18,8 @@ describe("populateAndSearchScopesAndPerfectMetrics", (): void => {
     })
 
     it("searches scopes", async (): Promise<void> => {
-        spyOn(populate, "populateScopes").and.callFake(async (): Promise<void> => {
-        })
-        spyOn(search, "searchScopes").and.callFake(async (): Promise<void> => {
-        })
+        spyOn(populate, "populateScopes").and.callFake(async (): Promise<void> => {})
+        spyOn(search, "searchScopes").and.callFake(async (): Promise<void> => {})
 
         await populateAndSearchScopesAndPerfectMetrics()
 
@@ -39,7 +35,7 @@ describe("populateAndSearchScopesAndPerfectMetrics", (): void => {
         expect(bestMetrics.get("{},{sum}" as Name<Metric>)).toBeCloseToObject({
             sumOfSquares: 0.014206,
             name: "{},{sum}",
-            submetrics: [{sum: true}],
+            submetrics: [{ sum: true }],
         } as Metric)
     })
 })

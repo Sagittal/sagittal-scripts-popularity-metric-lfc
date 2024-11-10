@@ -1,4 +1,4 @@
-import { Combination, Grade, Vector, Parameter, Two3FreeClass } from "@sagittal/general"
+import { Combination, Grade, Vector, Parameter, Two3FreeClass, Rational } from "@sagittal/general"
 import {
     computeAntivotes,
     LfcUnpopularityEstimate,
@@ -57,11 +57,11 @@ describe("computeAntivotes", (): void => {
         const actual = computeAntivotes(two3FreeClass, submetrics)
 
         const expected = (((0.5 *
-            computeSubmetricAntivotes([0, 0, 0, 1, 1] as Vector<{ rational: true }>, {
+            computeSubmetricAntivotes([0, 0, 0, 1, 1] as Vector<Rational>, {
                 [PopularityParameterId.SUM]: true,
             })) as Grade<LfcUnpopularityEstimate>) +
             0.3 *
-                computeSubmetricAntivotes([0, 0, 0, 1, 1] as Vector<{ rational: true }>, {
+                computeSubmetricAntivotes([0, 0, 0, 1, 1] as Vector<Rational>, {
                     [PopularityParameterId.SUM]: true,
                 })) as Grade<LfcUnpopularityEstimate>
         expect(actual).toBeCloseToTyped(expected, ANTIVOTES_PRECISION)

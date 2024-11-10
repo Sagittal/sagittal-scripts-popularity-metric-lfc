@@ -1,5 +1,6 @@
-export {PARAMETER_DYNAMISMS} from "./constants"
-export {perfectMetrics, perfectMetricsSync} from "./metrics"
+export { PARAMETER_DYNAMISMS } from "./constants"
+export { perfectMetrics, perfectMetricsSync } from "./metrics"
 export {
-    recursiveSearchScopeAndMaybeUpdateBestMetric, recursiveSearchScopeAndMaybeUpdateBestMetricSync,
+    recursiveSearchScopeAndMaybeUpdateBestMetric,
+    recursiveSearchScopeAndMaybeUpdateBestMetricSync,
 } from "./perfectMetric"

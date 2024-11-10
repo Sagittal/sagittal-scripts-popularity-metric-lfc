@@ -1,19 +1,28 @@
-import {Count, Filename, Io, LogTarget, parseInteger, program, saveLog, scriptSettings, time} from "@sagittal/general"
-import {popularityMetricLfcScriptGroupSettings, solverStatus} from "../globals"
+import {
+    Count,
+    Filename,
+    Io,
+    LogTarget,
+    parseInteger,
+    program,
+    saveLog,
+    scriptSettings,
+    time,
+} from "@sagittal/general"
+import { popularityMetricLfcScriptGroupSettings, solverStatus } from "../globals"
 import {
     Chunk,
     formatBestMetrics,
     populateAndSearchScopesAndPerfectMetrics,
     populateAndSearchScopesAndPerfectMetricsSync,
 } from "../solver"
-import {applySharedPopularityMetricLfcScriptSetup} from "./shared"
+import { applySharedPopularityMetricLfcScriptSetup } from "./shared"
 
-const defaultLogTargets = [
-    LogTarget.SETUP,
-    LogTarget.PROGRESS,
-    LogTarget.FINAL,
-]
-applySharedPopularityMetricLfcScriptSetup({logDir: "solveBestMetricsForChunkCount" as Filename, defaultLogTargets})
+const defaultLogTargets = [LogTarget.SETUP, LogTarget.PROGRESS, LogTarget.FINAL]
+applySharedPopularityMetricLfcScriptSetup({
+    logDir: "solveBestMetricsForChunkCount" as Filename,
+    defaultLogTargets,
+})
 
 solverStatus.chunkCount = parseInteger(program.args[0] as Io) as Count<Chunk>
 
@@ -33,7 +42,7 @@ if (popularityMetricLfcScriptGroupSettings.sync) {
     populateAndSearchScopesAndPerfectMetricsSync()
     finalOutput()
 } else {
-    populateAndSearchScopesAndPerfectMetrics().then((): void => {
+    void populateAndSearchScopesAndPerfectMetrics().then((): void => {
         finalOutput()
     })
 }

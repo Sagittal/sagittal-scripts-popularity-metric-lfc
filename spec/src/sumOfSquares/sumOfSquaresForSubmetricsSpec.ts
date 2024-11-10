@@ -1,6 +1,6 @@
-import {Combination, Parameter} from "@sagittal/general"
-import {SumOfSquares} from "../../../src/bestMetric"
-import {computeSumOfSquaresForSubmetrics, PopularityParameterId, Submetric} from "../../../src/sumOfSquares"
+import { Combination, Parameter } from "@sagittal/general"
+import { SumOfSquares } from "../../../src/bestMetric"
+import { computeSumOfSquaresForSubmetrics, PopularityParameterId, Submetric } from "../../../src/sumOfSquares"
 
 describe("computeSumOfSquaresForSubmetrics", (): void => {
     it("returns the sum-of-squares for a given submetric combination", (): void => {

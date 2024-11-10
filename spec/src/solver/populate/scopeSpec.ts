@@ -1,14 +1,14 @@
-import {cleanArray, Count} from "@sagittal/general"
-import {Scope} from "../../../../src/bestMetric"
-import {scopesToSearch, solverStatus} from "../../../../src/globals"
-import {populateScope} from "../../../../src/solver/populate/scope"
-import {PopularityParameterId} from "../../../../src/sumOfSquares"
+import { cleanArray, Count } from "@sagittal/general"
+import { Scope } from "../../../../src/bestMetric"
+import { scopesToSearch, solverStatus } from "../../../../src/globals"
+import { populateScope } from "../../../../src/solver/populate/scope"
+import { PopularityParameterId } from "../../../../src/sumOfSquares"
 
 describe("populateScope", (): void => {
     it("adds the scope to the stack and increments the count of the total ever populated", (): void => {
-        const scope: Scope = [{[PopularityParameterId.SUM]: true}] as Scope
+        const scope: Scope = [{ [PopularityParameterId.SUM]: true }] as Scope
 
-        const alreadyPopulatedScope: Scope = [{[PopularityParameterId.COUNT]: true}] as Scope
+        const alreadyPopulatedScope: Scope = [{ [PopularityParameterId.COUNT]: true }] as Scope
         cleanArray(scopesToSearch)
         scopesToSearch.push(alreadyPopulatedScope)
         solverStatus.populatedScopeCount = 5 as Count<Scope>

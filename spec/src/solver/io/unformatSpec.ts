@@ -1,5 +1,5 @@
-import {Io} from "@sagittal/general"
-import {unformatParameters} from "../../../../src/solver"
+import { Io } from "@sagittal/general"
+import { unformatParameters } from "../../../../src/solver"
 
 describe("unformatParameters", (): void => {
     it("converts parameter enum form back into JSON form, stripping trailing commas too", (): void => {

@@ -1,11 +1,18 @@
-import {Combination, Combinations, Count, Index} from "@sagittal/general"
+import { Combination, Combinations, Count, Index } from "@sagittal/general"
 import * as combinations from "@sagittal/general/dist/cjs/math/combinations"
-import {memoizedParameterChunkCombinations, memoizedSubmetricChunkCombinations} from "../../../../src/globals"
-import {Chunk} from "../../../../src/solver"
-import {INITIAL_PARAMETER_SCOPES, PARAMETER_CHUNKS, SUBMETRIC_CHUNKS} from "../../../../src/solver/populate/constants"
-import {populateScopesPhase} from "../../../../src/solver/populate/phase"
+import {
+    memoizedParameterChunkCombinations,
+    memoizedSubmetricChunkCombinations,
+} from "../../../../src/globals"
+import { Chunk } from "../../../../src/solver"
+import {
+    INITIAL_PARAMETER_SCOPES,
+    PARAMETER_CHUNKS,
+    SUBMETRIC_CHUNKS,
+} from "../../../../src/solver/populate/constants"
+import { populateScopesPhase } from "../../../../src/solver/populate/phase"
 import * as submetricChunkCombination from "../../../../src/solver/populate/submetricChunkCombination"
-import {PopularityParameterId, Submetric} from "../../../../src/sumOfSquares"
+import { PopularityParameterId, Submetric } from "../../../../src/sumOfSquares"
 
 describe("populateScopesPhase", (): void => {
     const chunkCount = 5 as Count<Chunk>
@@ -13,20 +20,17 @@ describe("populateScopesPhase", (): void => {
     const expectedChunkCountForParameters = 2 as Count<Chunk<PopularityParameterId>>
     const submetricChunkCombinationA = [
         {
-            [PopularityParameterId.SUM]:
-                INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
+            [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
         },
         {
             [PopularityParameterId.WITHOUT_REPETITION]:
                 INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
-            [PopularityParameterId.COUNT]:
-                INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
+            [PopularityParameterId.COUNT]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.COUNT],
         },
     ] as unknown[] as Combination<Chunk<Submetric>>
     const submetricChunkCombinationB = [
         {
-            [PopularityParameterId.SUM]:
-                INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
+            [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
             [PopularityParameterId.WITHOUT_REPETITION]:
                 INITIAL_PARAMETER_SCOPES[PopularityParameterId.WITHOUT_REPETITION],
         },
@@ -43,10 +47,13 @@ describe("populateScopesPhase", (): void => {
                 INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
         },
     ] as unknown[] as Combination<Chunk<PopularityParameterId>>
-    const submetricChunkCombinations = [submetricChunkCombinationA, submetricChunkCombinationB] as unknown[] as
-        Combinations<Chunk<Submetric>>
-    const parameterChunkCombinations = [parameterChunkCombination] as unknown[] as
-        Combinations<Chunk<PopularityParameterId>>
+    const submetricChunkCombinations = [
+        submetricChunkCombinationA,
+        submetricChunkCombinationB,
+    ] as unknown[] as Combinations<Chunk<Submetric>>
+    const parameterChunkCombinations = [parameterChunkCombination] as unknown[] as Combinations<
+        Chunk<PopularityParameterId>
+    >
 
     beforeEach((): void => {
         spyOn(combinations, "computeCombinations").and.returnValues(
@@ -55,8 +62,10 @@ describe("populateScopesPhase", (): void => {
         )
     })
 
-    it("calculates the correct combinations of parameters and submetrics and memoizes them                                    ", async (): Promise<void> => {
+    it("calculates the correct combinations of parameters and submetrics and memoizes them", async (): Promise<void> => {
+        // eslint-disable-next-line @typescript-eslint/no-array-delete
         delete memoizedSubmetricChunkCombinations[chunkCountForSubmetrics]
+        // eslint-disable-next-line @typescript-eslint/no-array-delete
         delete memoizedParameterChunkCombinations[expectedChunkCountForParameters]
 
         await populateScopesPhase(chunkCount, chunkCountForSubmetrics)
@@ -64,12 +73,12 @@ describe("populateScopesPhase", (): void => {
         expect(combinations.computeCombinations).toHaveBeenCalledWith(
             SUBMETRIC_CHUNKS,
             chunkCountForSubmetrics,
-            {withRepeatedElements: true},
+            { withRepeatedElements: true },
         )
         expect(combinations.computeCombinations).toHaveBeenCalledWith(
             PARAMETER_CHUNKS,
             expectedChunkCountForParameters,
-            {withRepeatedElements: true},
+            { withRepeatedElements: true },
         )
     })
 
@@ -109,11 +118,11 @@ describe("populateScopesPhase", (): void => {
     })
 
     afterEach((): void => {
-        expect(
-            memoizedSubmetricChunkCombinations[chunkCountForSubmetrics],
-        ).toEqual(submetricChunkCombinations)
-        expect(
-            memoizedParameterChunkCombinations[expectedChunkCountForParameters],
-        ).toEqual(parameterChunkCombinations)
+        expect(memoizedSubmetricChunkCombinations[chunkCountForSubmetrics]).toEqual(
+            submetricChunkCombinations,
+        )
+        expect(memoizedParameterChunkCombinations[expectedChunkCountForParameters]).toEqual(
+            parameterChunkCombinations,
+        )
     })
 })

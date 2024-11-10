@@ -3,6 +3,7 @@ import {
     Decimal,
     Grade,
     Index,
+    Integer,
     Parameter,
     Rank,
     Ranked,
@@ -22,17 +23,17 @@ describe("computeUnpopularities", (): void => {
             {
                 rank: 5 as Rank<ScalaPopularityStat>,
                 two3FreeClass: { vector: [0, 0, -1, 1] } as Two3FreeClass,
-                votes: 1318 as Decimal<{ integer: true }> & Grade<ScalaPopularityStat>,
+                votes: 1318 as Decimal<Integer> & Grade<ScalaPopularityStat>,
             },
             {
                 rank: 8 as Rank<ScalaPopularityStat>,
                 two3FreeClass: { vector: [0, 0, 3] } as Two3FreeClass,
-                votes: 492 as Decimal<{ integer: true }> & Grade<ScalaPopularityStat>,
+                votes: 492 as Decimal<Integer> & Grade<ScalaPopularityStat>,
             },
             {
                 rank: 39 as Rank<ScalaPopularityStat>,
                 two3FreeClass: { vector: [0, 0, 1, -2, 1] } as Two3FreeClass,
-                votes: 51 as Decimal<{ integer: true }> & Grade<ScalaPopularityStat>,
+                votes: 51 as Decimal<Integer> & Grade<ScalaPopularityStat>,
             },
         ]
         const submetrics: Combination<Submetric> = [

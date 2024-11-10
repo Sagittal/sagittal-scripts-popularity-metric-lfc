@@ -13,7 +13,7 @@ describe("secondaryParameterOverride", (): void => {
         expect(actual).toBe(parameter)
     })
 
-    it("returns the denominator-specific parameter when the prime count is negative (it is in the denominator)          ", (): void => {
+    it("returns the denominator-specific parameter when the prime count is negative (it is in the denominator)", (): void => {
         const primeCount = -2 as Exponent<Prime>
 
         const actual = secondaryParameterOverride(parameter, denominatorSpecificParameter, primeCount)

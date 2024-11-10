@@ -1,14 +1,12 @@
-import {Combination, Count, Index} from "@sagittal/general"
-import {PopularityParameterId, Submetric} from "../../sumOfSquares"
-import {Chunk} from "../types"
+import { Combination, Count, Index } from "@sagittal/general"
+import { PopularityParameterId, Submetric } from "../../sumOfSquares"
+import { Chunk } from "../types"
 
 interface PopulateScopesForSubmetricChunkCombinationOptions {
-    parameterChunkCombinations: Array<Combination<Chunk<PopularityParameterId>>>,
-    parameterChunkCombinationIndex: Index<Combination<Chunk<PopularityParameterId>>>,
-    submetricChunkCombinationIndex: Index<Combination<Chunk<Submetric>>>,
+    parameterChunkCombinations: Array<Combination<Chunk<PopularityParameterId>>>
+    parameterChunkCombinationIndex: Index<Combination<Chunk<PopularityParameterId>>>
+    submetricChunkCombinationIndex: Index<Combination<Chunk<Submetric>>>
     submetricChunkCombinationCount: Count<Combination<Chunk<Submetric>>>
 }
 
-export {
-    PopulateScopesForSubmetricChunkCombinationOptions,
-}
+export { PopulateScopesForSubmetricChunkCombinationOptions }

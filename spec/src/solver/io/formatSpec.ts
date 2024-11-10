@@ -1,80 +1,99 @@
-import {Combination, Io, Name, NEWLINE} from "@sagittal/general"
-import {Metric, SumOfSquares} from "../../../../src/bestMetric"
-import {bestMetrics} from "../../../../src/globals"
-import {formatBestMetrics} from "../../../../src/solver"
-import {formatPercentage} from "../../../../src/solver/io"
-import {PopularityParameterId, Submetric} from "../../../../src/sumOfSquares"
+import { Combination, Io, Name, NEWLINE } from "@sagittal/general"
+import { Metric, SumOfSquares } from "../../../../src/bestMetric"
+import { bestMetrics } from "../../../../src/globals"
+import { formatBestMetrics } from "../../../../src/solver"
+import { formatPercentage } from "../../../../src/solver/io"
+import { PopularityParameterId, Submetric } from "../../../../src/sumOfSquares"
 
 describe("formatBestMetrics", (): void => {
     it("sorts the best metrics by sum of squares, and formats them like how they look as enums", (): void => {
-        bestMetrics.set(
-            "{sum}" as Name<Metric>,
-            {
-                sumOfSquares: 0.013 as SumOfSquares,
-                name: "" as Name<Metric>,
-                submetrics: [
-                    {
-                        [PopularityParameterId.SUM]: true,
-                    },
-                ] as Combination<Submetric>,
-            },
-        )
-        bestMetrics.set(
-            "{count}" as Name<Metric>,
-            {
-                sumOfSquares: 0.012 as SumOfSquares,
-                name: "" as Name<Metric>,
-                submetrics: [
-                    {
-                        [PopularityParameterId.COUNT]: true,
-                    },
-                ] as Combination<Submetric>,
-            },
-        )
-        bestMetrics.set(
-            "{max}" as Name<Metric>,
-            {
-                sumOfSquares: 0.014 as SumOfSquares,
-                name: "" as Name<Metric>,
-                submetrics: [
-                    {
-                        [PopularityParameterId.MAX]: true,
-                    },
-                ] as Combination<Submetric>,
-            },
-        )
+        bestMetrics.set("{sum}" as Name<Metric>, {
+            sumOfSquares: 0.013 as SumOfSquares,
+            name: "" as Name<Metric>,
+            submetrics: [
+                {
+                    [PopularityParameterId.SUM]: true,
+                },
+            ] as Combination<Submetric>,
+        })
+        bestMetrics.set("{count}" as Name<Metric>, {
+            sumOfSquares: 0.012 as SumOfSquares,
+            name: "" as Name<Metric>,
+            submetrics: [
+                {
+                    [PopularityParameterId.COUNT]: true,
+                },
+            ] as Combination<Submetric>,
+        })
+        bestMetrics.set("{max}" as Name<Metric>, {
+            sumOfSquares: 0.014 as SumOfSquares,
+            name: "" as Name<Metric>,
+            submetrics: [
+                {
+                    [PopularityParameterId.MAX]: true,
+                },
+            ] as Combination<Submetric>,
+        })
 
         const actual = formatBestMetrics()
 
         const expected =
-            `{` + NEWLINE +
-            `    "{max}": {` + NEWLINE +
-            `        sumOfSquares: 0.014,` + NEWLINE +
-            `        name: "",` + NEWLINE +
-            `        submetrics: [` + NEWLINE +
-            `            {` + NEWLINE +
-            `                [ PopularityParameterId.MAX ]: true` + NEWLINE +
-            `            }` + NEWLINE +
-            `        ]` + NEWLINE +
-            `    },` + NEWLINE +
-            `    "{sum}": {` + NEWLINE +
-            `        sumOfSquares: 0.013,` + NEWLINE +
-            `        name: "",` + NEWLINE +
-            `        submetrics: [` + NEWLINE +
-            `            {` + NEWLINE +
-            `                [ PopularityParameterId.SUM ]: true` + NEWLINE +
-            `            }` + NEWLINE +
-            `        ]` + NEWLINE +
-            `    },` + NEWLINE +
-            `    "{count}": {` + NEWLINE +
-            `        sumOfSquares: 0.012,` + NEWLINE +
-            `        name: "",` + NEWLINE +
-            `        submetrics: [` + NEWLINE +
-            `            {` + NEWLINE +
-            `                [ PopularityParameterId.COUNT ]: true` + NEWLINE +
-            `            }` + NEWLINE +
-            `        ]` + NEWLINE +
-            `    }` + NEWLINE +
+            `{` +
+            NEWLINE +
+            `    "{max}": {` +
+            NEWLINE +
+            `        sumOfSquares: 0.014,` +
+            NEWLINE +
+            `        name: "",` +
+            NEWLINE +
+            `        submetrics: [` +
+            NEWLINE +
+            `            {` +
+            NEWLINE +
+            `                [ PopularityParameterId.MAX ]: true` +
+            NEWLINE +
+            `            }` +
+            NEWLINE +
+            `        ]` +
+            NEWLINE +
+            `    },` +
+            NEWLINE +
+            `    "{sum}": {` +
+            NEWLINE +
+            `        sumOfSquares: 0.013,` +
+            NEWLINE +
+            `        name: "",` +
+            NEWLINE +
+            `        submetrics: [` +
+            NEWLINE +
+            `            {` +
+            NEWLINE +
+            `                [ PopularityParameterId.SUM ]: true` +
+            NEWLINE +
+            `            }` +
+            NEWLINE +
+            `        ]` +
+            NEWLINE +
+            `    },` +
+            NEWLINE +
+            `    "{count}": {` +
+            NEWLINE +
+            `        sumOfSquares: 0.012,` +
+            NEWLINE +
+            `        name: "",` +
+            NEWLINE +
+            `        submetrics: [` +
+            NEWLINE +
+            `            {` +
+            NEWLINE +
+            `                [ PopularityParameterId.COUNT ]: true` +
+            NEWLINE +
+            `            }` +
+            NEWLINE +
+            `        ]` +
+            NEWLINE +
+            `    }` +
+            NEWLINE +
             `}`
         expect(actual).toEqual(expected)
     })

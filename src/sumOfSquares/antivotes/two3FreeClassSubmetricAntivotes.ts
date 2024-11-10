@@ -6,6 +6,7 @@ import {
     Parameter,
     Quotient,
     QuotientPartType,
+    Rational,
     stringify,
     Two3FreeClass,
 } from "@sagittal/general"
@@ -42,9 +43,7 @@ const compute23FreeClassSubmetricAntivotes = (
         return computeSubmetricAntivotes(two3FreeClass.vector, submetric)
     }
 
-    const [numerator, denominator]: Quotient<{ rational: true }> = computeQuotientFromVector(
-        two3FreeClass.vector,
-    )
+    const [numerator, denominator]: Quotient<Rational> = computeQuotientFromVector(two3FreeClass.vector)
     let { numeratorAntivotes, denominatorAntivotes } = maybeNuminatorSwap({
         useNuminator,
         numeratorAntivotes: computeSubmetricAntivotes(
@@ -75,9 +74,11 @@ const compute23FreeClassSubmetricAntivotes = (
 
     if (isNaN(numeratorAntivotes) || isNaN(denominatorAntivotes)) {
         throw new Error(
-            `You got NaN! in two3FreeClassSubmetricAntivotes ${two3FreeClass} ${stringify(
+            `You got NaN! in two3FreeClassSubmetricAntivotes ${stringify(two3FreeClass)} ${stringify(
                 submetric,
-                { multiline: true },
+                {
+                    multiline: true,
+                },
             )} ${numeratorAntivotes} ${denominatorAntivotes}`,
         )
     }

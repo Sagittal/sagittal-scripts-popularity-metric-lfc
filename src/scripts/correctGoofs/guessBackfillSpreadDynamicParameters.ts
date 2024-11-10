@@ -1,19 +1,20 @@
-import {Filename, LogTarget, Maybe, Name, Parameter, saveLog, stringify} from "@sagittal/general"
-import {Metric} from "../../bestMetric"
-import {PARAMETER_DYNAMISMS} from "../../perfecter"
-import {PopularityParameterId, Submetric} from "../../sumOfSquares"
-import {applySharedPopularityMetricLfcScriptSetup, load} from "../shared"
+import { Filename, LogTarget, Maybe, Name, Parameter, saveLog, stringify } from "@sagittal/general"
+import { Metric } from "../../bestMetric"
+import { PARAMETER_DYNAMISMS } from "../../perfecter"
+import { PopularityParameterId, Submetric } from "../../sumOfSquares"
+import { applySharedPopularityMetricLfcScriptSetup, load } from "../shared"
 
-applySharedPopularityMetricLfcScriptSetup({logDir: "guessBackfillSpreadDynamicParameters" as Filename})
+applySharedPopularityMetricLfcScriptSetup({ logDir: "guessBackfillSpreadDynamicParameters" as Filename })
 
 const metricsMissingSpreadDynamicParameters = load("metrics" as Filename) as Record<Name<Metric>, Metric>
 
-const metricsMissingSpreadDynamicParametersEntries =
-    Object.entries(metricsMissingSpreadDynamicParameters) as Array<[Name<Metric>, Metric]>
+const metricsMissingSpreadDynamicParametersEntries = Object.entries(
+    metricsMissingSpreadDynamicParameters,
+) as Array<[Name<Metric>, Metric]>
 const guessedBackfilledSpreadDynamicParametersMetrics = metricsMissingSpreadDynamicParametersEntries.reduce(
     (
-        guessedBackfilledSpreadDynamicParametersMetrics:
-            Record<Name<Metric>, Metric>, metricEntry: [Name<Metric>, Metric],
+        guessedBackfilledSpreadDynamicParametersMetrics: Record<Name<Metric>, Metric>,
+        metricEntry: [Name<Metric>, Metric],
     ): Record<Name<Metric>, Metric> => {
         const [metricName, metric] = metricEntry
         const parameterValues: Partial<Record<PopularityParameterId, Parameter>> = {}
@@ -21,29 +22,31 @@ const guessedBackfilledSpreadDynamicParametersMetrics = metricsMissingSpreadDyna
         let spreadDynamicParameters: Maybe<PopularityParameterId[]> = undefined
 
         metric.submetrics.forEach((submetric: Submetric): void => {
-            Object.entries(submetric).forEach((submetricEntry: [string, Maybe<Parameter | boolean>]): void => {
-                const [parameter, parameterValue] = submetricEntry as [PopularityParameterId, Parameter]
+            Object.entries(submetric).forEach(
+                (submetricEntry: [string, Maybe<Parameter | boolean>]): void => {
+                    const [parameter, parameterValue] = submetricEntry as [PopularityParameterId, Parameter]
 
-                if (
-                    parameterValues[parameter] === parameterValue &&
-                    (spreadDynamicParameters ? !spreadDynamicParameters.includes(parameter) : true) &&
-                    PARAMETER_DYNAMISMS[parameter]
-                ) {
-                    spreadDynamicParameters = spreadDynamicParameters || []
-                    spreadDynamicParameters.push(parameter)
-                }
-                if (!parameterValues[parameter]) {
-                    parameterValues[parameter] = parameterValue
-                }
-            })
+                    if (
+                        parameterValues[parameter] === parameterValue &&
+                        (spreadDynamicParameters ? !spreadDynamicParameters.includes(parameter) : true) &&
+                        PARAMETER_DYNAMISMS[parameter]
+                    ) {
+                        spreadDynamicParameters = spreadDynamicParameters || []
+                        spreadDynamicParameters.push(parameter)
+                    }
+                    if (!parameterValues[parameter]) {
+                        parameterValues[parameter] = parameterValue
+                    }
+                },
+            )
         })
 
         return {
             ...guessedBackfilledSpreadDynamicParametersMetrics,
-            [metricName]: spreadDynamicParameters ? {...metric, spreadDynamicParameters} : metric,
+            [metricName]: spreadDynamicParameters ? { ...metric, spreadDynamicParameters } : metric,
         }
     },
     {} as Record<Name<Metric>, Metric>,
 )
 
-saveLog(stringify(guessedBackfilledSpreadDynamicParametersMetrics, {multiline: true}), LogTarget.FINAL)
+saveLog(stringify(guessedBackfilledSpreadDynamicParametersMetrics, { multiline: true }), LogTarget.FINAL)

@@ -1,15 +1,17 @@
-import {Index} from "@sagittal/general"
-import {Submetric} from "../../sumOfSquares"
-import {Scope, SubmetricScope} from "../types"
-import {computeSubmetricDynamicParameters} from "./submetricDynamicParameters"
-import {DynamicParameter} from "./types"
+import { Index } from "@sagittal/general"
+import { Submetric } from "../../sumOfSquares"
+import { Scope, SubmetricScope } from "../types"
+import { computeSubmetricDynamicParameters } from "./submetricDynamicParameters"
+import { DynamicParameter } from "./types"
 
 const computeDynamicParameters = (scope: Scope): DynamicParameter[] => {
     let dynamicParameters: DynamicParameter[] = []
 
     scope.forEach((submetricScope: SubmetricScope, submetricIndex: number): void => {
-        const submetricDynamicParameters: DynamicParameter[] =
-            computeSubmetricDynamicParameters(submetricScope, submetricIndex as Index<Submetric>)
+        const submetricDynamicParameters: DynamicParameter[] = computeSubmetricDynamicParameters(
+            submetricScope,
+            submetricIndex as Index<Submetric>,
+        )
 
         dynamicParameters = dynamicParameters.concat(submetricDynamicParameters)
     })
@@ -17,6 +19,4 @@ const computeDynamicParameters = (scope: Scope): DynamicParameter[] => {
     return dynamicParameters
 }
 
-export {
-    computeDynamicParameters,
-}
+export { computeDynamicParameters }

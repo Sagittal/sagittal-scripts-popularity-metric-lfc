@@ -1,5 +1,5 @@
-import {SamplePoint} from "../../../src/bestMetric"
-import {computeAdjacentSamplePoints} from "../../../src/perfecter/adjacentSamplePoints"
+import { SamplePoint } from "../../../src/bestMetric"
+import { computeAdjacentSamplePoints } from "../../../src/perfecter/adjacentSamplePoints"
 
 describe("computeAdjacentSamplePoints", (): void => {
     it("returns the list of sample points adjacent to a given sample point", (): void => {
