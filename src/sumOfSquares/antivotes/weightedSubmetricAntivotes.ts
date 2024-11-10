@@ -27,7 +27,7 @@ const computeWeightedSubmetricAntivotes = (
     })
 
     if (isNaN(submetricAntivotes)) {
-        throw new Error( // TODO: should I be using stringify() everywhere instead of .toString?
+        throw new Error(
             `You got NaN! ${stringify(two3FreeClass)} ${stringify(submetric, { multiline: true })} ${submetricAntivotes} ${weightAsCoefficient} ${weightAsLogarithmBase} ${weightAsPowerExponent} ${weightAsPowerBase}`,
         )
     }
