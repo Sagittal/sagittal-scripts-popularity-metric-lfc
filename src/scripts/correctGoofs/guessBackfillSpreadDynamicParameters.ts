@@ -10,7 +10,7 @@ const metricsMissingSpreadDynamicParameters = load("metrics" as Filename) as Rec
 
 const metricsMissingSpreadDynamicParametersEntries = Object.entries(
     metricsMissingSpreadDynamicParameters,
-) as Array<[Name<Metric>, Metric]>
+) as [Name<Metric>, Metric][]
 const guessedBackfilledSpreadDynamicParametersMetrics = metricsMissingSpreadDynamicParametersEntries.reduce(
     (
         guessedBackfilledSpreadDynamicParametersMetrics: Record<Name<Metric>, Metric>,

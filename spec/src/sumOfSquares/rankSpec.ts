@@ -28,7 +28,7 @@ describe("addRankToUnpopularities", (): void => {
                 antivotes: 20 as Grade<LfcUnpopularityEstimate>,
                 rank: 3 as Rank<LfcUnpopularityEstimate>,
             },
-        ] as Array<Ranked<LfcUnpopularityEstimate>>
+        ] as Ranked<LfcUnpopularityEstimate>[]
         expect(actual).toEqual(expected)
     })
 
@@ -63,7 +63,7 @@ describe("addRankToUnpopularities", (): void => {
                 antivotes: 10 as Grade<LfcUnpopularityEstimate>,
                 rank: 2.5 as Rank<LfcUnpopularityEstimate>,
             },
-        ] as Array<Ranked<LfcUnpopularityEstimate>>
+        ] as Ranked<LfcUnpopularityEstimate>[]
         expect(actual).toEqual(expected)
     })
 
@@ -104,7 +104,7 @@ describe("addRankToUnpopularities", (): void => {
                 antivotes: 10 as Grade<LfcUnpopularityEstimate>,
                 rank: 3 as Rank<LfcUnpopularityEstimate>,
             },
-        ] as Array<Ranked<LfcUnpopularityEstimate>>
+        ] as Ranked<LfcUnpopularityEstimate>[]
         expect(actual).toEqual(expected)
     })
 })

@@ -16,9 +16,10 @@ const computeSubmetricDynamicParameters = (
 ): DynamicParameter[] => {
     const submetricDynamicParameters: DynamicParameter[] = [] as DynamicParameter[]
 
-    const submetricScopeEntries = Object.entries(submetricScope) as Array<
-        [PopularityParameterId, DynamicParameterScope]
-    >
+    const submetricScopeEntries = Object.entries(submetricScope) as [
+        PopularityParameterId,
+        DynamicParameterScope,
+    ][]
     submetricScopeEntries.forEach(
         ([parameter, parameterScope]: [PopularityParameterId, DynamicParameterScope]): void => {
             const { ed, window } = parameterScope

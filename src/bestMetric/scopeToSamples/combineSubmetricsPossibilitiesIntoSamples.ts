@@ -29,7 +29,7 @@ const combineSubmetricsPossibilitiesIntoSamples = ({
 
             samples.forEach(({ submetrics, samplePoint }: Sample): void => {
                 submetricPossibilities.forEach((submetricPossibility: SubmetricPossibility): void => {
-                    const dynamicParameterValueIndices: Array<Index<Parameter>> =
+                    const dynamicParameterValueIndices: Index<Parameter>[] =
                         computeDynamicParameterValueIndices({
                             dynamicParameters,
                             submetric: submetricPossibility,

@@ -6,15 +6,15 @@ const computeDynamicParameterValueIndices = ({
     dynamicParameters,
     submetric,
     submetricIndex,
-}: DynamicParameterValueIndicesOptions): Array<Index<Parameter>> => {
-    const dynamicParameterValueIndices: Array<Index<Parameter>> = []
+}: DynamicParameterValueIndicesOptions): Index<Parameter>[] => {
+    const dynamicParameterValueIndices: Index<Parameter>[] = []
 
     dynamicParameters.forEach((dynamicParameter: DynamicParameter): void => {
         if (dynamicParameter.submetricIndex !== submetricIndex) {
             return
         }
 
-        const submetricEntries = Object.entries(submetric) as Array<[PopularityParameterId, Parameter]>
+        const submetricEntries = Object.entries(submetric) as [PopularityParameterId, Parameter][]
         submetricEntries.forEach(
             ([parameter, dynamicParameterValue]: [PopularityParameterId, Parameter]): void => {
                 if (dynamicParameter.parameter === parameter) {

@@ -3,7 +3,7 @@ import { computeAntivotes } from "./antivotes"
 import { LfcUnpopularityEstimate, Submetric } from "./types"
 
 const computeUnpopularities = (
-    popularities: Array<Ranked<ScalaPopularityStat>>,
+    popularities: Ranked<ScalaPopularityStat>[],
     submetrics: Combination<Submetric>,
 ): LfcUnpopularityEstimate[] =>
     popularities.map(

@@ -1,11 +1,11 @@
-import { Base, EMPTY_VECTOR, Grade, log, Vector, Parameter, Rational } from "@sagittal/general"
+import { Base, EMPTY_VECTOR, Grade, log, Vector, Parameter } from "@sagittal/general"
 import { LfcUnpopularityEstimate, PopularityParameterId, Submetric } from "../../../../src/sumOfSquares"
 import { computeSubmetricAntivotes } from "../../../../src/sumOfSquares/antivotes/submetricAntivotes"
 
 describe("computeSubmetricAntivotes", (): void => {
     let submetric: Submetric
 
-    const two3FreeNumberVector: Vector<Rational> = [
+    const two3FreeNumberVector: Vector = [
         0, //  Prime 2,  prime index 1 (from the prime count function)
         0, //  Prime 3,  prime index 2 (from the prime count function)
         0, //  Prime 5,  prime index 3 (from the prime count function)
@@ -13,7 +13,7 @@ describe("computeSubmetricAntivotes", (): void => {
         1, //  Prime 11, prime index 5 (from the prime count function)
         -1, // Prime 13, prime index 6 (from the prime count function)
         2, //  Prime 17, prime index 7 (from the prime count function)
-    ] as Vector<Rational>
+    ] as Vector
 
     beforeEach((): void => {
         submetric = {}
@@ -168,7 +168,7 @@ describe("computeSubmetricAntivotes", (): void => {
 
         it("when Dave's modified count is provided, counts 5's half as much as normal", (): void => {
             submetric[PopularityParameterId.MODIFIED_COUNT] = true
-            const two3FreeNumberVector = [0, 0, 1, -1] as Vector<Rational>
+            const two3FreeNumberVector = [0, 0, 1, -1] as Vector
 
             const actual = computeSubmetricAntivotes(two3FreeNumberVector, submetric)
 

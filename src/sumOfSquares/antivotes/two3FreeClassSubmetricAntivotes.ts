@@ -6,7 +6,6 @@ import {
     Parameter,
     Quotient,
     QuotientPartType,
-    Rational,
     stringify,
     Two3FreeClass,
 } from "@sagittal/general"
@@ -43,7 +42,7 @@ const compute23FreeClassSubmetricAntivotes = (
         return computeSubmetricAntivotes(two3FreeClass.vector, submetric)
     }
 
-    const [numerator, denominator]: Quotient<Rational> = computeQuotientFromVector(two3FreeClass.vector)
+    const [numerator, denominator]: Quotient = computeQuotientFromVector(two3FreeClass.vector)
     let { numeratorAntivotes, denominatorAntivotes } = maybeNuminatorSwap({
         useNuminator,
         numeratorAntivotes: computeSubmetricAntivotes(

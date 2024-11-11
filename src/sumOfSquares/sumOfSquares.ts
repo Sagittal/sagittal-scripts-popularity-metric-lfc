@@ -3,8 +3,8 @@ import { SumOfSquares } from "../bestMetric"
 import { LfcUnpopularityEstimate } from "./types"
 
 const computeSumOfSquares = (
-    rankedUnpopularities: Array<Ranked<LfcUnpopularityEstimate>>,
-    popularities: Array<Ranked<ScalaPopularityStat>>,
+    rankedUnpopularities: Ranked<LfcUnpopularityEstimate>[],
+    popularities: Ranked<ScalaPopularityStat>[],
     z: number,
 ): SumOfSquares =>
     popularities.reduce(

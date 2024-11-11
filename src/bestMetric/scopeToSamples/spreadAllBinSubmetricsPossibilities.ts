@@ -17,13 +17,11 @@ const spreadAllBinSubmetricsPossibilitiesAcrossSamples = (
 
     samples.forEach(({ submetrics, samplePoint }: Sample): void => {
         allBinSubmetricPossibilities.forEach((allBinSubmetricPossibility: SubmetricPossibility): void => {
-            const dynamicParameterValueIndices: Array<Index<Parameter>> = computeDynamicParameterValueIndices(
-                {
-                    dynamicParameters,
-                    submetric: allBinSubmetricPossibility,
-                    submetricIndex: 0 as Index<Submetric>,
-                },
-            )
+            const dynamicParameterValueIndices: Index<Parameter>[] = computeDynamicParameterValueIndices({
+                dynamicParameters,
+                submetric: allBinSubmetricPossibility,
+                submetricIndex: 0 as Index<Submetric>,
+            })
 
             allBinMergedSamples.push({
                 submetrics: submetrics.map(

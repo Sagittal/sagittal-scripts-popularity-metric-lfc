@@ -10,7 +10,7 @@ const computeSamples = ({
     dynamicParameters: DynamicParameter[]
     scope: Scope
 }): Sample[] => {
-    const submetricsPossibilities: Array<Combination<SubmetricPossibility>> = scope.map(
+    const submetricsPossibilities: Combination<SubmetricPossibility>[] = scope.map(
         (submetricScope: SubmetricScope): Combination<SubmetricPossibility> => {
             return computePossibilities(submetricScope) as Combination<SubmetricPossibility>
         },

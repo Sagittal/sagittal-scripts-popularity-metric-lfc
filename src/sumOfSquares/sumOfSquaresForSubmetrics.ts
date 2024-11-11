@@ -20,7 +20,7 @@ import { computeUnpopularities } from "./unpopularities"
 const computeSumOfSquaresForSubmetrics = (submetrics: Combination<Submetric>): SumOfSquares => {
     checkSubmetricsForInvalidParameterValueCombinations(submetrics)
 
-    const popularities: Array<Ranked<ScalaPopularityStat>> = COMMA_POPULARITIES.slice(
+    const popularities: Ranked<ScalaPopularityStat>[] = COMMA_POPULARITIES.slice(
         0,
         popularityMetricLfcScriptGroupSettings.onlyTop,
     )

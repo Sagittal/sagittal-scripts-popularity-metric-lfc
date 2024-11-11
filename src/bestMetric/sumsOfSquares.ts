@@ -57,7 +57,7 @@ const computeSumsOfSquaresAndMaybeUpdateBestMetric = async (
     }
 
     return new Promise((resolve: (sumsOfSquares: SumsOfSquares) => void): void => {
-        const samplePromises: Array<Promise<void>> = samples.map(
+        const samplePromises: Promise<void>[] = samples.map(
             (sample: Sample, index: number): Promise<void> => {
                 return computeSumOfSquaresAndMaybeUpdateBestMetric(sample, {
                     ...nextOptions,

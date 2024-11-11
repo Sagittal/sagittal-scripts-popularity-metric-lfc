@@ -131,7 +131,7 @@ const INITIAL_PARAMETER_SCOPES: ParameterScopes = {
     [PopularityParameterId.WITHOUT_REPETITION]: true,
 }
 
-const NO_MOOT_SUBMETRIC_CHUNKS: Array<Chunk<Submetric>> = [
+const NO_MOOT_SUBMETRIC_CHUNKS: Chunk<Submetric>[] = [
     {
         // SOAPFAR
         [PopularityParameterId.SUM]: NO_MOOT_INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
@@ -154,9 +154,9 @@ const NO_MOOT_SUBMETRIC_CHUNKS: Array<Chunk<Submetric>> = [
         [PopularityParameterId.A_AS_LOGARITHM_BASE]:
             NO_MOOT_INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
     },
-] as Array<Chunk<Submetric>>
+] as Chunk<Submetric>[]
 
-const SUBMETRIC_CHUNKS: Array<Chunk<Submetric>> = [
+const SUBMETRIC_CHUNKS: Chunk<Submetric>[] = [
     {
         // SOAPFAR
         [PopularityParameterId.SUM]: INITIAL_PARAMETER_SCOPES[PopularityParameterId.SUM],
@@ -189,7 +189,7 @@ const SUBMETRIC_CHUNKS: Array<Chunk<Submetric>> = [
         [PopularityParameterId.A_AS_LOGARITHM_BASE]:
             INITIAL_PARAMETER_SCOPES[PopularityParameterId.A_AS_LOGARITHM_BASE],
     },
-] as Array<Chunk<Submetric>>
+] as Chunk<Submetric>[]
 
 const SUBMETRIC_PARAMETERS = [
     PopularityParameterId.SUM,
@@ -198,7 +198,7 @@ const SUBMETRIC_PARAMETERS = [
     PopularityParameterId.WITHOUT_REPETITION,
 ]
 
-const NO_MOOT_PARAMETER_CHUNKS: Array<Chunk<PopularityParameterId>> = Object.entries(
+const NO_MOOT_PARAMETER_CHUNKS: Chunk<PopularityParameterId>[] = Object.entries(
     NO_MOOT_INITIAL_PARAMETER_SCOPES,
 )
     .filter(([parameter]: [string, Maybe<ParameterScope>]): boolean => {
@@ -215,7 +215,7 @@ const NO_MOOT_PARAMETER_CHUNKS: Array<Chunk<PopularityParameterId>> = Object.ent
         },
     )
 
-const PARAMETER_CHUNKS: Array<Chunk<PopularityParameterId>> = Object.entries(INITIAL_PARAMETER_SCOPES)
+const PARAMETER_CHUNKS: Chunk<PopularityParameterId>[] = Object.entries(INITIAL_PARAMETER_SCOPES)
     .filter(([parameter]: [string, Maybe<ParameterScope>]): boolean => {
         return !SUBMETRIC_PARAMETERS.includes(parameter as PopularityParameterId)
     })

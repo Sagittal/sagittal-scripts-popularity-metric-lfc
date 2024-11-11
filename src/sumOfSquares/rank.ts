@@ -3,8 +3,8 @@ import { LfcUnpopularityEstimate } from "./types"
 
 const addRankToUnpopularities = (
     unpopularities: LfcUnpopularityEstimate[],
-): Array<Ranked<LfcUnpopularityEstimate>> => {
-    const rankedUnpopularities: Array<Ranked<LfcUnpopularityEstimate>> = rank(unpopularities, {
+): Ranked<LfcUnpopularityEstimate>[] => {
+    const rankedUnpopularities: Ranked<LfcUnpopularityEstimate>[] = rank(unpopularities, {
         by: computeKeyPath("antivotes"),
         strategy: RankStrategy.FRACTIONAL,
     })

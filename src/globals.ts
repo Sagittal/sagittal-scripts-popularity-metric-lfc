@@ -11,10 +11,10 @@ const solverStatus: SolverStatus = structuredClone(INITIAL_SOLVER_STATUS)
 
 const bestMetrics: Map<Name<Metric>, Metric> = new Map()
 
-const metricNames: Array<Name<Metric>> = []
+const metricNames: Name<Metric>[] = []
 
-const memoizedSubmetricChunkCombinations: Array<Combinations<Chunk<Submetric>>> = []
-const memoizedParameterChunkCombinations: Array<Combinations<Chunk<PopularityParameterId>>> = []
+const memoizedSubmetricChunkCombinations: Combinations<Chunk<Submetric>>[] = []
+const memoizedParameterChunkCombinations: Combinations<Chunk<PopularityParameterId>>[] = []
 
 const popularityMetricLfcScriptGroupSettings: UnpopularityMetricLfcScriptGroupSettings = structuredClone(
     DEFAULT_UNPOPULARITY_METRIC_LFC_SCRIPTS_SETTINGS,

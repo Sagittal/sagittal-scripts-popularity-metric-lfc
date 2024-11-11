@@ -38,7 +38,7 @@ const computeNextPopulateScopesForSubmetricChunkCombinationOptions = (
     const parameterChunkCombination: Combination<Chunk<PopularityParameterId>> =
         parameterChunkCombinations[parameterChunkCombinationIndex]
 
-    const parameterChunkCombinationDistributions: Array<Distribution<Chunk<PopularityParameterId>>> =
+    const parameterChunkCombinationDistributions: Distribution<Chunk<PopularityParameterId>>[] =
         computeDistributions(
             parameterChunkCombination,
             count(submetricChunkCombination) as Count as Count<DistributionBin<Chunk<PopularityParameterId>>>,

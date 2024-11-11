@@ -18,12 +18,12 @@ applySharedPopularityMetricLfcScriptSetup({ logDir: "filterRottens" as Filename 
 
 const potentiallyRottens = load("metrics" as Filename) as Record<Name<Metric>, Metric>
 
-const popularities: Array<Ranked<ScalaPopularityStat>> = COMMA_POPULARITIES.slice(
+const popularities: Ranked<ScalaPopularityStat>[] = COMMA_POPULARITIES.slice(
     0,
     popularityMetricLfcScriptGroupSettings.onlyTop,
 )
 
-const potentiallyRottenEntries = Object.entries(potentiallyRottens) as Array<[Name<Metric>, Metric]>
+const potentiallyRottenEntries = Object.entries(potentiallyRottens) as [Name<Metric>, Metric][]
 const noRottens = potentiallyRottenEntries.reduce(
     (
         noRottens: Record<Name<Metric>, Metric>,

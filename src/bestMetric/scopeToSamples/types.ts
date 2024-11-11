@@ -16,7 +16,7 @@ interface DynamicParameter {
 
 type SubmetricPossibility = Submetric & { _SubmetricPossibilityBrand: boolean }
 
-type SamplePoint = Array<Index<Parameter>> & { _SamplePointBrand: boolean }
+type SamplePoint = Index<Parameter>[] & { _SamplePointBrand: boolean }
 
 interface Sample {
     samplePoint: SamplePoint
@@ -32,7 +32,7 @@ type DynamicParameterScopeOptions = Partial<{
 
 interface CombineSubmetricsPossibilitiesIntoSamplesOptions {
     dynamicParameters: DynamicParameter[]
-    submetricsPossibilities: Array<Combination<SubmetricPossibility>>
+    submetricsPossibilities: Combination<SubmetricPossibility>[]
 }
 
 interface SpreadAllBinSubmetricsPossibilitiesAcrossSamplesOptions {

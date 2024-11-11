@@ -4,9 +4,7 @@ import { computeSumOfSquaresForSubmetrics } from "../../../src/sumOfSquares"
 
 describe("best metrics", (): void => {
     it("verifies all of the best metrics", (): void => {
-        const bestMetricsEntries: Array<[string, Metric]> = Object.entries(bestMetrics) as Array<
-            [string, Metric]
-        >
+        const bestMetricsEntries: [string, Metric][] = Object.entries(bestMetrics) as [string, Metric][]
 
         bestMetricsEntries.forEach(([bestMetricName, bestMetric]: [string, Metric]): void => {
             const sumOfSquares = computeSumOfSquaresForSubmetrics(bestMetric.submetrics)

@@ -11,7 +11,6 @@ import {
     stringify,
     PrimeCount,
     computeLesserPrimeCount,
-    Rational,
 } from "@sagittal/general"
 import { popularityMetricLfcScriptGroupSettings } from "../../globals"
 import { LfcUnpopularityEstimate, Submetric } from "../types"
@@ -23,7 +22,7 @@ import { secondaryParameterOverride } from "./secondaryParameter"
 // (maybe with (maybe adjusted) repetition)
 
 const computeSubmetricAntivotes = (
-    two3FreeRationalVector: Vector<Rational>,
+    two3FreeRationalVector: Vector,
     submetric: Submetric = {},
     quotientPartType?: QuotientPartType,
 ): Grade<LfcUnpopularityEstimate> => {

@@ -19,7 +19,7 @@ import {
 
 describe("computeUnpopularities", (): void => {
     it("given a list of actual popularities and submetric combinations, returns our estimated unpopularities, which have antivotes instead of votes", (): void => {
-        const popularities: Array<Ranked<ScalaPopularityStat>> = [
+        const popularities: Ranked<ScalaPopularityStat>[] = [
             {
                 rank: 5 as Rank<ScalaPopularityStat>,
                 two3FreeClass: { vector: [0, 0, -1, 1] } as Two3FreeClass,
